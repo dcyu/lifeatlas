@@ -1,0 +1,41 @@
+!!!
+%html
+  %head
+    %title Lifeatlas
+    %link{:href => "http://fonts.googleapis.com/css?family=Montserrat:400,700", :rel => "stylesheet", :type => "text/css"}
+    %link{:href => "http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic", :rel => "stylesheet", :type => "text/css"}/
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+  %body#page-top{"data-spy" => "scroll", "data-target" => ".navbar-fixed-top"}
+    / Navigation
+    %nav.navbar.navbar-custom.navbar-fixed-top{:role => "navigation"}
+      .container
+        .navbar-header
+          %button.navbar-toggle{"data-target" => ".navbar-main-collapse", "data-toggle" => "collapse", :type => "button"}
+            %i.fa.fa-bars
+          %a.navbar-brand.page-scroll{:href => "#{new_destination_path}"}
+            %i.fa.fa-play-circle
+            DANIEL YU
+        / Collect the nav links, forms, and other content for toggling
+        .collapse.navbar-collapse.navbar-right.navbar-main-collapse
+          %ul.nav.navbar-nav
+            / Hidden li included to remove active class from about link when scrolled up past about section
+            %li.hidden
+              %a{:href => "#page-top"}
+            %li
+              =link_to "Add New Destination", new_destination_path
+        / /.navbar-collapse
+      / /.container
+    / Intro Header
+    .intro
+      .intro-body
+        .container
+          = yield
+    / About Section
+    #map
+
+    / Footer
+    %footer
+      .container.text-center
+        %p Copyright &copy; Daniel Yu 2014

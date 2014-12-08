@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @destination.name
+%p
+  %b Arrived on:
+  = @destination.arrived_on
+%p
+  %b Left on:
+  = @destination.left_on
+%p
+  %b Lng:
+  = @destination.lng
+%p
+  %b Lat:
+  = @destination.lat
+
+= link_to 'Edit', edit_destination_path(@destination)
+\|
+= link_to 'Back', destinations_path
