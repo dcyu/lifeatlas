@@ -3,6 +3,10 @@ class DestinationsController < ApplicationController
 
   # GET /destinations
   # GET /destinations.json
+  def landing
+    @destinations = Destination.all
+  end
+
   def index
     @destinations = Destination.all
   end
@@ -10,6 +14,7 @@ class DestinationsController < ApplicationController
   # GET /destinations/1
   # GET /destinations/1.json
   def show
+    @destinations = [@destination]
   end
 
   # GET /destinations/new
@@ -43,6 +48,11 @@ class DestinationsController < ApplicationController
   # PATCH/PUT /destinations/1
   # PATCH/PUT /destinations/1.json
   def update
+    @destination = Destination.new(destination_params)
+    geo = Geocoder.coordinates(@destination.name)
+    @destination.lat = geo.first
+    @destination.lng = geo.last
+    
     respond_to do |format|
       if @destination.update(destination_params)
         format.html { redirect_to @destination, notice: 'Destination was successfully updated.' }

@@ -1,0 +1,27 @@
+.container.content-section
+  %h1 Listing destinations
+
+  .row
+
+    .table-responsive
+      %table.table
+        %tr
+          %th Name
+          %th Arrived
+          %th Departed
+          %th
+          %th
+          %th
+
+        - @destinations.each do |destination|
+          %tr
+            %td= destination.name
+            %td= destination.arrived_on
+            %td= destination.left_on
+            %td= link_to 'Show', destination
+            %td= link_to 'Edit', edit_destination_path(destination)
+            %td= link_to 'Destroy', destination, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+      %br
+
+      = link_to 'New destination', new_destination_path

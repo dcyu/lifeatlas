@@ -1,6 +1,40 @@
-%h1 Editing destination
+.container.content-section
+  
+  .row
+    .col-md-5
+      %h1 Edit destination
 
-= render 'form'
+    .col-md-7
+      .panel.panel-info
+        .panel-body
+          = form_for @destination do |f|
+            - if @destination.errors.any?
+              #error_explanation
+                %h2= "#{pluralize(@destination.errors.count, "error")} prohibited this destination from being saved:"
+                %ul
+                  - @destination.errors.full_messages.each do |msg|
+                    %li= msg
+
+            .form-group
+              = f.text_field :name, class: "form-control"
+            .row
+              .form-group.col-md-6
+                = f.label :arrived_on
+                = f.date_select :arrived_on
+              .form-group.col-md-6
+                = f.label :left_on
+                = f.date_select :left_on
+            .row
+              .form-group.col-md-6
+                = f.label :lng
+                = f.text_field :lng, class: "form-control"
+              .form-group.col-md-6
+                = f.label :lat
+                = f.text_field :lat, class: "form-control"
+            .row
+              .col-md-4
+                = f.submit 'Save', class: "btn btn-default"
+
 
 = link_to 'Show', @destination
 \|

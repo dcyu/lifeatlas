@@ -14,7 +14,7 @@
         .navbar-header
           %button.navbar-toggle{"data-target" => ".navbar-main-collapse", "data-toggle" => "collapse", :type => "button"}
             %i.fa.fa-bars
-          %a.navbar-brand.page-scroll{:href => "#{new_destination_path}"}
+          %a.navbar-brand.page-scroll{:href => "#{root_path}"}
             %i.fa.fa-play-circle
             DANIEL YU
         / Collect the nav links, forms, and other content for toggling
@@ -24,18 +24,14 @@
             %li.hidden
               %a{:href => "#page-top"}
             %li
+              =link_to "All Destinations", destinations_path
+            %li
               =link_to "Add New Destination", new_destination_path
-        / /.navbar-collapse
-      / /.container
-    / Intro Header
-    .intro
-      .intro-body
-        .container
-          = yield
-    / About Section
-    #map
+
+    = yield
+
 
     / Footer
     %footer
       .container.text-center
-        %p Copyright &copy; Daniel Yu 2014
+        %h6 Copyright &copy; Daniel Yu 2014
