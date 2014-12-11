@@ -139,13 +139,10 @@ a:focus {
     text-align: center;
     color: #fff;
     background-color: #000;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
 }
 .intro.tibet {
-    background: url(<%= asset_path 'tibet.png' %>) no-repeat bottom center scroll;
+    background: url(<%= asset_path 'tibet.png' %>) no-repeat fixed top center; 
+    background-size: 100%;
 }
 
 .intro .intro-body {

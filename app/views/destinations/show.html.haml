@@ -3,13 +3,34 @@
     .col-md-6
       %h1.brand-heading=@destination.name
 
-    .col-md-6
+    .col-md-6.text-right
       %h4.date-show 
         = @destination.arrived_on.to_formatted_s(:long)
         \-
         = @destination.left_on.to_formatted_s(:long)
         \|
         =link_to "Edit", edit_destination_path(@destination)
+
+  .row
+    .col-md-12
+      %h4
+        Posts
+        \|
+        =link_to "Add New Post", new_post_path
+
+  -@destination.posts.each do |post|
+    .row
+      .col-md-2.col-md-offset-1
+        %h4
+          =post.title
+      .col-md-2
+        %h4
+          =post.created_at.to_formatted_s(:long)
+      .col-md-6
+        =post.body
+        \|
+        =link_to 'Edit', edit_post_path(post)
+
 
     
 

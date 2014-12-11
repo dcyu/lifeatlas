@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :posts
+
   resources :destinations do
     member do
       get 'landing', as: :landing

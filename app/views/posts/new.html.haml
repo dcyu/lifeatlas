@@ -1,0 +1,12 @@
+.container.content-section
+  .row
+    .col-md-5
+      %h1 New Post
+
+    .col-md-7
+  
+      .panel.panel-info
+        .panel-body
+          = render 'form'
+
+= link_to 'Back', posts_path

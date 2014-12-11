@@ -107,13 +107,13 @@
   // Custom Map Marker Icon - Customize the map-marker.png file to customize your icon
   -@destinations.each do |destination|
     var myLatLng = new google.maps.LatLng("#{destination.lat}", #{destination.lng});
-    var marker = new google.maps.Marker({
+    var marker#{destination.id} = new google.maps.Marker({
     position: myLatLng,
     map: map,
     url: "#{destination_url(destination)}"
     });
 
-    google.maps.event.addListener(marker, "click", function () {
-    location.assign(marker.url);
+    google.maps.event.addListener(marker#{destination.id}, "click", function () {
+    location.assign(marker#{destination.id}.url);
     });
   }
