@@ -8,8 +8,9 @@
         = @destination.arrived_on.to_formatted_s(:long)
         \-
         = @destination.left_on.to_formatted_s(:long)
-        \|
-        =link_to "Edit", edit_destination_path(@destination)
+        -if current_user
+          \|
+          =link_to "Edit", edit_destination_path(@destination)
 
   .row
     .col-md-6
@@ -25,18 +26,20 @@
             .col-md-12
               %p
                 =post.body
-                %br/
-                %br/
-                =link_to 'Edit', edit_destination_post_path(@destination, post)
+                -if current_user
+                  %br/
+                  %br/
+                  =link_to 'Edit', edit_destination_post_path(@destination, post)
   
     .col-md-6
       .row
         #map.single
-      .row.text-right
-        %br/
-        %br/
-        %h4
-          =link_to "Add New Post", new_destination_post_path(@destination)
+      -if current_user
+        .row.text-right
+          %br/
+          %br/
+          %h4
+            =link_to "Add New Post", new_destination_post_path(@destination)
 
       
 =render 'map'
