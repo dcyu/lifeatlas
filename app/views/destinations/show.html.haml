@@ -16,24 +16,26 @@
       %h4
         Posts
         \|
-        =link_to "Add New Post", new_post_path
+        =link_to "Add New Post", new_destination_post_path(@destination)
 
   -@destination.posts.each do |post|
     .row
-      .col-md-2.col-md-offset-1
+      .col-md-2
         %h4
           =post.title
-      .col-md-2
+      .col-md-3
         %h4
           =post.created_at.to_formatted_s(:long)
       .col-md-6
         =post.body
         \|
-        =link_to 'Edit', edit_post_path(post)
-
-
-    
-
+        =link_to 'Edit', edit_destination_post_path(@destination, post)
+  
+  .row
+    .col-md-6
+    .col-md-6
+      #map.single
+      
 =render 'map'
 
 

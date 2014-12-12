@@ -27,6 +27,8 @@
               =link_to "All Destinations", destinations_path
             %li
               =link_to "Add New Destination", new_destination_path
+            %li
+              =link_to 'Add New Post', new_destination_post_path(Destination.last)
 
     = yield
 
