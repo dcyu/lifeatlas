@@ -4,13 +4,14 @@
       %h1.brand-heading=@destination.name
 
     .col-md-6.text-right
-      %h4.date-show 
-        = @destination.arrived_on.to_formatted_s(:long)
-        \-
-        = @destination.left_on.to_formatted_s(:long)
-        -if current_user
-          \|
-          =link_to "Edit", edit_destination_path(@destination)
+      -@trips.each do |trip|
+        %h4.date-show 
+          = trip.arrived_on.to_formatted_s(:long)
+          \-
+          = trip.left_on.to_formatted_s(:long)
+          -if current_user
+            \|
+            =link_to "Edit", edit_trip_path(trip)
 
   .row
     .col-md-6

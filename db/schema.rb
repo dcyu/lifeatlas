@@ -11,12 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141212223958) do
+ActiveRecord::Schema.define(version: 20141212233608) do
 
   create_table "destinations", force: true do |t|
     t.string   "name"
-    t.date     "arrived_on"
-    t.date     "left_on"
     t.string   "lng"
     t.string   "lat"
     t.datetime "created_at"
@@ -26,6 +24,14 @@ ActiveRecord::Schema.define(version: 20141212223958) do
   create_table "posts", force: true do |t|
     t.string   "title"
     t.text     "body"
+    t.integer  "destination_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "trips", force: true do |t|
+    t.date     "arrived_on"
+    t.date     "left_on"
     t.integer  "destination_id"
     t.datetime "created_at"
     t.datetime "updated_at"
