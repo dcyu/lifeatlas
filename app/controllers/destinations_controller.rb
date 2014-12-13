@@ -18,6 +18,7 @@ class DestinationsController < ApplicationController
   def show
     @destinations = [@destination]
     @trips = @destination.trips
+    @restaurants = @destination.restaurants
   end
 
   # GET /destinations/new

@@ -6,14 +6,15 @@
         - @trip.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
+  .form-group
     = f.label :arrived_on
     = f.date_select :arrived_on
-  .field
+  .form-group
     = f.label :left_on
     = f.date_select :left_on
-  .field
+  .form-group
     = f.label :destination_id
-    = f.number_field :destination_id
-  .actions
-    = f.submit 'Save'
+    =f.collection_select :destination_id, Destination.order(:name), :id, :name
+  .row
+    .col-md-4
+      = f.submit 'Save', class: "btn btn-default"

@@ -1,5 +1,9 @@
-%h1 New trip
+.container.content-section
+  .row
+    .col-md-5
+      %h1 New Trip
 
-= render 'form'
-
-= link_to 'Back', trips_path
+    .col-md-7
+      .panel.panel-info
+        .panel-body
+          = render 'form'

@@ -8,6 +8,10 @@
   
   .form-group
     =f.collection_select :destination_id, Destination.order(:name), :id, :name, {selected: @destination.id}
+  .form-group
+    =f.label :restaurant_id
+    %br/
+    =f.collection_select :restaurant_id, Restaurant.where(destination_id: @destination.id).order(:name), :id, :name, {include_blank: true}
 
   .form-group
     = f.text_field :title, placeholder: "Title", class: "form-control"

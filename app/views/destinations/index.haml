@@ -1,5 +1,5 @@
 .container.content-section
-  %h1 Listing destinations
+  %h1 All Destinations
 
   .row
 
@@ -7,18 +7,16 @@
       %table.table
         %tr
           %th Name
-          %th Arrived
-          %th Departed
-          %th
+          %th Last Visited
           %th
           %th
 
         - @destinations.each do |destination|
           %tr
-            %td= destination.name
-            %td= destination.arrived_on
-            %td= destination.left_on
-            %td= link_to 'Show', destination
+            %td=link_to destination.name, destination
+            %td
+              -if destination.trips.count > 0
+                =destination.trips.last.left_on.to_formatted_s(:long)
             %td= link_to 'Edit', edit_destination_path(destination)
             %td= link_to 'Destroy', destination, :method => :delete, :data => { :confirm => 'Are you sure?' }
 

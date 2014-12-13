@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :restaurants
+
   resources :trips
 
   devise_for :users, controllers: {

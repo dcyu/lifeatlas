@@ -24,12 +24,12 @@ class TripsController < ApplicationController
   def create
     @trip = Trip.new(trip_params)
     @trip.save
-    respond_with(@trip)
+    respond_with(@trip.destination)
   end
 
   def update
     @trip.update(trip_params)
-    respond_with(@trip)
+    respond_with(@trip.destination)
   end
 
   def destroy

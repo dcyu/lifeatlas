@@ -1,0 +1,42 @@
+.container.show
+  .row
+    .col-md-6
+      %h1.brand-heading=@restaurant.name
+
+    .col-md-6.text-right
+      %h4.date-show 
+        =link_to @restaurant.destination.name, destination_path(@restaurant.destination)
+
+  .row
+    .col-md-6
+      -@restaurant.posts.each do |post|
+        .post
+          .row
+            .col-md-12
+              %h4
+                =post.title
+                \|
+                =post.created_at.to_formatted_s(:long)
+          .row
+            .col-md-12
+              %p
+                =post.body
+                -if current_user
+                  %br/
+                  %br/
+                  =link_to 'Edit', edit_destination_post_path(@restaurant.destination, post)
+  
+      -if current_user
+        .row
+          %br/
+          %br/
+          %h4
+            =link_to "Add New Post", new_destination_post_path(@restaurant.destination)
+
+    .col-md-6
+      .row
+        .col-md-12
+          #map.single
+
+      
+/ =render 'map'

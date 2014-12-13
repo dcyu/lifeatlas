@@ -32,15 +32,28 @@
                   %br/
                   =link_to 'Edit', edit_destination_post_path(@destination, post)
   
-    .col-md-6
-      .row
-        #map.single
       -if current_user
-        .row.text-right
+        .row
           %br/
           %br/
           %h4
             =link_to "Add New Post", new_destination_post_path(@destination)
+
+    .col-md-6
+      .row
+        .col-md-12
+          #map.single
+        .col-md-8.col-md-offset-2
+          .row
+            %h4 Restaurants
+            .col-md-10.col-md-offset-2
+              -@restaurants.each do |restaurant|
+                %h6
+                  =link_to restaurant.name, restaurant_path(restaurant)
+            -if current_user
+              %br/
+              =link_to "Add New Restaurant", new_restaurant_path
+
 
       
 =render 'map'
