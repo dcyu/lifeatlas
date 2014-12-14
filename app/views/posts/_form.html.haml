@@ -12,6 +12,10 @@
     =f.label :restaurant_id
     %br/
     =f.collection_select :restaurant_id, Restaurant.where(destination_id: @destination.id).order(:name), :id, :name, {include_blank: true}
+  .form-group
+    =f.label :rating
+    %br/
+    =f.select :rating, options_for_select([1,2,3,4,5]), { include_blank: true }
 
   .form-group
     = f.text_field :title, placeholder: "Title", class: "form-control"
