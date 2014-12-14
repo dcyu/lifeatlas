@@ -1,0 +1,15 @@
+= form_for @venue do |f|
+  - if @venue.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@venue.errors.count, "error")} prohibited this venue from being saved:"
+      %ul
+        - @venue.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group
+    = f.text_field :name, placeholder: "Venue Name", class: "form-control"
+  .form-group
+    =f.collection_select :destination_id, Destination.order(:name), :id, :name
+  .row
+    .col-md-4
+      = f.submit 'Save', class: "btn btn-default"

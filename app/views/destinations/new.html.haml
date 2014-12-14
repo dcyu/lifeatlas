@@ -19,12 +19,5 @@
             .form-group
               = f.text_field :name, class: "form-control", placeholder: "Chicago, IL"
             .row
-              .form-group.col-md-6
-                = f.label :arrived_on
-                = f.date_select :arrived_on
-              .form-group.col-md-6
-                = f.label :left_on
-                = f.date_select :left_on
-            .row
               .col-md-4
                 = f.submit 'Save', class: "btn btn-default"

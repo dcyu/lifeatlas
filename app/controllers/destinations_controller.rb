@@ -11,7 +11,7 @@ class DestinationsController < ApplicationController
   end
 
   def index
-    @destinations = Destination.all
+    @destinations = Destination.order(:name)
   end
 
   # GET /destinations/1
@@ -19,7 +19,7 @@ class DestinationsController < ApplicationController
   def show
     @destinations = [@destination]
     @trips = @destination.trips
-    @restaurants = @destination.restaurants
+    @venues = @destination.venues
     @posts = @destination.posts.reverse
   end
 

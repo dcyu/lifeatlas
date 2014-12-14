@@ -9,9 +9,11 @@
   .form-group
     =f.collection_select :destination_id, Destination.order(:name), :id, :name, {selected: @destination.id}
   .form-group
-    =f.label :restaurant_id
+    =f.label :venue_id
     %br/
-    =f.collection_select :restaurant_id, Restaurant.where(destination_id: @destination.id).order(:name), :id, :name, {include_blank: true}
+    =f.collection_select :venue_id, Venue.where(destination_id: @destination.id).order(:name), :id, :name, {include_blank: true}
+    %br/
+    =link_to "Add New venue", new_venue_path
   .form-group
     =f.label :rating
     %br/

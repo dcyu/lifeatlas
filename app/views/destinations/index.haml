@@ -1,25 +1,23 @@
 .container.content-section
   %h1 All Destinations
-
+  
   .row
+    .col-md-3.col-md-offset-1
+      %h4
+        %u
+          Name
+    .col-md-7.col-md-offset-1
+      %h4
+        %u
+          Last Visited
 
-    .table-responsive
-      %table.table
-        %tr
-          %th Name
-          %th Last Visited
-          %th
-          %th
 
-        - @destinations.each do |destination|
-          %tr
-            %td=link_to destination.name, destination
-            %td
-              -if destination.trips.count > 0
-                =destination.trips.last.left_on.to_formatted_s(:long)
-            %td= link_to 'Edit', edit_destination_path(destination)
-            %td= link_to 'Destroy', destination, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-      %br
-
-      = link_to 'New destination', new_destination_path
+  - @destinations.each do |destination|
+    .row
+      .col-md-3.col-md-offset-1
+        %h4
+          =link_to destination.name, destination
+      .col-md-7.col-md-offset-1
+        %h4
+          -if destination.trips.count > 0
+            =destination.trips.last.left_on.to_formatted_s(:long)

@@ -1,10 +1,10 @@
 class Post < ActiveRecord::Base
   belongs_to :destination
-  belongs_to :restaurant
+  belongs_to :venue
 
   def rating_hint
     if rating == 1
-      "Utterly Disappointing"
+      "Disappointing"
     elsif rating == 2
       "Mediocre"
     elsif rating == 3
