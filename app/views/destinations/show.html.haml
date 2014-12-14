@@ -15,7 +15,7 @@
 
   .row
     .col-md-6
-      -@destination.posts.each do |post|
+      -@posts.each do |post|
         .post
           .row
             .col-md-12
@@ -51,17 +51,17 @@
       .row
         .col-md-12
           #map.single
-        .col-md-8.col-md-offset-2.top-buffer
+        .col-md-10.col-md-offset-2.top-buffer
           .row.top-buffer
-            %h4 Restaurants
+            %h4 
+              Restaurants
+              -if current_user
+                \|
+                =link_to "Add New Restaurant", new_restaurant_path
             .col-md-10.col-md-offset-2
               -@restaurants.each do |restaurant|
                 %h6
                   =link_to restaurant.name, restaurant_path(restaurant)
-
-            -if current_user
-              %br/
-              =link_to "Add New Restaurant", new_restaurant_path
 
 
       

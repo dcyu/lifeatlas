@@ -19,6 +19,7 @@ class DestinationsController < ApplicationController
     @destinations = [@destination]
     @trips = @destination.trips
     @restaurants = @destination.restaurants
+    @posts = @destination.posts.reverse
   end
 
   # GET /destinations/new
