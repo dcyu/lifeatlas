@@ -91,6 +91,8 @@ GEM
       thor (~> 0.14)
     formatador (0.2.5)
     geocoder (1.2.6)
+    google_places (0.27.0)
+      httparty (~> 0.13.1)
     guard (2.6.1)
       formatador (>= 0.2.4)
       listen (~> 2.7)
@@ -110,6 +112,9 @@ GEM
       railties (>= 4.0.1)
     hike (1.2.3)
     http_parser.rb (0.6.0)
+    httparty (0.13.3)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.6.11)
     jbuilder (2.2.5)
       activesupport (>= 3.0.0, < 5)
@@ -136,6 +141,7 @@ GEM
     mini_portile (0.6.0)
     minitest (5.4.3)
     multi_json (1.10.1)
+    multi_xml (0.5.5)
     nokogiri (1.6.2.1)
       mini_portile (= 0.6.0)
     orm_adapter (0.5.0)
@@ -253,6 +259,7 @@ DEPENDENCIES
   faker (~> 1.2.0)
   figaro
   geocoder
+  google_places
   guard-livereload
   haml
   haml-rails

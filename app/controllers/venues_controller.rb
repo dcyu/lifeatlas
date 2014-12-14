@@ -11,9 +11,8 @@ class VenuesController < ApplicationController
   end
 
   def show
-    geo = Geocoder.coordinates("purple pig #{@venue.destination.name}")
-    @lat = geo.first
-    @lng = geo.last
+    @lat = @venue.lat
+    @lng = @venue.lng
     respond_with(@venue)
   end
 
@@ -27,11 +26,19 @@ class VenuesController < ApplicationController
 
   def create
     @venue = Venue.new(venue_params)
+    @client = GooglePlaces::Client.new("#{ENV["google_key"]}")
+    spot = @client.spots_by_query("#{@venue.name}, #{@venue.destination.name}").first
+    @venue.lat = spot.lat
+    @venue.lng = spot.lng
     @venue.save
     respond_with(@venue.destination)
   end
 
   def update
+    @client = GooglePlaces::Client.new("#{ENV["google_key"]}")
+    spot = @client.spots_by_query("#{@venue.name}, #{@venue.destination.name}").first
+    @venue.lat = spot.lat
+    @venue.lng = spot.lng
     @venue.update(venue_params)
     respond_with(@venue.destination)
   end
