@@ -3,11 +3,12 @@ class DestinationsController < ApplicationController
   before_filter :authenticate_user!, except: [:show, :index, :landing]
 
 
-  # GET /destinations
-  # GET /destinations.json
   def landing
     @destinations = Destination.all
     @posts = Post.last(5).reverse
+  end
+
+  def about
   end
 
   def index
