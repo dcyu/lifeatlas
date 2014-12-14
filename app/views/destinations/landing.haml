@@ -20,4 +20,19 @@
 
 #map
 =render 'map'
+
+.row.white
+  .container.landing
+    .row
+      .col-md-4.border-right.vertical-div
+        %h1 Recent Posts
+      .col-md-7.col-md-offset-1.vertical-div
+        .vertical-align
+          -@posts.each do |post|
+            %h5
+              =link_to "#{post.title} | #{post.destination.name} | #{post.created_at.to_date.to_formatted_s(:long)}", destination_path(post.destination)
+
+
+
+
   

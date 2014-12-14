@@ -3,17 +3,36 @@
 @import "bootstrap/glyphicons"
 @import "hint"
 
+%vertical-align
+  position: relative
+  top: 50%
+  -webkit-transform: translateY(-50%)
+  -ms-transform: translateY(-50%)
+  transform: translateY(-50%)
+
+.vertical-align
+  @extend %vertical-align
+
+.relative
+  position: relative
+
 .alert
   border-radius: 0px
   position: relative
   top: 75px
   text-align: center
 
+.border-right
+  border-right: 2px solid #000
+
 input, form label
   color: black
 
 .show
   padding-top: 120px
+
+.landing
+  padding: 80px 0
 
 body.show-page
   color: #000
@@ -52,3 +71,12 @@ nav.show-page a
 
 .top-buffer
   margin-top: 20px
+
+.white
+  background-color: #fff
+  color: #000
+
+.vertical-div
+  height: 250px
+  h1
+    line-height: 250px

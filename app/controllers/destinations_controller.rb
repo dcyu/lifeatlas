@@ -7,6 +7,7 @@ class DestinationsController < ApplicationController
   # GET /destinations.json
   def landing
     @destinations = Destination.all
+    @posts = Post.last(5).reverse
   end
 
   def index
