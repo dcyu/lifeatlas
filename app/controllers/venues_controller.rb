@@ -11,6 +11,9 @@ class VenuesController < ApplicationController
   end
 
   def show
+    geo = Geocoder.coordinates("purple pig #{@venue.destination.name}")
+    @lat = geo.first
+    @lng = geo.last
     respond_with(@venue)
   end
 

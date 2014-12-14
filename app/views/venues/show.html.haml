@@ -16,6 +16,11 @@
               %h4
                 =post.title
                 \|
+                -if post.rating
+                  %span.hint--bottom{"data-hint" => post.rating_hint}
+                    -post.rating.times do
+                      %span.glyphicon.glyphicon-star{"aria-hidden" => "true"}
+                  \|
                 =post.created_at.to_formatted_s(:long)
           .row
             .col-md-12
@@ -39,4 +44,4 @@
           #map.single
 
       
-/ =render 'map'
+=render 'map'
