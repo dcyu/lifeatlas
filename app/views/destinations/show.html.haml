@@ -26,8 +26,9 @@
                   =link_to post.restaurant.name, restaurant_path(post.restaurant)
                   \|
                 -if post.rating
-                  -post.rating.times do
-                    %span.glyphicon.glyphicon-star{"aria-hidden" => "true"}
+                  %span.hint--bottom{"data-hint" => post.rating_hint}
+                    -post.rating.times do
+                      %span.glyphicon.glyphicon-star{"aria-hidden" => "true"}
                   \|
                 =post.created_at.to_formatted_s(:long)
           .row
