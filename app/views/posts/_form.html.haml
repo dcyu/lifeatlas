@@ -13,7 +13,7 @@
     %br/
     =f.collection_select :venue_id, Venue.where(destination_id: @destination.id).order(:name), :id, :name, {include_blank: true}
     %br/
-    =link_to "Add New venue", new_venue_path
+    =link_to "Add New Venue", new_venue_path
   .form-group
     =f.label :rating
     %br/
