@@ -6,6 +6,7 @@
     %link{:href => "http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic", :rel => "stylesheet", :type => "text/css"}/
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
+    = favicon_link_tag "fav.png"
     = csrf_meta_tags
   %body#page-top{"data-spy" => "scroll", "data-target" => ".navbar-fixed-top", class: "#{"show-page" if params[:action] == "show"}"}
     / Navigation
