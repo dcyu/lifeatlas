@@ -12,9 +12,13 @@
           -if current_user
             \|
             =link_to "Edit", edit_trip_path(trip)
-
+  
   .row
     .col-md-6
+      -if current_user
+        %h4
+          =link_to "Add New Post", new_destination_post_path(@destination)
+            
       -@posts.each do |post|
         .post
           .row
@@ -39,13 +43,6 @@
                   %br/
                   %br/
                   =link_to 'Edit', edit_destination_post_path(@destination, post)
-  
-      -if current_user
-        .row
-          %br/
-          %br/
-          %h4
-            =link_to "Add New Post", new_destination_post_path(@destination)
 
     .col-md-6
       .row
