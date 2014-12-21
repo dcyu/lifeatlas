@@ -55,7 +55,6 @@ class DestinationsController < ApplicationController
   # PATCH/PUT /destinations/1
   # PATCH/PUT /destinations/1.json
   def update
-    @destination = Destination.new(destination_params)
     geo = Geocoder.coordinates(@destination.name)
     @destination.lat = geo.first
     @destination.lng = geo.last
