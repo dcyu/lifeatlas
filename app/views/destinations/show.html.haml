@@ -6,9 +6,12 @@
     .col-md-6.text-right
       -@trips.each do |trip|
         %h4.date-show 
-          = trip.arrived_on.to_formatted_s(:long)
-          \-
-          = trip.left_on.to_formatted_s(:long)
+          -if trip.arrived_on == trip.left_on
+            = trip.arrived_on.to_formatted_s(:long)
+          -else
+            = trip.arrived_on.to_formatted_s(:long)
+            \-
+            = trip.left_on.to_formatted_s(:long)
           -if current_user
             \|
             =link_to "Edit", edit_trip_path(trip)
@@ -43,6 +46,9 @@
                   %br/
                   %br/
                   =link_to 'Edit', edit_destination_post_path(@destination, post)
+              -if post.song
+                %h6
+                  Listening to #{post.song}
 
     .col-md-6
       .row
