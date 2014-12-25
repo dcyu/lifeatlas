@@ -15,7 +15,7 @@
         %h2=year
         = render 'timeline'
 
-        %div{id: "timeline-#{year}"}
+        %div{id: "timeline-#{year}", class: "timeline-chart"}
         -if @timeline
           = render_chart(@timeline, "timeline-#{year}")
 
@@ -28,6 +28,7 @@
           -days = trips.map{|trip| trip.duration_within_year(@year) - trip.overlapping_trips.select{|trip| trip.years.include? @year}.map{|trip| trip.duration_within_year(@year)}.inject(0, :+) }.inject(0, :+)
           -@trips_hash[destination] = days
 
+        -@trips_hash.sort_by{|k,v| v}.reverse.each do |destination, days|
           %h6
             =destination
             \: 
