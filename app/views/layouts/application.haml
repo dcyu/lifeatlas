@@ -32,7 +32,7 @@
               %li
                 =link_to "Add New Destination", new_destination_path
               %li
-                -if @destination.id
+                -if @destination && @destination.id
                   =link_to 'Add New Post', new_destination_post_path(@destination)
                 -else
                   =link_to 'Add New Post', new_destination_post_path(Destination.last)
