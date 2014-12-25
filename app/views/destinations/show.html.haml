@@ -38,6 +38,17 @@
                       %span.glyphicon.glyphicon-star{"aria-hidden" => "true"}
                   \|
                 =post.created_at.to_formatted_s(:long)
+          
+            -if post.photos.present?
+              -post.photos.each do |photo|
+                .col-md-12
+                  = image_tag photo.picture.url
+                  %br/
+                  %em
+                    =photo.description
+
+
+
           .row
             .col-md-12
               %p
@@ -46,6 +57,9 @@
                   %br/
                   %br/
                   =link_to 'Edit', edit_destination_post_path(@destination, post)
+                  \|
+                  =link_to "Add Photo", new_destination_post_photo_path(@destination, post)
+
               -if post.song
                 %h6
                   Listening to #{post.song}

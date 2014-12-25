@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   resources :venues
 
   resources :trips
@@ -11,7 +12,9 @@ Rails.application.routes.draw do
     member do
       get 'landing', as: :landing
     end
-    resources :posts
+    resources :posts do
+      resources :photos
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

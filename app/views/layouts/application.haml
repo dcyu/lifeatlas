@@ -32,7 +32,10 @@
               %li
                 =link_to "Add New Destination", new_destination_path
               %li
-                =link_to 'Add New Post', new_destination_post_path(Destination.last)
+                -if @destination
+                  =link_to 'Add New Post', new_destination_post_path(@destination)
+                -else
+                  =link_to 'Add New Post', new_destination_post_path(Destination.last)
               %li
                 = link_to 'Add New Trip', new_trip_path, :class => 'navbar-link'
               %li

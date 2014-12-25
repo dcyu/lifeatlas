@@ -1,6 +1,7 @@
 class Post < ActiveRecord::Base
   belongs_to :destination
   belongs_to :venue
+  has_many :photos
 
   def rating_hint
     if rating == 1

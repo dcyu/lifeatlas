@@ -24,7 +24,6 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 group :development, :test do
   gem 'spring'
-  gem 'sqlite3'
   gem 'quiet_assets'
   gem 'byebug'
   gem 'guard-livereload', :require => false
@@ -45,8 +44,9 @@ end
 
 group :production do
   gem 'rails_12factor'
-  gem 'pg'
 end
+
+gem 'pg'
 
 gem 'haml'
 gem 'haml-rails'
@@ -60,6 +60,9 @@ gem 'devise'
 gem 'bootstrap-glyphicons'
 
 gem 'google_places'
+
+gem 'paperclip'
+gem 'aws-sdk'
 
 
 # Use ActiveModel has_secure_password
