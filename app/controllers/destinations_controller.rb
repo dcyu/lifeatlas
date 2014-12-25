@@ -1,6 +1,6 @@
 class DestinationsController < ApplicationController
   before_action :set_destination, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!, except: [:show, :index, :landing, :about]
+  before_filter :authenticate_user!, except: [:show, :index, :landing, :about, :stats]
 
 
   def landing
@@ -9,6 +9,11 @@ class DestinationsController < ApplicationController
   end
 
   def about
+  end
+
+  def stats
+    @years = [*2007..Time.now.year].reverse
+    @all_trips = Trip.all
   end
 
   def index

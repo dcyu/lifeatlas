@@ -1,0 +1,31 @@
+:ruby
+  data_table = GoogleVisualr::DataTable.new
+
+  data_table.new_column('string', 'Life' )
+  data_table.new_column('string', 'Location' )
+  data_table.new_column('date', 'Arrived')
+  data_table.new_column('date', 'Left')
+
+  trip_rows = []
+
+  @trips.each do |trip|
+    row = ['Daniel Yu', trip.destination.name, trip.arrived_year(@year), trip.left_year(@year)]
+    trip_rows << row
+  end
+  
+  data_table.add_rows(trip_rows)
+
+  option = {
+    backgroundColor: {strokeWidth: 0}, 
+    backgroundColor: 'white', 
+    timeline: { 
+      stroke: 0,
+      groupByRowLabel: true, 
+      barLabelStyle: 
+        { color: 'white', 
+          fontName: 'Helvetica' 
+        },
+      showRowLabels: false
+      }
+    }
+  @timeline = GoogleVisualr::Interactive::Timeline.new(data_table, option)

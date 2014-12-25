@@ -64,6 +64,9 @@ gem 'google_places'
 gem 'paperclip'
 gem 'aws-sdk'
 
+gem "google_visualr"
+
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

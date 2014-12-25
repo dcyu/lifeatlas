@@ -1,0 +1,23 @@
+:ruby
+  data_table = GoogleVisualr::DataTable.new
+
+  data_table.new_column('string', 'Destination' )
+  data_table.new_column('number', 'Duration in Days')
+
+  trip_rows = []
+
+  @trips_hash.sort_by{|k,v| v}.each do |destination, days|
+    row = [destination, days]
+    trip_rows << row
+  end
+  
+  data_table.add_rows(trip_rows)
+
+  option = {
+    title: 'Proportional Breakdown in Days',
+    legend: 'none',
+    pieSliceText: 'label',
+    pieHole: 0.2,
+    height: 550, 
+    }
+  @pie = GoogleVisualr::Interactive::PieChart.new(data_table, option)

@@ -1,0 +1,42 @@
+%script{src: 'https://www.google.com/jsapi'}
+
+.container.show
+  .row
+    .col-md-6
+      %h1.brand-heading
+        Travel Statistics
+
+
+  -@years.each do |year|
+    -@year = year
+    -@trips = @all_trips.select{|trip| trip.years.include? year}
+    .row.year
+      .col-md-12
+        %h2=year
+        = render 'timeline'
+
+        %div{id: "timeline-#{year}"}
+        -if @timeline
+          = render_chart(@timeline, "timeline-#{year}")
+
+    .row
+      -@trips_hash = {}
+      
+      .col-md-4
+
+        -@trips.group_by{|trip| trip.destination.name}.sort.to_h.each do |destination, trips|
+          -days = trips.map{|trip| trip.duration_within_year(@year) - trip.overlapping_trips.select{|trip| trip.years.include? @year}.map{|trip| trip.duration_within_year(@year)}.inject(0, :+) }.inject(&:+)
+          -@trips_hash[destination] = days
+
+          %h6
+            =destination
+            \: 
+            =days
+            days
+
+      .col-md-8
+        =render 'pie'
+        %div{id: "pie-#{year}", class: "pie-chart"}
+        -if @pie
+          = render_chart(@pie, "pie-#{year}")
+
