@@ -24,8 +24,8 @@
       
       .col-md-4
 
-        -@trips.group_by{|trip| trip.destination.name}.sort.to_h.each do |destination, trips|
-          -days = trips.map{|trip| trip.duration_within_year(@year) - trip.overlapping_trips.select{|trip| trip.years.include? @year}.map{|trip| trip.duration_within_year(@year)}.inject(0, :+) }.inject(&:+)
+        -@trips.group_by{|trip| trip.destination.name}.sort_by{|k,v| k}.each do |destination, trips|
+          -days = trips.map{|trip| trip.duration_within_year(@year) - trip.overlapping_trips.select{|trip| trip.years.include? @year}.map{|trip| trip.duration_within_year(@year)}.inject(0, :+) }.inject(0, :+)
           -@trips_hash[destination] = days
 
           %h6
