@@ -19,7 +19,7 @@ class DestinationsController < ApplicationController
   # GET /destinations/1.json
   def show
     @destinations = [@destination]
-    @trips = @destination.trips.reverse
+    @trips = @destination.trips.order(:arrived_on).reverse
     @venues = @destination.venues
     @posts = @destination.posts.reverse
   end
