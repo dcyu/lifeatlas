@@ -19,6 +19,11 @@
             Total Distance Traveled:
             =number_with_delimiter(distance(@trips).round)
             miles
+          %br/
+          %span.distance
+            Total Number of Destinations:
+            =@trips.map(&:destination).uniq.count
+
 
         = render 'timeline'
 
