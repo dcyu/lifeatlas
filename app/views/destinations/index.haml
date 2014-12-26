@@ -21,4 +21,4 @@
           .col-md-5.col-md-offset-1
             %h4
               -if destination.trips.count > 0
-                =destination.trips.last.left_on.to_formatted_s(:long)
+                =destination.trips.order(:left_on).last.left_on.to_formatted_s(:long)

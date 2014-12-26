@@ -36,4 +36,8 @@ class Trip < ActiveRecord::Base
     return trips
   end
 
+  def covered_trip
+    Trip.where("arrived_on < ?", self.arrived_on).where("left_on > ?", self.left_on).first
+  end
+
 end

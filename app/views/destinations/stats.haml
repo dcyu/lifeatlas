@@ -41,3 +41,8 @@
         -if @pie
           = render_chart(@pie, "pie-#{year}")
 
+        %h4
+          Total Distance Traveled:
+          =number_with_delimiter(distance(@trips).round)
+          miles
+
