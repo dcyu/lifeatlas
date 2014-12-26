@@ -12,7 +12,14 @@
     -@trips = @all_trips.select{|trip| trip.years.include? year}
     .row.year
       .col-md-12
-        %h2=year
+        %h2
+          %span.inline-block
+            =year
+          %span.distance
+            Total Distance Traveled:
+            =number_with_delimiter(distance(@trips).round)
+            miles
+
         = render 'timeline'
 
         %div{id: "timeline-#{year}", class: "timeline-chart"}
@@ -30,7 +37,7 @@
 
         -@trips_hash.sort_by{|k,v| v}.reverse.each do |destination, days|
           %h6
-            =destination
+            =link_to destination, destination_path(Destination.find_by(name: destination))
             \: 
             =days
             days
@@ -40,9 +47,4 @@
         %div{id: "pie-#{year}", class: "pie-chart"}
         -if @pie
           = render_chart(@pie, "pie-#{year}")
-
-        %h4
-          Total Distance Traveled:
-          =number_with_delimiter(distance(@trips).round)
-          miles
 

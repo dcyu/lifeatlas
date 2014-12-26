@@ -3,82 +3,82 @@
     .col-md-6
       %h1.brand-heading=@destination.name
 
-    .col-md-6.text-right
-      -@trips.each do |trip|
-        %h4.date-show 
-          -if trip.arrived_on == trip.left_on
-            = trip.arrived_on.to_formatted_s(:long)
-          -else
-            = trip.arrived_on.to_formatted_s(:long)
-            \-
-            = trip.left_on.to_formatted_s(:long)
-          -if current_user
-            \|
-            =link_to "Edit", edit_trip_path(trip)
-  
-  .row
-    .col-md-6
-      -if current_user
-        %h4
-          =link_to "Add New Post", new_destination_post_path(@destination)
-            
-      -@posts.each do |post|
-        .post
-          .row
-            .col-md-12
-              %h4
-                =post.title
-                \|
-                -if post.venue
-                  =link_to post.venue.name, venue_path(post.venue)
-                  \|
-                -if post.rating
-                  %span.hint--bottom{"data-hint" => post.rating_hint}
-                    -post.rating.times do
-                      %span.glyphicon.glyphicon-star{"aria-hidden" => "true"}
-                  \|
-                =post.created_at.to_formatted_s(:long)
-          
-            -if post.photos.present?
-              -post.photos.each do |photo|
-                .col-md-12
-                  = image_tag photo.picture.url
-                  %br/
-                  %em
-                    =photo.description
-
-
-
-          .row
-            .col-md-12
-              %p
-                =simple_format post.body
-                -if current_user
-                  %br/
-                  %br/
-                  =link_to 'Edit', edit_destination_post_path(@destination, post)
-                  \|
-                  =link_to "Add Photo", new_destination_post_photo_path(@destination, post)
-
-              -if post.song
-                %h6
-                  Listening to #{post.song}
-
-    .col-md-6
       .row
         .col-md-12
-          #map.single
-        .col-md-10.col-md-offset-2.top-buffer
-          .row.top-buffer
-            %h4 
-              venues
+          -if current_user
+            %h4
+              =link_to "Add New Post", new_destination_post_path(@destination)
+                
+          -@posts.each do |post|
+            .post
+              .row
+                .col-md-12
+                  %h4
+                    =post.title
+                    \|
+                    -if post.venue
+                      =link_to post.venue.name, venue_path(post.venue)
+                      \|
+                    -if post.rating
+                      %span.hint--bottom{"data-hint" => post.rating_hint}
+                        -post.rating.times do
+                          %span.glyphicon.glyphicon-star{"aria-hidden" => "true"}
+                      \|
+                    =post.created_at.to_formatted_s(:long)
+              
+                -if post.photos.present?
+                  -post.photos.each do |photo|
+                    .col-md-12
+                      = image_tag photo.picture.url
+                      %br/
+                      %em
+                        =photo.description
+
+
+
+              .row
+                .col-md-12
+                  %p
+                    =simple_format post.body
+                    -if current_user
+                      %br/
+                      %br/
+                      =link_to 'Edit', edit_destination_post_path(@destination, post)
+                      \|
+                      =link_to "Add Photo", new_destination_post_photo_path(@destination, post)
+
+                  -if post.song
+                    %h6
+                      Listening to #{post.song}
+  
+    .col-md-6
+      #map.single
+
+
+      .row
+        .col-md-10.col-md-offset-2
+          %h4.top-buffer Past Trips
+
+          -@trips.each do |trip|
+            %h4.date-show 
+              -if trip.arrived_on == trip.left_on
+                = trip.arrived_on.to_formatted_s(:long)
+              -else
+                = trip.arrived_on.to_formatted_s(:long)
+                \-
+                = trip.left_on.to_formatted_s(:long)
               -if current_user
                 \|
-                =link_to "Add New venue", new_venue_path
-            .col-md-10.col-md-offset-2
-              -@venues.each do |venue|
-                %h5
-                  =link_to venue.name, venue_path(venue)
+                =link_to "Edit", edit_trip_path(trip)
+        .col-md-10.col-md-offset-2.top-buffer
+          %h4 
+            venues
+            -if current_user
+              \|
+              =link_to "Add New venue", new_venue_path
+          -@venues.each do |venue|
+            %h4.date-show
+              =link_to venue.name, venue_path(venue)
 
 
       
