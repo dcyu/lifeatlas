@@ -13,7 +13,7 @@ class DestinationsController < ApplicationController
 
   def stats
     @years = [*2007..Time.now.year].reverse
-    @all_trips = Trip.all
+    @all_trips = Trip.order(:arrived_on)
   end
 
   def index
@@ -25,8 +25,8 @@ class DestinationsController < ApplicationController
   def show
     @destinations = [@destination]
     @trips = @destination.trips.order(:arrived_on).reverse
-    @venues = @destination.venues
-    @posts = @destination.posts.reverse
+    @venues = @destination.venues.order(:name)
+    @posts = @destination.posts.order(:created_at).reverse
   end
 
   # GET /destinations/new
