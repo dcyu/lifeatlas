@@ -1,23 +1,30 @@
-%h1 Listing trips
+.container.content-section
+  %h1 All Trips
 
-%table
-  %tr
-    %th Started on
-    %th Left on
-    %th Destination
-    %th
-    %th
-    %th
+  .table-responsive
+    %table.table
+      %thead
+        %tr
+          %th.col-md-4
+            Destination
+          %th.col-md-3
+            Arrived on
+          %th.col-md-2
+            Left on
+          %th.col-md-1
+          %th.col-md-1
+          %th.col-md-1
+      %tbody
+        - @trips.each do |trip|
+          %tr
+            %td
+              = link_to trip.destination.name, destination_path(trip.destination)
+            %td= trip.arrived_on.to_formatted_s(:long)
+            %td= trip.left_on.to_formatted_s(:long)
+            %td= link_to 'Show', trip
+            %td= link_to 'Edit', edit_trip_path(trip)
+            %td= link_to 'Destroy', trip, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-  - @trips.each do |trip|
-    %tr
-      %td= trip.arrived_on
-      %td= trip.left_on
-      %td= trip.destination_id
-      %td= link_to 'Show', trip
-      %td= link_to 'Edit', edit_trip_path(trip)
-      %td= link_to 'Destroy', trip, :method => :delete, :data => { :confirm => 'Are you sure?' }
+  %br
 
-%br
-
-= link_to 'New Trip', new_trip_path
+  = link_to 'New Trip', new_trip_path
