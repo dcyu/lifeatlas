@@ -14,6 +14,7 @@ class DestinationsController < ApplicationController
   def stats
     @years = [*2007..Time.now.year].reverse
     @all_trips = Trip.order(:arrived_on)
+    @favorites = Favorite.order(:title)
   end
 
   def index

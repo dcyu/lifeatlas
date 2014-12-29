@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  resources :favorites
+
   resources :venues
 
   resources :trips

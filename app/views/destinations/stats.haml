@@ -52,4 +52,14 @@
         %div{id: "pie-#{year}", class: "pie-chart"}
         -if @pie
           = render_chart(@pie, "pie-#{year}")
-
+  .row
+    %h2 Favorites
+    .col-md-11.col-md-offset-1
+      -@favorites.each do |fav|
+        %h5 
+          Favorite
+          =fav.title
+          –
+          =fav.answer
+      -if current_user
+        =link_to 'Add New Favorite', new_favorite_path
