@@ -25,6 +25,11 @@
     = f.text_area :body, class: "form-control", placeholder: "Body", rows: "10"
   .form-group
     = f.text_field :song, placeholder: "Song", class: "form-control"
+  .form-group
+    .radio
+      %label
+        = f.radio_button :private, "true"
+        Mark as private
   .row
     .col-md-4
       = f.submit 'Save', class: "btn btn-default"

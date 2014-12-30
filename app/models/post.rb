@@ -2,6 +2,7 @@ class Post < ActiveRecord::Base
   belongs_to :destination
   belongs_to :venue
   has_many :photos
+  validates :song, uniqueness: true
 
   def rating_hint
     if rating == 1

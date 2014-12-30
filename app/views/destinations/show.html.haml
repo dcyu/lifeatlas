@@ -10,46 +10,47 @@
               =link_to "Add New Post", new_destination_post_path(@destination)
                 
           -@posts.each do |post|
-            .post
-              .row
-                .col-md-12
-                  %h4
-                    =post.title
-                    \|
-                    -if post.venue
-                      =link_to post.venue.name, venue_path(post.venue)
+            -unless post.private && !current_user
+              .post
+                .row
+                  .col-md-12
+                    %h4
+                      =post.title
                       \|
-                    -if post.rating
-                      %span.hint--bottom{"data-hint" => post.rating_hint}
-                        -post.rating.times do
-                          %span.glyphicon.glyphicon-star{"aria-hidden" => "true"}
-                      \|
-                    =post.created_at.to_formatted_s(:long)
-              
-                -if post.photos.present?
-                  -post.photos.each do |photo|
-                    .col-md-12
-                      = image_tag photo.picture.url
-                      %br/
-                      %em
-                        =photo.description
+                      -if post.venue
+                        =link_to post.venue.name, venue_path(post.venue)
+                        \|
+                      -if post.rating
+                        %span.hint--bottom{"data-hint" => post.rating_hint}
+                          -post.rating.times do
+                            %span.glyphicon.glyphicon-star{"aria-hidden" => "true"}
+                        \|
+                      =post.created_at.to_formatted_s(:long)
+                
+                  -if post.photos.present?
+                    -post.photos.each do |photo|
+                      .col-md-12
+                        = image_tag photo.picture.url
+                        %br/
+                        %em
+                          =photo.description
 
 
 
-              .row
-                .col-md-12
-                  %p
-                    =simple_format post.body
-                    -if current_user
-                      %br/
-                      %br/
-                      =link_to 'Edit', edit_destination_post_path(@destination, post)
-                      \|
-                      =link_to "Add Photo", new_destination_post_photo_path(@destination, post)
+                .row
+                  .col-md-12
+                    %p
+                      =simple_format post.body
+                      -if current_user
+                        %br/
+                        %br/
+                        =link_to 'Edit', edit_destination_post_path(@destination, post)
+                        \|
+                        =link_to "Add Photo", new_destination_post_photo_path(@destination, post)
 
-                  -if post.song
-                    %h6
-                      Listening to #{post.song}
+                    -if post.song.present?
+                      %h6
+                        Listening to #{post.song}
   
     .col-md-6
       #map.single
