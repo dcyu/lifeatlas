@@ -1,0 +1,19 @@
+%h1 Listing aspirations
+
+%table
+  %tr
+    %th Description
+    %th
+    %th
+    %th
+
+  - @aspirations.each do |aspiration|
+    %tr
+      %td= aspiration.description
+      %td= link_to 'Show', aspiration
+      %td= link_to 'Edit', edit_aspiration_path(aspiration)
+      %td= link_to 'Destroy', aspiration, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Aspiration', new_aspiration_path

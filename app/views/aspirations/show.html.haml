@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Description:
+  = @aspiration.description
+
+= link_to 'Edit', edit_aspiration_path(@aspiration)
+\|
+= link_to 'Back', aspirations_path

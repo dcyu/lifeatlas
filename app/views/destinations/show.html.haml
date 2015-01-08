@@ -25,6 +25,9 @@
                           -post.rating.times do
                             %span.glyphicon.glyphicon-star{"aria-hidden" => "true"}
                         \|
+                      -if post.private
+                        %span.red PRIVATE
+                        \|
                       =post.created_at.to_formatted_s(:long)
                 
                   -if post.photos.present?

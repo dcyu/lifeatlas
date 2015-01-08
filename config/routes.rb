@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  resources :aspirations
+
   resources :favorites
 
   resources :venues

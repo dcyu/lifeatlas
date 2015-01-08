@@ -31,8 +31,3 @@
           -@posts.each do |post|
             %h5
               =link_to "#{post.title} | #{post.destination.name} | #{post.created_at.to_date.to_formatted_s(:long)}", destination_path(post.destination)
-
-
-
-
-  
