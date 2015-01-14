@@ -23,7 +23,7 @@ class AspirationsController < ApplicationController
   def create
     @aspiration = Aspiration.new(aspiration_params)
     @aspiration.save
-    respond_with(@aspiration)
+    redirect_to aspirations_path
   end
 
   def update
