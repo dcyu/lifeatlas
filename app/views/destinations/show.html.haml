@@ -76,13 +76,23 @@
                 =link_to "Edit", edit_trip_path(trip)
         .col-md-10.col-md-offset-2.top-buffer
           %h4 
-            venues
+            All Venues
             -if current_user
               \|
               =link_to "Add New venue", new_venue_path
           -@venues.each do |venue|
             %h4.date-show
               =link_to venue.name, venue_path(venue)
+          
+          -if @posts.select{|post| post.rating == 5}.count > 0
+            %br/
+            %br/
+            %h4
+              Five Star Venues
+            -@posts.select{|post| post.rating == 5}.each do |post|
+              %h4.date-show
+                =link_to post.venue.name, venue_path(post.venue)
+
 
 
       
