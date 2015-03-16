@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
 
+  get 'auth' => 'aspirations#auth', as: :auth
+  get 'contacts' => 'aspirations#contacts', as: :contacts
+
   resources :aspirations
 
   resources :favorites

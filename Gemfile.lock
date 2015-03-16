@@ -95,11 +95,18 @@ GEM
       railties (>= 3.0.0)
     faker (1.2.0)
       i18n (~> 0.5)
+    faraday (0.9.0)
+      multipart-post (>= 1.2, < 3)
     ffi (1.9.3)
     figaro (1.0.0)
       thor (~> 0.14)
     formatador (0.2.5)
     geocoder (1.2.6)
+    google_contacts_api (0.5.0)
+      activesupport
+      hashie
+      i18n
+      json
     google_places (0.27.0)
       httparty (~> 0.13.1)
     google_visualr (2.4.0)
@@ -120,6 +127,7 @@ GEM
       activesupport (>= 4.0.1)
       haml (>= 3.1, < 5.0)
       railties (>= 4.0.1)
+    hashie (3.4.0)
     hike (1.2.3)
     http_parser.rb (0.6.0)
     httparty (0.13.3)
@@ -133,6 +141,7 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.1)
+    jwt (1.2.0)
     launchy (2.4.3)
       addressable (~> 2.3)
     listen (2.7.9)
@@ -152,8 +161,15 @@ GEM
     minitest (5.4.3)
     multi_json (1.10.1)
     multi_xml (0.5.5)
+    multipart-post (2.0.0)
     nokogiri (1.6.2.1)
       mini_portile (= 0.6.0)
+    oauth2 (1.0.0)
+      faraday (>= 0.8, < 0.10)
+      jwt (~> 1.0)
+      multi_json (~> 1.3)
+      multi_xml (~> 0.5)
+      rack (~> 1.2)
     orm_adapter (0.5.0)
     paperclip (4.2.1)
       activemodel (>= 3.0.0)
@@ -274,6 +290,7 @@ DEPENDENCIES
   faker (~> 1.2.0)
   figaro
   geocoder
+  google_contacts_api
   google_places
   google_visualr
   guard-livereload
@@ -283,6 +300,7 @@ DEPENDENCIES
   jquery-rails
   launchy (~> 2.4.0)
   meta_request
+  oauth2
   paperclip
   pg
   quiet_assets
