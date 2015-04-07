@@ -1,0 +1,56 @@
+.container.show
+  .row
+    .col-md-6
+      %h1.brand-heading=@subject.name
+
+      .row
+        .col-md-12
+          -if current_user
+            %h4
+              =link_to "Add New Post", new_subject_post_path(@subject)
+                
+          -@posts.each do |post|
+            -unless post.private && !current_user
+              .post
+                .row
+                  .col-md-12
+                    %h4
+                      =post.title
+                      \|
+                      -if post.venue
+                        =link_to post.venue.name, venue_path(post.venue)
+                        \|
+                      -if post.rating
+                        %span.hint--bottom{"data-hint" => post.rating_hint}
+                          -post.rating.times do
+                            %span.glyphicon.glyphicon-star{"aria-hidden" => "true"}
+                        \|
+                      -if post.private
+                        %span.red PRIVATE
+                        \|
+                      =post.created_at.to_formatted_s(:long)
+                
+                  -if post.photos.present?
+                    -post.photos.each do |photo|
+                      .col-md-12
+                        = image_tag photo.picture.url
+                        %br/
+                        %em
+                          =photo.description
+
+
+
+                .row
+                  .col-md-12
+                    %p
+                      =simple_format post.body
+                      -if current_user
+                        %br/
+                        %br/
+                        =link_to 'Edit', edit_subject_post_path(@subject, post)
+                        \|
+                        =link_to "Add Photo", new_subject_post_photo_path(@subject, post)
+
+                    -if post.song.present?
+                      %h6
+                        Listening to #{post.song}

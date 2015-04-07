@@ -10,7 +10,7 @@
     = csrf_meta_tags
   %body#page-top{"data-spy" => "scroll", "data-target" => ".navbar-fixed-top", class: "#{"light-page" if params[:action] == "show" || params[:action] == "stats" || params[:controller] == "aspirations"}"}
     / Navigation
-    %nav.navbar.navbar-custom.navbar-fixed-top{:role => "navigation", class: "#{"show-page" if params[:action] == "show" || params[:action] == "stats" || params[:controller] == "aspirations" }"}
+    %nav.navbar.navbar-custom.navbar-fixed-top{:role => "navigation", class: "#{"show-page" if params[:action] == "show" || params[:action] == "stats" || params[:controller] == "aspirations"}"}
       .container
         .navbar-header
           %button.navbar-toggle{"data-target" => ".navbar-main-collapse", "data-toggle" => "collapse", :type => "button"}
@@ -28,6 +28,8 @@
               =link_to "About", about_path
             %li
               =link_to "Stats", stats_path
+            %li
+              =link_to "Learning", subjects_path            
             %li
               =link_to "Aspirations", aspirations_path
             %li

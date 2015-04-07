@@ -1,0 +1,10 @@
+.container.content-section
+  %h1 All Subjects
+
+  .row
+    .col-md-8
+      - @subjects.each do |subject|
+        .row
+          .col-md-5.col-md-offset-1
+            %h4
+              =link_to subject.title, subject

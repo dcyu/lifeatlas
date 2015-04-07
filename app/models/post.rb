@@ -1,6 +1,7 @@
 class Post < ActiveRecord::Base
   belongs_to :destination
   belongs_to :venue
+  belongs_to :subject
   has_many :photos
   validates :song, uniqueness: true
 

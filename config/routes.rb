@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   resources :trips
 
+  resources :subjects
+
   devise_for :users, controllers: {
         registrations: 'users/registrations'
       }
