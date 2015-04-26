@@ -1,0 +1,21 @@
+%h1 Listing stops
+
+%table
+  %tr
+    %th Aspiration
+    %th Destination
+    %th
+    %th
+    %th
+
+  - @stops.each do |stop|
+    %tr
+      %td= stop.aspiration_id
+      %td= stop.destination_id
+      %td= link_to 'Show', stop
+      %td= link_to 'Edit', edit_stop_path(stop)
+      %td= link_to 'Destroy', stop, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Stop', new_stop_path

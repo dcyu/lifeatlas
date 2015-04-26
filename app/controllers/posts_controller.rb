@@ -29,7 +29,11 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
 
     if @post.save
-      redirect_to @post.destination, notice: 'Post created'
+      if @post.destination
+        redirect_to @post.destination, notice: 'Post created'
+      elsif @post.subject
+        redirect_to @post.subject, notice: 'Post created'
+      end
     else
       render :new
     end
@@ -67,6 +71,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :body, :destination_id, :venue_id, :rating, :song, :private)
+      params.require(:post).permit(:title, :body, :destination_id, :venue_id, :rating, :song, :private, :subject_id)
     end
 end

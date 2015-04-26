@@ -1,0 +1,124 @@
+
+%script{:src => "https://maps.googleapis.com/maps/api/js?key=#{ENV["google_key"]}&sensor=false", :type => "text/javascript"}
+
+
+%script
+  google.maps.event.addDomListener(window, 'load', init);
+
+  function init() {
+  // Basic options for a simple Google Map
+  // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
+  var mapOptions = {
+  // How zoomed in you want the map to start at (always required)
+  -if @destinations.count == 1
+    zoom: 5,
+  -else
+    zoom: 3,
+
+  // The latitude and longitude to center the map (always required)
+  center: new google.maps.LatLng(#{@destinations.last.lat}, #{@destinations.last.lng}),
+
+  // Disables the default Google Maps UI components
+  disableDefaultUI: true,
+  -if @destinations.count == 1
+    scrollwheel: true,
+  -else
+    scrollwheel: false,
+  draggable: true,
+
+  // How you would like to style the map. 
+  // This is where you would paste any style found on Snazzy Maps.
+  styles: [
+  {
+  "featureType": "road",
+  "stylers": [
+  {
+  "visibility": "off"
+  }
+  ]
+  },
+  {
+  "featureType": "transit",
+  "stylers": [
+  {
+  "visibility": "off"
+  }
+  ]
+  },
+  {
+  "featureType": "administrative.province",
+  "stylers": [
+  {
+  "visibility": "off"
+  }
+  ]
+  },
+  {
+  "featureType": "poi.park",
+  "elementType": "geometry",
+  "stylers": [
+  {
+  "visibility": "off"
+  }
+  ]
+  },
+  {
+  "featureType": "water",
+  "stylers": [
+  {
+  "color": "#004b76"
+  }
+  ]
+  },
+  {
+  "featureType": "landscape.natural",
+  "stylers": [
+  {
+  "visibility": "on"
+  },
+  {
+  "color": "#fff6cb"
+  }
+  ]
+  },
+  {
+  "featureType": "administrative.country",
+  "elementType": "geometry.stroke",
+  "stylers": [
+  {
+  "visibility": "on"
+  },
+  {
+  "color": "#7f7d7a"
+  },
+  {
+  "lightness": 10
+  },
+  {
+  "weight": 1
+  }
+  ]
+  }
+  ]
+  };
+
+  // Get the HTML DOM element that will contain your map 
+  // We are using a div with id="map" seen below in the <body>
+  var mapElement = document.getElementById('map');
+
+  // Create the Google Map using out element and options defined above
+  var map = new google.maps.Map(mapElement, mapOptions);
+
+  // Custom Map Marker Icon - Customize the map-marker.png file to customize your icon
+  -@destinations.each do |destination|
+    var myLatLng = new google.maps.LatLng("#{destination.lat}", #{destination.lng});
+    var marker#{destination.id} = new google.maps.Marker({
+    position: myLatLng,
+    map: map,
+    url: "#{destination_url(destination)}"
+    });
+
+    google.maps.event.addListener(marker#{destination.id}, "click", function () {
+    location.assign(marker#{destination.id}.url);
+    });
+  }

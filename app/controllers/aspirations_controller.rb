@@ -40,6 +40,7 @@ class AspirationsController < ApplicationController
   end
 
   def show
+    @destinations = @aspiration.destinations
     respond_with(@aspiration)
   end
 
@@ -73,6 +74,6 @@ class AspirationsController < ApplicationController
     end
 
     def aspiration_params
-      params.require(:aspiration).permit(:description)
+      params.require(:aspiration).permit(:description, :title)
     end
 end

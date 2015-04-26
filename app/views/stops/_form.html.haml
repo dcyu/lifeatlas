@@ -1,0 +1,16 @@
+= form_for @stop do |f|
+  - if @stop.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@stop.errors.count, "error")} prohibited this stop from being saved:"
+      %ul
+        - @stop.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group
+    = f.label :aspiration_id
+    = f.collection_select :aspiration_id, Aspiration.order(:title), :id, :title
+  .form-group
+    = f.label :destination_id
+    = f.collection_select :destination_id, Destination.order(:name), :id, :name
+  .actions
+    = f.submit 'Save'

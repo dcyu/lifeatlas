@@ -4,7 +4,7 @@ class DestinationsController < ApplicationController
 
 
   def landing
-    @destinations = Destination.all
+    @destinations = Destination.where(visited: true)
     @posts = Post.where(private: nil).last(5)
   end
 
@@ -94,6 +94,6 @@ class DestinationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def destination_params
-      params.require(:destination).permit(:name, :arrived_on, :left_on, :lng, :lat)
+      params.require(:destination).permit(:name, :arrived_on, :left_on, :lng, :lat, :visited)
     end
 end

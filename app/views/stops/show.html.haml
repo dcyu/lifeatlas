@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Aspiration:
+  = @stop.aspiration_id
+%p
+  %b Destination:
+  = @stop.destination_id
+
+= link_to 'Edit', edit_stop_path(@stop)
+\|
+= link_to 'Back', stops_path

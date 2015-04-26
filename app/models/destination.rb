@@ -3,6 +3,7 @@ class Destination < ActiveRecord::Base
   has_many :posts
   has_many :trips
   has_many :venues
+  has_many :stops
 
 end
 

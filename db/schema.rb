@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150407023949) do
+ActiveRecord::Schema.define(version: 20150426032914) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20150407023949) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "title"
   end
 
   create_table "destinations", force: true do |t|
@@ -28,6 +29,7 @@ ActiveRecord::Schema.define(version: 20150407023949) do
     t.string   "lat"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "visited"
   end
 
   create_table "favorites", force: true do |t|
@@ -58,6 +60,14 @@ ActiveRecord::Schema.define(version: 20150407023949) do
     t.integer  "rating"
     t.string   "song"
     t.boolean  "private"
+    t.integer  "subject_id"
+  end
+
+  create_table "stops", force: true do |t|
+    t.integer  "aspiration_id"
+    t.integer  "destination_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "subjects", force: true do |t|

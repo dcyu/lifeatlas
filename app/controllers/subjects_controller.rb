@@ -29,7 +29,7 @@ class SubjectsController < ApplicationController
     @subject = Subject.new(subject_params)
 
     if @subject.save
-      redirect_to @subject.destination, notice: 'subject created'
+      redirect_to subjects_url, notice: 'Subject created'
     else
       render :new
     end

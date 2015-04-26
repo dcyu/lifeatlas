@@ -36,8 +36,6 @@
               =link_to "All Destinations", destinations_path
             -if user_signed_in?
               %li
-                =link_to "Add Destination", new_destination_path
-              %li
                 -if @destination && @destination.id
                   =link_to 'Add Post', new_destination_post_path(@destination)
                 -else
@@ -58,4 +56,4 @@
     / Footer
     %footer
       .container.text-center
-        %h6 Copyright &copy; Daniel Yu 2014
+        %h6 Copyright &copy; Daniel Yu 2015

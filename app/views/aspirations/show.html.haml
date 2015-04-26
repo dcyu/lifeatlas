@@ -1,9 +1,23 @@
-%p#notice= notice
+.container.show
+  .row
+    .col-md-12
+      %h1.brand-heading=@aspiration.title
 
-%p
-  %b Description:
-  = @aspiration.description
+      %p=@aspiration.description        
 
-= link_to 'Edit', edit_aspiration_path(@aspiration)
-\|
-= link_to 'Back', aspirations_path
+      %h4
+        -@destinations.each do |destination|
+          =destination.name
+          \|
+        -if current_user
+          = link_to 'Edit', edit_aspiration_path(@aspiration)
+          \|
+          = link_to 'Add Stop', new_stop_path
+        \|
+        = link_to 'Back', aspirations_path
+
+
+
+#map
+
+=render 'map'
