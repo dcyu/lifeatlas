@@ -12,7 +12,7 @@ class AspirationsController < ApplicationController
   end
 
   def show
-    @destinations = @aspiration.destinations
+    @destinations = @aspiration.destinations.order(:name)
     respond_with(@aspiration)
   end
 

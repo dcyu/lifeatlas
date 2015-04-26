@@ -10,8 +10,8 @@
 
   - @stops.each do |stop|
     %tr
-      %td= stop.aspiration_id
-      %td= stop.destination_id
+      %td= stop.aspiration.title
+      %td= stop.destination.name
       %td= link_to 'Show', stop
       %td= link_to 'Edit', edit_stop_path(stop)
       %td= link_to 'Destroy', stop, :method => :delete, :data => { :confirm => 'Are you sure?' }

@@ -22,6 +22,8 @@
             %h4
               -if destination.trips.count > 0
                 =destination.trips.order(:left_on).last.left_on.to_formatted_s(:long)
+              -else
+                Not Yet Visited
 
     -if user_signed_in?
       %li
