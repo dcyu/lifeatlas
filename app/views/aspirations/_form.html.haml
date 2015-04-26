@@ -5,12 +5,13 @@
       %ul
         - @aspiration.errors.full_messages.each do |msg|
           %li= msg
-
-  .field
-    = f.label :description
-    = f.text_area :description
+          
   .field
     = f.label :title
     = f.text_field :title
+  .field
+    = f.label :description
+    = f.text_area :description, class: "form-control", placeholder: "Body", rows: "10"
+
   .actions
     = f.submit 'Save'

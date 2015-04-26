@@ -1,5 +1,7 @@
 class StopsController < ApplicationController
   before_action :set_stop, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
+
 
   respond_to :html
 

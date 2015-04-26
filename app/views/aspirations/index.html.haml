@@ -25,14 +25,14 @@
 
     %table
       %tr
-        %th Description
+        %th Title
         %th
         %th
         %th
 
       - @aspirations.each do |aspiration|
         %tr
-          %td= aspiration.description
+          %td= aspiration.title
           %td= link_to 'Show', aspiration
           %td= link_to 'Edit', edit_aspiration_path(aspiration)
           %td= link_to 'Destroy', aspiration, :method => :delete, :data => { :confirm => 'Are you sure?' }

@@ -17,7 +17,6 @@
         = link_to 'Back', aspirations_path
 
 
-
-#map
-
-=render 'map'
+-if @destinations.count > 0
+  #map
+  =render 'map'

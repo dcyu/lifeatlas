@@ -1,5 +1,7 @@
 class Destination < ActiveRecord::Base
   validates :name, uniqueness: true
+  validates :lat, presence: true
+  validates :lng, presence: true
   has_many :posts
   has_many :trips
   has_many :venues
