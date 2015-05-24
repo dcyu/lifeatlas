@@ -44,8 +44,10 @@ class DestinationsController < ApplicationController
   def create
     @destination = Destination.new(destination_params)
     geo = Geocoder.coordinates(@destination.name)
-    @destination.lat = geo.first
-    @destination.lng = geo.last
+    unless geo.nil?
+      @destination.lat = geo.first
+      @destination.lng = geo.last
+    end
 
     respond_to do |format|
       if @destination.save

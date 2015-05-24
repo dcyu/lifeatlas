@@ -1,7 +1,9 @@
-%h1 Editing aspiration
+.container.content-section
+  .row
+    .col-md-4
+      %h1 Edit Aspiration
 
-= render 'form'
-
-= link_to 'Show', @aspiration
-\|
-= link_to 'Back', aspirations_path
+    .col-md-8
+      .panel.panel-info
+        .panel-body
+          = render 'form'

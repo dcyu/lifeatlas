@@ -1,5 +1,8 @@
 .container.show
-
+  %h1.text-center All Aspirations
+  %br/
+  %br/
+  
   #carousel-example-generic.carousel.slide{"data-ride" => "carousel"}
     / Wrapper for slides
     .carousel-inner{:role => "listbox"}
@@ -8,6 +11,11 @@
           .aspiration
             %h1
               =link_to aspiration.title, aspiration_path(aspiration)
+            -if current_user
+              %br/
+              = link_to 'Edit', edit_aspiration_path(aspiration)
+              \|
+              = link_to 'Destroy', aspiration, :method => :delete, :data => { :confirm => 'Are you sure?' }
     / Controls
     %a.left.carousel-control{"data-slide" => "prev", :href => "#carousel-example-generic", :role => "button"}
       %span.glyphicon.glyphicon-chevron-left{"aria-hidden" => "true"}
@@ -21,22 +29,7 @@
         %li{"data-slide-to" => "#{index}", "data-target" => "#carousel-example-generic"}
   
   -if current_user
-    %h1 All Aspirations
-
-    %table
-      %tr
-        %th Title
-        %th
-        %th
-        %th
-
-      - @aspirations.each do |aspiration|
-        %tr
-          %td= aspiration.title
-          %td= link_to 'Show', aspiration
-          %td= link_to 'Edit', edit_aspiration_path(aspiration)
-          %td= link_to 'Destroy', aspiration, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
+    %br
     %br
 
     = link_to 'New Aspiration', new_aspiration_path

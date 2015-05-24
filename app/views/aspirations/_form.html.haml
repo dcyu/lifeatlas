@@ -6,12 +6,13 @@
         - @aspiration.errors.full_messages.each do |msg|
           %li= msg
           
-  .field
+  .form-group
     = f.label :title
-    = f.text_field :title
-  .field
+    = f.text_field :title, class: "form-control"
+  .form-group
     = f.label :description
     = f.text_area :description, class: "form-control", placeholder: "Body", rows: "10"
 
-  .actions
-    = f.submit 'Save'
+  .row
+    .col-md-4
+      = f.submit 'Save', class: "btn btn-default"
