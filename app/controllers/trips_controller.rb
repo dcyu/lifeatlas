@@ -21,7 +21,7 @@ class TripsController < ApplicationController
   def edit
   end
 
-  def create
+  def create  
     @trip = Trip.new(trip_params)
     @trip.save
     respond_with(@trip.destination)

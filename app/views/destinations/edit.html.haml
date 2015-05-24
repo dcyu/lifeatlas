@@ -17,6 +17,9 @@
 
             .form-group
               = f.text_field :name, class: "form-control"
+              %br/
+              = f.check_box :visited
+              = f.label :visited
             .row
               .form-group.col-md-6
                 = f.label :lng
