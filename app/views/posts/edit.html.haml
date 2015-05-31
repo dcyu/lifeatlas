@@ -1,9 +1,48 @@
 .container.content-section
   .row
-    .col-md-5
+    .col-md-4
       %h1 Edit Post
 
-    .col-md-7
+    .col-md-8
       .panel.panel-info
         .panel-body
-          = render 'form'
+          = form_for([@destination, @post]) do |f|
+            - if @post.errors.any?
+              #error_explanation
+                %h2= "#{pluralize(@post.errors.count, "error")} prohibited this post from being saved:"
+                %ul
+                  - @post.errors.full_messages.each do |msg|
+                    %li= msg
+            
+            .form-group
+              =f.label :destination_id
+              %br/
+              =f.collection_select :destination_id, Destination.order(:name), :id, :name, {selected: @destination.id}
+            .form-group
+              =f.label :subject_id
+              %br/
+              =f.collection_select :subject_id, Subject.order(:title), :id, :title, include_blank: true
+
+            .form-group
+              =f.label :venue_id
+              %br/
+              =f.collection_select :venue_id, Venue.where(destination_id: @destination.id).order(:name), :id, :name, {include_blank: true}
+              %br/
+              =link_to "Add New Venue", new_venue_path
+            .form-group
+              =f.label :rating
+              %br/
+              =f.select :rating, options_for_select([1,2,3,4,5]), { include_blank: true, selected: @post.rating }
+
+            .form-group
+              = f.text_field :title, placeholder: "Title", class: "form-control"
+            .form-group
+              = f.text_field :song, placeholder: "Song", class: "form-control"
+            .form-group
+              .radio
+                %label
+                  = f.check_box :private
+                  Mark as private
+            .row
+              .col-md-4
+                = f.submit 'Write', class: "btn btn-default"

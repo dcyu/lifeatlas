@@ -24,6 +24,10 @@ Rails.application.routes.draw do
       get 'landing', as: :landing
     end
     resources :posts do
+      member do
+        get 'write', as: :write
+        patch 'update_writing', as: :update_writing
+      end
       resources :photos
     end
   end

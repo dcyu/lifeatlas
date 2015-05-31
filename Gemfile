@@ -70,6 +70,8 @@ gem "google_visualr"
 gem 'oauth2'
 gem 'google_contacts_api'
 
+gem "wysiwyg-rails"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

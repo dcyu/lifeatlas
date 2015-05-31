@@ -1,0 +1,25 @@
+= form_for([@destination, @post], :url => update_writing_destination_post_path(@destination, @post)) do |f|
+  - if @post.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@post.errors.count, "error")} prohibited this post from being saved:"
+      %ul
+        - @post.errors.full_messages.each do |msg|
+          %li= msg
+  .form-group
+    = f.text_area :body, id: "edit", class: "form-control", placeholder: "Body", rows: "10"
+  %br/
+  %br/
+  %br/
+  %br/
+  %br/
+  %br/
+  .row
+    .col-md-12.text-center
+      = f.submit 'Save', class: "btn btn-default no-border wysiwyg"
+
+:javascript
+  $(function() {
+    $('#edit').editable({inlineMode: false, theme: 'custom'});
+    $('.navbar').hide();
+    $('.footer').hide();
+  });

@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :write, :update_writing]
   before_action :set_destination
   before_filter :authenticate_user!, except: [:show, :index]
 
@@ -23,17 +23,16 @@ class PostsController < ApplicationController
   def edit
   end
 
+  def write
+  end
+
   # POST /posts
   # POST /posts.json
   def create
     @post = Post.new(post_params)
 
     if @post.save
-      if @post.destination
-        redirect_to @post.destination, notice: 'Post created'
-      elsif @post.subject
-        redirect_to @post.subject, notice: 'Post created'
-      end
+      redirect_to write_destination_post_path(@destination, @post)
     else
       render :new
     end
@@ -43,9 +42,17 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1.json
   def update
     if @post.update(post_params)
-      redirect_to @post.destination, notice: 'Post updated'
+      redirect_to write_destination_post_path(@destination, @post)
     else
       render :edit
+    end
+  end
+
+  def update_writing
+    if @post.update(post_params)
+      redirect_to @destination
+    else
+      render :write
     end
   end
 

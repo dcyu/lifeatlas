@@ -9,7 +9,7 @@
       - @aspirations.each do |aspiration|
         .item{class: "#{"active" if aspiration == @aspirations.last}"}
           .aspiration
-            %h1
+            %h2
               =link_to aspiration.title, aspiration_path(aspiration)
             -if current_user
               %br/
