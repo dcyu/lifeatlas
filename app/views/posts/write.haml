@@ -6,7 +6,7 @@
         - @post.errors.full_messages.each do |msg|
           %li= msg
   .form-group
-    = f.text_area :body, id: "edit", class: "form-control", placeholder: "Body", rows: "10"
+    = f.text_area :body, id: "edit", class: "form-control"
   %br/
   %br/
   %br/
@@ -19,8 +19,10 @@
 
 :javascript
   $(function() {
-    $('#edit').editable({inlineMode: false, theme: 'custom'});
+    $('#edit').editable({inlineMode: false, theme: 'custom', placeholder: ""});
+    $('#edit').editable('focus');
     $('.navbar').hide();
     $('.footer').hide();
     $( "a:contains('Unlicensed')" ).hide();
+    $('.f-placeholder').focus();
   });
