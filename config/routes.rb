@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  resources :words
+
   resources :stops
 
   get 'auth' => 'aspirations#auth', as: :auth

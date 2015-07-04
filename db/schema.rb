@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150426032914) do
+ActiveRecord::Schema.define(version: 20150629152715) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -107,6 +107,19 @@ ActiveRecord::Schema.define(version: 20150426032914) do
     t.datetime "updated_at"
     t.string   "lat"
     t.string   "lng"
+  end
+
+  create_table "words", force: true do |t|
+    t.string   "english"
+    t.string   "mandarin"
+    t.string   "arabic"
+    t.string   "spanish"
+    t.string   "cantonese"
+    t.string   "swahili"
+    t.string   "french"
+    t.string   "russian"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

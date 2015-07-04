@@ -5,8 +5,7 @@
     .col-md-6
       %h1.brand-heading
         Travel Statistics
-
-
+        
   -@years.each do |year|
     -@year = year
     -@trips = @all_trips.select{|trip| trip.years.include? year}

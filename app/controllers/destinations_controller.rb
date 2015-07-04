@@ -5,7 +5,7 @@ class DestinationsController < ApplicationController
 
   def landing
     @destinations = Destination.where(visited: true)
-    @posts = Post.where(private: nil).last(5)
+    @posts = Post.where(private: nil).sort_by{|p| p.created_at}.last(5).reverse
   end
 
   def about

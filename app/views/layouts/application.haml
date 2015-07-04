@@ -8,9 +8,9 @@
     = javascript_include_tag 'application'
     = favicon_link_tag "fav.png"
     = csrf_meta_tags
-  %body#page-top{"data-spy" => "scroll", "data-target" => ".navbar-fixed-top", class: "#{"light-page" if params[:action] == "show" || params[:action] == "stats" || params[:controller] == "aspirations"}"}
+  %body#page-top{"data-spy" => "scroll", "data-target" => ".navbar-fixed-top", class: "#{"light-page" if params[:action] == "show" || params[:action] == "stats" || params[:controller] == "aspirations" || params[:controller] == "words"}"}
     / Navigation
-    %nav.navbar.navbar-custom.navbar-fixed-top{:role => "navigation", class: "#{"show-page" if params[:action] == "show" || params[:action] == "stats" || params[:controller] == "aspirations"}"}
+    %nav.navbar.navbar-custom.navbar-fixed-top{:role => "navigation", class: "#{"show-page" if params[:action] == "show" || params[:action] == "stats" || params[:controller] == "aspirations" || params[:controller] == "words"}"}
       .container
         .navbar-header
           %button.navbar-toggle{"data-target" => ".navbar-main-collapse", "data-toggle" => "collapse", :type => "button"}
@@ -28,7 +28,7 @@
             %li
               =link_to "Stats", stats_path
             %li
-              =link_to "Learning", subjects_path            
+              =link_to "Words", words_path            
             %li
               =link_to "Destinations", destinations_path
             %li

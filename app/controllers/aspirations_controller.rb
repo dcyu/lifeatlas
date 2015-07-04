@@ -5,6 +5,7 @@ class AspirationsController < ApplicationController
 
   respond_to :html
 
+
   def index
     @aspirations = Aspiration.all
 
@@ -13,7 +14,6 @@ class AspirationsController < ApplicationController
 
   def show
     @destinations = @aspiration.destinations.order(:name)
-    respond_with(@aspiration)
   end
 
   def new

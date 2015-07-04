@@ -1,0 +1,37 @@
+.container.show
+  .row.language
+    .col-md-12
+      %h2=@word.english
+
+  .row.language
+    .col-md-12
+      %h2=@word.mandarin
+
+  .row.language
+    .col-md-12
+      %h2=@word.arabic
+
+  .row.language
+    .col-md-12
+      %h2=@word.spanish
+
+  .row.language
+    .col-md-12
+      %h2=@word.cantonese
+
+  .row.language
+    .col-md-12
+      %h2=@word.swahili
+
+  .row.language
+    .col-md-12
+      %h2=@word.french
+
+  .row.language
+    .col-md-12
+      %h2=@word.russian
+
+
+= link_to 'Edit', edit_word_path(@word)
+\|
+= link_to 'Back', words_path
