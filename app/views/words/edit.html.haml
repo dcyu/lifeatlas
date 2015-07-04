@@ -1,7 +1,9 @@
-%h1 Editing word
+.container.content-section
+  .row
+    .col-md-4
+      %h1 Edit Block
 
-= render 'form'
-
-= link_to 'Show', @word
-\|
-= link_to 'Back', words_path
+    .col-md-8
+      .panel.panel-info
+        .panel-body
+          = render 'form'

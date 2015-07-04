@@ -23,12 +23,12 @@ class WordsController < ApplicationController
   def create
     @word = Word.new(word_params)
     @word.save
-    respond_with(@word)
+    redirect_to words_path
   end
 
   def update
     @word.update(word_params)
-    respond_with(@word)
+    redirect_to words_path    
   end
 
   def destroy
