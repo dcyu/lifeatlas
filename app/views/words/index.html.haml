@@ -7,7 +7,7 @@
         %tr
           %th English
           %th Mandarin
-          %th Arabic
+          %th Levantine Arabic
           %th Spanish
           %th Cantonese
           %th Swahili
@@ -21,17 +21,54 @@
         - @words.each do |word|
           %tr
             %td= word.english
-            %td= word.mandarin
-            %td= word.arabic
-            %td= word.spanish
-            %td= word.cantonese
-            %td= word.swahili
-            %td= word.french
-            %td= word.russian
-            %td= link_to 'Show', word
-            %td= link_to 'Edit', edit_word_path(word)
-            %td= link_to 'Destroy', word, :method => :delete, :data => { :confirm => 'Are you sure?' }
+            %td
+              = word.mandarin
+              -if word.mandarin_notes?
+                %br/
+                %em
+                  =word.mandarin_notes
+            %td
+              = word.arabic
+              -if word.arabic_notes?
+                %br/
+                %em
+                  =word.arabic_notes
+            %td
+              = word.spanish
+              -if word.spanish_notes?
+                %br/
+                %em
+                  =word.spanish_notes
+            %td
+              = word.cantonese
+              -if word.cantonese_notes?
+                %br/
+                %em
+                  =word.cantonese_notes
+            %td
+              = word.swahili
+              -if word.swahili_notes?
+                %br/
+                %em
+                  =word.swahili_notes
+            %td
+              = word.french
+              -if word.french_notes?
+                %br/
+                %em
+                  =word.french_notes
+            %td
+              = word.russian
+              -if word.russian_notes?
+                %br/
+                %em
+                  =word.russian_notes
+            -if user_signed_in?
+              %td= link_to 'Edit', edit_word_path(word)
+              %td= link_to 'Destroy', word, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
 
     %br
-
-  = link_to 'New Word', new_word_path
+  
+  -if user_signed_in?
+    = link_to 'New Word', new_word_path

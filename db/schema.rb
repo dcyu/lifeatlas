@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150629152715) do
+ActiveRecord::Schema.define(version: 20150704082733) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -120,6 +120,13 @@ ActiveRecord::Schema.define(version: 20150629152715) do
     t.string   "russian"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "mandarin_notes"
+    t.text     "arabic_notes"
+    t.text     "spanish_notes"
+    t.text     "cantonese_notes"
+    t.text     "swahili_notes"
+    t.text     "french_notes"
+    t.text     "russian_notes"
   end
 
 end

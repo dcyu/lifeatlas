@@ -7,29 +7,28 @@
           %li= msg
 
   .form-group
-    = f.label :english
-    = f.text_field :english
+    = f.text_field :english, placeholder: "English"
   .form-group
-    = f.label :mandarin
-    = f.text_field :mandarin
+    = f.text_field :mandarin, placeholder: "Mandarin"
+    = f.text_field :mandarin_notes, placeholder: "Notes"
   .form-group
-    = f.label :arabic
-    = f.text_field :arabic
+    = f.text_field :arabic, placeholder: "Levantine Arabic"
+    = f.text_field :arabic_notes, placeholder: "Notes"
   .form-group
-    = f.label :spanish
-    = f.text_field :spanish
+    = f.text_field :spanish, placeholder: "Spanish"
+    = f.text_field :spanish_notes, placeholder: "Notes"
   .form-group
-    = f.label :cantonese
-    = f.text_field :cantonese
+    = f.text_field :cantonese, placeholder: "Cantonese"
+    = f.text_field :cantonese_notes, placeholder: "Notes"
   .form-group
-    = f.label :swahili
-    = f.text_field :swahili
+    = f.text_field :swahili, placeholder: "Swahili"
+    = f.text_field :swahili_notes, placeholder: "Notes"
   .form-group
-    = f.label :french
-    = f.text_field :french
+    = f.text_field :french, placeholder: "French"
+    = f.text_field :french_notes, placeholder: "Notes"
   .form-group
-    = f.label :russian
-    = f.text_field :russian
+    = f.text_field :russian, placeholder: "Russian"
+    = f.text_field :russian_notes, placeholder: "Notes"
   .row
     .col-md-4
       = f.submit 'Save'

@@ -1,5 +1,7 @@
 class WordsController < ApplicationController
   before_action :set_word, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, except: [:index]
+
 
   respond_to :html
 
@@ -42,6 +44,6 @@ class WordsController < ApplicationController
     end
 
     def word_params
-      params.require(:word).permit(:english, :mandarin, :arabic, :spanish, :cantonese, :swahili, :french, :russian)
+      params.require(:word).permit(:english, :mandarin, :arabic, :spanish, :cantonese, :swahili, :french, :russian, :mandarin_notes, :arabic_notes, :spanish_notes, :cantonese_notes, :swahili_notes, :french_notes, :russian_notes)
     end
 end
