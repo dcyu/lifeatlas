@@ -5,7 +5,7 @@
     %table.table
       %thead
         %tr
-          %th English
+          %th
           %th Mandarin
           %th Levantine Arabic
           %th Spanish
@@ -20,7 +20,9 @@
 
         - @words.each do |word|
           %tr
-            %td= word.english
+            %td
+              %strong
+                = word.english
             %td
               = word.mandarin
               -if word.mandarin_notes?
