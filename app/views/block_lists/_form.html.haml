@@ -10,6 +10,9 @@
     = f.label :title
     = f.text_field :title
   .form-group
+    = f.label :rank
+    = f.number_field :rank
+  .form-group
     = f.label :description
     = f.text_area :description, class: "edit", placeholder: "Description"
   .form-group

@@ -73,43 +73,43 @@
                 %td= link_to 'Edit', edit_word_path(word)
                 %td= link_to 'Destroy', word, :method => :delete, :data => { :confirm => 'Are you sure?' }
   
-  -if @block_list.mandarin_notes
+  -if @block_list.mandarin_notes.present?
     .row
       .col-md-12
         %h3 Mandarin
         %p=simple_format @block_list.mandarin_notes
 
-  -if @block_list.arabic_notes
+  -if @block_list.arabic_notes.present?
     .row
       .col-md-12
         %h3 Levantine Arabic
         %p=simple_format @block_list.arabic_notes
 
-  -if @block_list.spanish_notes
+  -if @block_list.spanish_notes.present?
     .row
       .col-md-12
         %h3 Spanish
         %p=simple_format @block_list.spanish_notes
 
-  -if @block_list.cantonese_notes
+  -if @block_list.cantonese_notes.present?
     .row
       .col-md-12
         %h3 Cantonese
         %p=simple_format @block_list.cantonese_notes
 
-  -if @block_list.swahili_notes
+  -if @block_list.swahili_notes.present?
     .row
       .col-md-12
         %h3 Swahili
         %p=simple_format @block_list.swahili_notes
 
-  -if @block_list.french_notes
+  -if @block_list.french_notes.present?
     .row
       .col-md-12
         %h3 French
         %p=simple_format @block_list.french_notes
 
-  -if @block_list.russian_notes
+  -if @block_list.russian_notes.present?
     .row
       .col-md-12
         %h3 Russian

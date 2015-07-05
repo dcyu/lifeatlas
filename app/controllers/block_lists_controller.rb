@@ -6,7 +6,7 @@ class BlockListsController < ApplicationController
   respond_to :html
 
   def index
-    @block_lists = BlockList.all
+    @block_lists = BlockList.order(:rank)
     respond_with(@block_lists)
   end
 
@@ -44,6 +44,6 @@ class BlockListsController < ApplicationController
     end
 
     def block_list_params
-      params.require(:block_list).permit(:title, :description, :mandarin_notes, :arabic_notes, :spanish_notes, :cantonese_notes, :swahili_notes, :french_notes, :russian_notes)
+      params.require(:block_list).permit(:title, :description, :mandarin_notes, :arabic_notes, :spanish_notes, :cantonese_notes, :swahili_notes, :french_notes, :russian_notes, :rank)
     end
 end
