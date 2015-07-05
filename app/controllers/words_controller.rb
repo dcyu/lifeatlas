@@ -7,7 +7,7 @@ class WordsController < ApplicationController
 
   def index
     @other_words = Word.where(block_list_id: nil)
-    @block_lists = BlockList.all
+    @block_lists = BlockList.order(:rank)
     respond_with(@words)
   end
 
