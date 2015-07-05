@@ -34,14 +34,12 @@
 
 
 
-
-
-
-
   - @block_lists.each do |block_list|
     .language-block-list
       %h3
         =block_list.title
+        \|
+        =link_to "View Details", block_list_path(block_list)
         -if user_signed_in?
           \|
           =link_to "Edit", edit_block_list_path(block_list)

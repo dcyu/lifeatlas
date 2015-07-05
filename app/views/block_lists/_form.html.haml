@@ -11,7 +11,39 @@
     = f.text_field :title
   .form-group
     = f.label :description
-    = f.text_area :description
+    = f.text_area :description, class: "edit", placeholder: "Description"
+  .form-group
+    = f.label :mandarin_notes, "Mandarin Notes"
+    = f.text_area :mandarin_notes, class: "edit", placeholder: "Mandarin Notes"
+  .form-group
+    = f.label :arabic_notes, "Levantine Arabic Notes"
+    = f.text_area :arabic_notes, class: "edit", placeholder: "Levantine Arabic Notes"
+
+  .form-group
+    = f.label :spanish_notes, "Spanish Notes"
+    = f.text_area :spanish_notes, class: "edit", placeholder: "Spanish Notes"
+  .form-group
+    = f.label :cantonese_notes, "Cantonese Notes"
+    = f.text_area :cantonese_notes, class: "edit", placeholder: "Cantonese Notes"
+  .form-group
+    = f.label :swahili_notes, "Swahili Notes"
+    = f.text_area :swahili_notes, class: "edit", placeholder: "Swahili Notes"
+  .form-group
+    = f.label :french_notes, "French Notes"
+    = f.text_area :french_notes, class: "edit", placeholder: "French Notes"
+  .form-group
+    = f.label :russian_notes, "Russian Notes"
+    = f.text_area :russian_notes, class: "edit", placeholder: "Russian Notes"
   .row
     .col-md-4
       = f.submit 'Save'
+
+:javascript
+  $(function() {
+    $('.edit').editable({inlineMode: false, placeholder: ""});
+    $('#edit').editable('focus');
+    $('.navbar').hide();
+    $('.footer').hide();
+    $( "a:contains('Unlicensed')" ).hide();
+    $('.f-placeholder').focus();
+  });

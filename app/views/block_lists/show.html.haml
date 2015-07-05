@@ -1,12 +1,121 @@
-%p#notice= notice
+.container.show
+  .row
+    .col-md-12
+      %h1.brand-heading=@block_list.title
 
-%p
-  %b Title:
-  = @block_list.title
-%p
-  %b Description:
-  = @block_list.description
+      %p=@block_list.description        
 
-= link_to 'Edit', edit_block_list_path(@block_list)
-\|
-= link_to 'Back', block_lists_path
+  .language-block-list
+    .table-responsive
+      %table.table
+        %thead
+          %tr
+            %th
+            %th Mandarin
+            %th Levantine Arabic
+            %th Spanish
+            %th Cantonese
+            %th Swahili
+            %th French
+            %th Russian
+            %th
+            %th
+
+        %tbody
+
+          - @block_list.words.each do |word|
+            %tr
+              %td
+                %strong
+                  = word.english
+              %td
+                = word.mandarin
+                -if word.mandarin_notes?
+                  %em
+                    =word.mandarin_notes
+              %td
+                = word.arabic
+                -if word.arabic_notes?
+                  %br/
+                  %em
+                    =word.arabic_notes
+              %td
+                = word.spanish
+                -if word.spanish_notes?
+                  %br/
+                  %em
+                    =word.spanish_notes
+              %td
+                = word.cantonese
+                -if word.cantonese_notes?
+                  %br/
+                  %em
+                    =word.cantonese_notes
+              %td
+                = word.swahili
+                -if word.swahili_notes?
+                  %br/
+                  %em
+                    =word.swahili_notes
+              %td
+                = word.french
+                -if word.french_notes?
+                  %br/
+                  %em
+                    =word.french_notes
+              %td
+                = word.russian
+                -if word.russian_notes?
+                  %br/
+                  %em
+                    =word.russian_notes
+              -if user_signed_in?
+                %td= link_to 'Edit', edit_word_path(word)
+                %td= link_to 'Destroy', word, :method => :delete, :data => { :confirm => 'Are you sure?' }
+  
+  -if @block_list.mandarin_notes
+    .row
+      .col-md-12
+        %h3 Mandarin
+        %p=simple_format @block_list.mandarin_notes
+
+  -if @block_list.arabic_notes
+    .row
+      .col-md-12
+        %h3 Levantine Arabic
+        %p=simple_format @block_list.arabic_notes
+
+  -if @block_list.spanish_notes
+    .row
+      .col-md-12
+        %h3 Spanish
+        %p=simple_format @block_list.spanish_notes
+
+  -if @block_list.cantonese_notes
+    .row
+      .col-md-12
+        %h3 Cantonese
+        %p=simple_format @block_list.cantonese_notes
+
+  -if @block_list.swahili_notes
+    .row
+      .col-md-12
+        %h3 Swahili
+        %p=simple_format @block_list.swahili_notes
+
+  -if @block_list.french_notes
+    .row
+      .col-md-12
+        %h3 French
+        %p=simple_format @block_list.french_notes
+
+  -if @block_list.russian_notes
+    .row
+      .col-md-12
+        %h3 Russian
+        %p=simple_format @block_list.russian_notes
+
+  -if current_user
+    = link_to 'Edit', edit_block_list_path(@block_list)
+    \|
+  = link_to 'Back', words_path
