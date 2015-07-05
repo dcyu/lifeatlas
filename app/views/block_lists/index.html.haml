@@ -1,0 +1,21 @@
+%h1 Listing block_lists
+
+%table
+  %tr
+    %th Title
+    %th Description
+    %th
+    %th
+    %th
+
+  - @block_lists.each do |block_list|
+    %tr
+      %td= block_list.title
+      %td= block_list.description
+      %td= link_to 'Show', block_list
+      %td= link_to 'Edit', edit_block_list_path(block_list)
+      %td= link_to 'Destroy', block_list, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Block list', new_block_list_path

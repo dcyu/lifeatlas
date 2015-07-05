@@ -6,7 +6,8 @@ class WordsController < ApplicationController
   respond_to :html
 
   def index
-    @words = Word.all
+    @other_words = Word.where(block_list_id: nil)
+    @block_lists = BlockList.all
     respond_with(@words)
   end
 
@@ -44,6 +45,6 @@ class WordsController < ApplicationController
     end
 
     def word_params
-      params.require(:word).permit(:english, :mandarin, :arabic, :spanish, :cantonese, :swahili, :french, :russian, :mandarin_notes, :arabic_notes, :spanish_notes, :cantonese_notes, :swahili_notes, :french_notes, :russian_notes)
+      params.require(:word).permit(:english, :mandarin, :arabic, :spanish, :cantonese, :swahili, :french, :russian, :mandarin_notes, :arabic_notes, :spanish_notes, :cantonese_notes, :swahili_notes, :french_notes, :russian_notes, :block_list_id)
     end
 end

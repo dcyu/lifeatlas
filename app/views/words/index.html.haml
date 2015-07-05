@@ -1,75 +1,157 @@
 .container.show
   %h1 Language Blocks
 
-  .table-responsive.language-table
-    %table.table
-      %thead
-        %tr
-          %th
-          %th Mandarin
-          %th Levantine Arabic
-          %th Spanish
-          %th Cantonese
-          %th Swahili
-          %th French
-          %th Russian
-          %th
-          %th
+  - @block_lists.each do |block_list|
+    .language-block-list
+      %h3
+        =block_list.title
+        -if user_signed_in?
+          \|
+          =link_to "Edit", edit_block_list_path(block_list)
 
-      %tbody
+      .table-responsive
+        %table.table
+          %thead
+            %tr
+              %th
+              %th Mandarin
+              %th Levantine Arabic
+              %th Spanish
+              %th Cantonese
+              %th Swahili
+              %th French
+              %th Russian
+              %th
+              %th
 
-        - @words.each do |word|
+          %tbody
+
+            - block_list.words.each do |word|
+              %tr
+                %td
+                  %strong
+                    = word.english
+                %td
+                  = word.mandarin
+                  -if word.mandarin_notes?
+                    %em
+                      =word.mandarin_notes
+                %td
+                  = word.arabic
+                  -if word.arabic_notes?
+                    %br/
+                    %em
+                      =word.arabic_notes
+                %td
+                  = word.spanish
+                  -if word.spanish_notes?
+                    %br/
+                    %em
+                      =word.spanish_notes
+                %td
+                  = word.cantonese
+                  -if word.cantonese_notes?
+                    %br/
+                    %em
+                      =word.cantonese_notes
+                %td
+                  = word.swahili
+                  -if word.swahili_notes?
+                    %br/
+                    %em
+                      =word.swahili_notes
+                %td
+                  = word.french
+                  -if word.french_notes?
+                    %br/
+                    %em
+                      =word.french_notes
+                %td
+                  = word.russian
+                  -if word.russian_notes?
+                    %br/
+                    %em
+                      =word.russian_notes
+                -if user_signed_in?
+                  %td= link_to 'Edit', edit_word_path(word)
+                  %td= link_to 'Destroy', word, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+  .language-block-list
+
+    %h3 Other Blocks
+
+    .table-responsive.language-table
+      %table.table
+        %thead
           %tr
-            %td
-              %strong
-                = word.english
-            %td
-              = word.mandarin
-              -if word.mandarin_notes?
-                %em
-                  =word.mandarin_notes
-            %td
-              = word.arabic
-              -if word.arabic_notes?
-                %br/
-                %em
-                  =word.arabic_notes
-            %td
-              = word.spanish
-              -if word.spanish_notes?
-                %br/
-                %em
-                  =word.spanish_notes
-            %td
-              = word.cantonese
-              -if word.cantonese_notes?
-                %br/
-                %em
-                  =word.cantonese_notes
-            %td
-              = word.swahili
-              -if word.swahili_notes?
-                %br/
-                %em
-                  =word.swahili_notes
-            %td
-              = word.french
-              -if word.french_notes?
-                %br/
-                %em
-                  =word.french_notes
-            %td
-              = word.russian
-              -if word.russian_notes?
-                %br/
-                %em
-                  =word.russian_notes
-            -if user_signed_in?
-              %td= link_to 'Edit', edit_word_path(word)
-              %td= link_to 'Destroy', word, :method => :delete, :data => { :confirm => 'Are you sure?' }
+            %th
+            %th Mandarin
+            %th Levantine Arabic
+            %th Spanish
+            %th Cantonese
+            %th Swahili
+            %th French
+            %th Russian
+            %th
+            %th
+
+        %tbody
+
+          - @other_words.each do |word|
+            %tr
+              %td
+                %strong
+                  = word.english
+              %td
+                = word.mandarin
+                -if word.mandarin_notes?
+                  %em
+                    =word.mandarin_notes
+              %td
+                = word.arabic
+                -if word.arabic_notes?
+                  %br/
+                  %em
+                    =word.arabic_notes
+              %td
+                = word.spanish
+                -if word.spanish_notes?
+                  %br/
+                  %em
+                    =word.spanish_notes
+              %td
+                = word.cantonese
+                -if word.cantonese_notes?
+                  %br/
+                  %em
+                    =word.cantonese_notes
+              %td
+                = word.swahili
+                -if word.swahili_notes?
+                  %br/
+                  %em
+                    =word.swahili_notes
+              %td
+                = word.french
+                -if word.french_notes?
+                  %br/
+                  %em
+                    =word.french_notes
+              %td
+                = word.russian
+                -if word.russian_notes?
+                  %br/
+                  %em
+                    =word.russian_notes
+              -if user_signed_in?
+                %td= link_to 'Edit', edit_word_path(word)
+                %td= link_to 'Destroy', word, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 
-    %br
+  %br
   
   -if user_signed_in?
     = link_to 'New Word', new_word_path
+    \|
+    = link_to 'New List', new_block_list_path
+

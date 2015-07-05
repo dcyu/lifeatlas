@@ -29,6 +29,8 @@
   .form-group
     = f.text_field :russian, placeholder: "Russian"
     = f.text_field :russian_notes, placeholder: "Notes"
+  .form-group
+    =f.collection_select :block_list_id, BlockList.order(:title), :id, :title, include_blank: true
   .row
     .col-md-4
       = f.submit 'Save'

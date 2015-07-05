@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  resources :block_lists
+
   resources :words
 
   resources :stops
