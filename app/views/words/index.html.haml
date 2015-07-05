@@ -1,5 +1,42 @@
 .container.show
   %h1 Language Blocks
+  
+  -if user_signed_in?
+    = link_to 'New Word', new_word_path
+    \|
+    = link_to 'New List', new_block_list_path
+    %br/
+    %br/
+
+  %h3 Introduction
+
+  %h4
+    %a{:href => "/mandarin"}
+      Mandarin
+    \|
+    %a{:href => "/levantine_arabic"}
+      Levantine Arabic
+    \|
+    %a{:href => "/spanish"}
+      Spanish
+    \|
+    %a{:href => "/cantonese"}
+      Cantonese
+    \|
+    %a{:href => "/swahili"}
+      Swahili
+    \|
+    %a{:href => "/french"}
+      French
+    \|
+    %a{:href => "/russian"}
+      Russian
+
+
+
+
+
+
 
   - @block_lists.each do |block_list|
     .language-block-list
@@ -75,83 +112,76 @@
                 -if user_signed_in?
                   %td= link_to 'Edit', edit_word_path(word)
                   %td= link_to 'Destroy', word, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-  .language-block-list
-
-    %h3 Other Blocks
-
-    .table-responsive.language-table
-      %table.table
-        %thead
-          %tr
-            %th
-            %th Mandarin
-            %th Levantine Arabic
-            %th Spanish
-            %th Cantonese
-            %th Swahili
-            %th French
-            %th Russian
-            %th
-            %th
-
-        %tbody
-
-          - @other_words.each do |word|
-            %tr
-              %td
-                %strong
-                  = word.english
-              %td
-                = word.mandarin
-                -if word.mandarin_notes?
-                  %em
-                    =word.mandarin_notes
-              %td
-                = word.arabic
-                -if word.arabic_notes?
-                  %br/
-                  %em
-                    =word.arabic_notes
-              %td
-                = word.spanish
-                -if word.spanish_notes?
-                  %br/
-                  %em
-                    =word.spanish_notes
-              %td
-                = word.cantonese
-                -if word.cantonese_notes?
-                  %br/
-                  %em
-                    =word.cantonese_notes
-              %td
-                = word.swahili
-                -if word.swahili_notes?
-                  %br/
-                  %em
-                    =word.swahili_notes
-              %td
-                = word.french
-                -if word.french_notes?
-                  %br/
-                  %em
-                    =word.french_notes
-              %td
-                = word.russian
-                -if word.russian_notes?
-                  %br/
-                  %em
-                    =word.russian_notes
-              -if user_signed_in?
-                %td= link_to 'Edit', edit_word_path(word)
-                %td= link_to 'Destroy', word, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-
-  %br
   
-  -if user_signed_in?
-    = link_to 'New Word', new_word_path
-    \|
-    = link_to 'New List', new_block_list_path
+  - if @other_words.present?
+    .language-block-list
+
+      %h3 Other Blocks
+
+      .table-responsive.language-table
+        %table.table
+          %thead
+            %tr
+              %th
+              %th Mandarin
+              %th Levantine Arabic
+              %th Spanish
+              %th Cantonese
+              %th Swahili
+              %th French
+              %th Russian
+              %th
+              %th
+
+          %tbody
+
+            - @other_words.each do |word|
+              %tr
+                %td
+                  %strong
+                    = word.english
+                %td
+                  = word.mandarin
+                  -if word.mandarin_notes?
+                    %em
+                      =word.mandarin_notes
+                %td
+                  = word.arabic
+                  -if word.arabic_notes?
+                    %br/
+                    %em
+                      =word.arabic_notes
+                %td
+                  = word.spanish
+                  -if word.spanish_notes?
+                    %br/
+                    %em
+                      =word.spanish_notes
+                %td
+                  = word.cantonese
+                  -if word.cantonese_notes?
+                    %br/
+                    %em
+                      =word.cantonese_notes
+                %td
+                  = word.swahili
+                  -if word.swahili_notes?
+                    %br/
+                    %em
+                      =word.swahili_notes
+                %td
+                  = word.french
+                  -if word.french_notes?
+                    %br/
+                    %em
+                      =word.french_notes
+                %td
+                  = word.russian
+                  -if word.russian_notes?
+                    %br/
+                    %em
+                      =word.russian_notes
+                -if user_signed_in?
+                  %td= link_to 'Edit', edit_word_path(word)
+                  %td= link_to 'Destroy', word, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
