@@ -1,5 +1,8 @@
 .container.show
   %h1 Language Blocks
+
+  %p This is a basic guide to what I consider the essential parts of learning a language. This is not intended to be authoritative or exhaustive by any measure—the goal is just to provide the most efficient route possible to "get by" with a new language.
+
   
   -if user_signed_in?
     = link_to 'New Word', new_word_path
@@ -8,29 +11,54 @@
     %br/
     %br/
 
-  %h3 Introduction
+  %h3 Introductions
 
-  %h4
-    %a{:href => "/mandarin"}
-      Mandarin
-    \|
-    %a{:href => "/levantine_arabic"}
-      Levantine Arabic
-    \|
-    %a{:href => "/spanish"}
-      Spanish
-    \|
-    %a{:href => "/cantonese"}
-      Cantonese
-    \|
-    %a{:href => "/swahili"}
-      Swahili
-    \|
-    %a{:href => "/french"}
-      French
-    \|
-    %a{:href => "/russian"}
-      Russian
+  .row
+    .col-md-1
+    .col-md-2
+      %h4
+        %a{:href => "/mandarin"}
+          普通话
+          .small-note
+            Mandarin
+
+      %h4 
+        %a{:href => "/levantine_arabic"}
+          عربي شامي
+          .small-note
+            Levantine Arabic 
+
+    .col-md-2
+      %h4
+        %a{:href => "/spanish"}
+          Español
+          .small-note
+            Spanish
+      %h4
+        %a{:href => "/cantonese"}
+          廣東話
+          .small-note
+            Cantonese
+
+    .col-md-2
+      %h4
+        %a{:href => "/swahili"}
+          Kiswahili
+          .small-note
+            Swahili
+
+      %h4
+        %a{:href => "/french"}
+          Français
+          .small-note
+            French
+    
+    .col-md-2
+      %h4
+        %a{:href => "/russian"}
+          Pусский
+          .small-note
+            Russian
 
 
 
@@ -49,13 +77,13 @@
           %thead
             %tr
               %th
-              %th Mandarin
-              %th Levantine Arabic
-              %th Spanish
-              %th Cantonese
-              %th Swahili
-              %th French
-              %th Russian
+              %th 普通话
+              %th عربي شامي
+              %th Español
+              %th 廣東話
+              %th Kiswahili
+              %th Français
+              %th Pусский
               %th
               %th
 
@@ -121,13 +149,13 @@
           %thead
             %tr
               %th
-              %th Mandarin
-              %th Levantine Arabic
-              %th Spanish
-              %th Cantonese
-              %th Swahili
-              %th French
-              %th Russian
+              %th 普通话
+              %th عربي شامي
+              %th Español
+              %th 廣東話
+              %th Kiswahili
+              %th Français
+              %th Pусский
               %th
               %th
 

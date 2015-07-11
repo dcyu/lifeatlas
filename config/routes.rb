@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   get 'auth' => 'aspirations#auth', as: :auth
   get 'contacts' => 'aspirations#contacts', as: :contacts
+  
+  get 'mandarin' => 'words#mandarin', as: :mandarin
 
   resources :aspirations
 

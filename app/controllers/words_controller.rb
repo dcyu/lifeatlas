@@ -1,9 +1,11 @@
 class WordsController < ApplicationController
   before_action :set_word, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!, except: [:index]
-
+  before_filter :authenticate_user!, except: [:index, :mandarin]
 
   respond_to :html
+
+  def mandarin
+  end
 
   def index
     @other_words = Word.where(block_list_id: nil)

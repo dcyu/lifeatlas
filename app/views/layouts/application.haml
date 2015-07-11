@@ -26,14 +26,14 @@
             %li
               =link_to "About", about_path
             %li
-              =link_to "Stats", stats_path
-            %li
               =link_to "Blocks", words_path            
-            %li
-              =link_to "Destinations", destinations_path
-            %li
-              =link_to "Aspirational Adventures", aspirations_path
-            -if user_signed_in?
+            -if user_signed_in?          
+              %li
+                =link_to "Stats", stats_path
+              %li
+                =link_to "Destinations", destinations_path
+              %li
+                =link_to "Aspirational Adventures", aspirations_path
               %li
                 -if @destination && @destination.id
                   =link_to 'Add Post', new_destination_post_path(@destination)

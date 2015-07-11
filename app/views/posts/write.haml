@@ -6,7 +6,7 @@
         - @post.errors.full_messages.each do |msg|
           %li= msg
   .form-group
-    = f.text_area :body, id: "edit writer", class: "form-control"
+    = f.text_area :body, id: "edit", class: "writer form-control"
   %br/
   %br/
   %br/
@@ -25,4 +25,6 @@
     $('.footer').hide();
     $( "a:contains('Unlicensed')" ).hide();
     $('.f-placeholder').focus();
+    $('.froala-wrapper.f-basic *').css('font-size', '1.5em')
   });
+

@@ -11,13 +11,13 @@
         %thead
           %tr
             %th
-            %th Mandarin
-            %th Levantine Arabic
-            %th Spanish
-            %th Cantonese
-            %th Swahili
-            %th French
-            %th Russian
+            %th 普通话
+            %th عربي شامي
+            %th Español
+            %th 廣東話
+            %th Kiswahili
+            %th Français
+            %th Pусский
             %th
             %th
 
@@ -76,43 +76,43 @@
   -if @block_list.mandarin_notes.present?
     .row
       .col-md-12
-        %h3 Mandarin
+        %h3 普通话
         %p=simple_format @block_list.mandarin_notes
 
   -if @block_list.arabic_notes.present?
     .row
       .col-md-12
-        %h3 Levantine Arabic
+        %h3 عربي شامي
         %p=simple_format @block_list.arabic_notes
 
   -if @block_list.spanish_notes.present?
     .row
       .col-md-12
-        %h3 Spanish
+        %h3 Español
         %p=simple_format @block_list.spanish_notes
 
   -if @block_list.cantonese_notes.present?
     .row
       .col-md-12
-        %h3 Cantonese
+        %h3 廣東話
         %p=simple_format @block_list.cantonese_notes
 
   -if @block_list.swahili_notes.present?
     .row
       .col-md-12
-        %h3 Swahili
+        %h3 Kiswahili
         %p=simple_format @block_list.swahili_notes
 
   -if @block_list.french_notes.present?
     .row
       .col-md-12
-        %h3 French
+        %h3 Français
         %p=simple_format @block_list.french_notes
 
   -if @block_list.russian_notes.present?
     .row
       .col-md-12
-        %h3 Russian
+        %h3 Pусский
         %p=simple_format @block_list.russian_notes
 
   -if current_user
