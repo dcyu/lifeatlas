@@ -11,9 +11,9 @@ class Post < ActiveRecord::Base
     elsif rating == 2
       "Mediocre"
     elsif rating == 3
-      "Decent"
+      "Good"
     elsif rating == 4
-      "Enjoyable"
+      "Excellent"
     elsif rating == 5
       "Gamechanger"
     end
