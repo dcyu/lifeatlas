@@ -24,7 +24,7 @@
   .form-group
     =f.label :rating
     %br/
-    =f.select :rating, options_for_select([1,2,3,4,5]), { include_blank: true, selected: @post.rating }
+    =f.select :rating, options_for_select([1,2,3,4,5], @post.rating), { include_blank: true}
 
   .form-group
     = f.text_field :title, placeholder: "Title", class: "form-control"
