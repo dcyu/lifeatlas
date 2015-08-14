@@ -23,4 +23,4 @@
         -women_tweets.each do |tweet|
           %p
             %a{:href => "https://twitter.com/#{candidate.twitter_name}/status/#{tweet.tweet_id}", target: "_blank"}
-              =tweet.text
+              =tweet.text.html_safe
