@@ -1,0 +1,26 @@
+.container.show
+  .row
+    .col-md-12
+      %h1 GOP Candidates Tweet About Women
+
+      %p Below is a listing of tweets featuring the word "women" or "woman" in their past 3000 tweets.
+
+      %p
+        %a{:href => "#{gop_twitter_path}"}
+          Back to word analysis of each candidate.
+
+
+  -@candidates.each do |candidate|
+    .row.candidate
+      .col-md-12     
+        %h3 #{candidate.name} Tweets About Women
+
+        -women_tweets = []
+        -women_tweets << candidate.tweets.where('text LIKE ?', "%women%")
+        -women_tweets << candidate.tweets.where('text LIKE ?', "%woman%")
+        -women_tweets.flatten!
+
+        -women_tweets.each do |tweet|
+          %p
+            %a{:href => "https://twitter.com/#{candidate.twitter_name}/status/#{tweet.tweet_id}", target: "_blank"}
+              =tweet.text

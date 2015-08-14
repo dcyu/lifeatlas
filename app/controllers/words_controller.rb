@@ -1,6 +1,6 @@
 class WordsController < ApplicationController
   before_action :set_word, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!, except: [:index, :mandarin, :swahili, :twitter]
+  before_filter :authenticate_user!, except: [:index, :mandarin, :swahili, :twitter, :gop_twitter_women]
 
   respond_to :html
 
@@ -9,7 +9,10 @@ class WordsController < ApplicationController
 
   def twitter
     @candidates = Candidate.all
+  end
 
+  def gop_twitter_women
+    @candidates = Candidate.all
   end
 
   def index

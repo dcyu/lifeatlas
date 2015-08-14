@@ -15,4 +15,28 @@ Candidate.create(name: 'Mike Huckabee', twitter_name: 'GovMikeHuckabee')
 Candidate.create(name: 'Rand Paul', twitter_name: 'RandPaul')
 Candidate.create(name: 'John Kasich', twitter_name: 'JohnKasich')
 
+client = $twitter
+
+Tweet.destroy_all
+
+def collect_with_max_id(collection=[], max_id=nil, &block)
+  response = yield(max_id)
+  collection += response
+  response.empty? ? collection.flatten : collect_with_max_id(collection, response.last.id - 1, &block)
+end
+
+def client.get_all_tweets(user)
+  collect_with_max_id do |max_id|
+    options = {count: 200, include_rts: false}
+    options[:max_id] = max_id unless max_id.nil?
+    user_timeline(user, options)
+  end
+end
+
+Candidate.all.each do |candidate|
+  client.get_all_tweets(candidate.twitter_name).each do |tweet|
+    Tweet.create(candidate_id: candidate.id, posted_time: tweet.created_at, text: tweet.text, tweet_id: tweet.id.to_s)
+  end
+end
+
 
