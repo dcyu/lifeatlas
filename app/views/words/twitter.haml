@@ -13,19 +13,19 @@
 
   -@candidates_tweets = []
   -@candidates.each do |candidate|
-    -@candidates_tweets << candidate.tweets.order("id desc").limit(200)
+    -@candidates_tweets << candidate.tweets.order("posted_time desc").limit(200)
   -@candidates_tweets.flatten!
 
 
 
   -@candidates.each do |candidate|
 
-    -@candidate_words = candidate.tweets.order("id desc").limit(200).collect(&:text).join(" ").split(" ").select{|w| w.length >= 4 && !w.include?("http") }.join(" ")
+    -@candidate_words = candidate.tweets.order("posted_time desc").limit(200).collect(&:text).join(" ").split(" ").select{|w| w.length >= 4 && !w.include?("http") }.join(" ")
     -@candidate_word_occurrences = WordsCounted.count(@candidate_words).sorted_word_occurrences.select{|word| word.first.length >= 4 && word.last > 1}
     -@candidate_word_occurrences_hash = Hash[@candidate_word_occurrences]
     -@candidate_values = @candidate_word_occurrences_hash.values.uniq
     
-    -all_candidates = (@candidates_tweets - candidate.tweets.order("id desc").limit(200)).collect(&:text).join(" ").split(" ").select{|w| w.length >= 4 && !w.include?("http") }.join(" ")
+    -all_candidates = (@candidates_tweets - candidate.tweets.order("posted_time desc").limit(200)).collect(&:text).join(" ").split(" ").select{|w| w.length >= 4 && !w.include?("http") }.join(" ")
     -all_candidate_word_occurrences = WordsCounted.count(all_candidates).word_occurrences.select{|k,v| k.length >= 4 && v > 1}
 
     -@candidate_unique_words = @candidate_word_occurrences_hash.keys - all_candidate_word_occurrences.keys
@@ -60,10 +60,11 @@
       .col-md-1
       .col-md-5
         %h4
+          -ordered_tweets = candidate.tweets.order("posted_time desc").limit(200).sort_by{|tweet| tweet.posted_time}
           Tweets from
-          =candidate.tweets.sort_by{|tweet| tweet.posted_time}.first.posted_time.to_formatted_s(:long_ordinal)
+          =ordered_tweets.first.posted_time.to_formatted_s(:long_ordinal)
           to
-          =candidate.tweets.sort_by{|tweet| tweet.posted_time}.last.posted_time.to_formatted_s(:long_ordinal)
+          =ordered_tweets.last.posted_time.to_formatted_s(:long_ordinal)
 
         %table.table.word-table
           %thead
