@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   
   get 'mandarin' => 'words#mandarin', as: :mandarin
   get 'swahili' => 'words#swahili', as: :swahili
-  get 'twitter' => 'words#twitter', as: :twitter
+  get 'gop_twitter' => 'words#twitter', as: :gop_twitter
 
   resources :aspirations
 
