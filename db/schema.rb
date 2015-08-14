@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150705193348) do
+ActiveRecord::Schema.define(version: 20150814125517) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,13 @@ ActiveRecord::Schema.define(version: 20150705193348) do
     t.text     "french_notes"
     t.text     "russian_notes"
     t.integer  "rank"
+  end
+
+  create_table "candidates", force: true do |t|
+    t.string   "name"
+    t.string   "twitter_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "destinations", force: true do |t|
@@ -95,6 +102,14 @@ ActiveRecord::Schema.define(version: 20150705193348) do
     t.integer  "destination_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "tweets", force: true do |t|
+    t.text     "text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "candidate_id"
+    t.datetime "posted_time"
   end
 
   create_table "users", force: true do |t|

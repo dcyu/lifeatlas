@@ -1,0 +1,82 @@
+.container.show
+  
+  %h1 GOP Candidate Twitter
+
+  %p Below is an analysis of the word usage of the current top 10 GOP candidates according to each of their last 200 tweets (not including retweets). Words included must contain four or more letters and have appeared two or more times in the candidates tweets. Each candidate also has a word cloud featuring words that are unique to them and have not been used in the past 200 tweets of any other candidate. This system is set to update itself automatically every hour to ensure that the most recent 200 tweets of each candidate are used for analysis.
+
+  -@candidates.each do |candidate|
+    -@candidate_words = candidate.tweets.collect(&:text).join(" ").split(" ").select{|w| w.length >= 4 && !w.include?("http") }.join(" ")
+    -@candidate_word_occurrences = WordsCounted.count(@candidate_words).sorted_word_occurrences.select{|word| word.first.length >= 4 && word.last > 1}
+    -@candidate_word_occurrences_hash = Hash[@candidate_word_occurrences]
+    -@candidate_values = @candidate_word_occurrences_hash.values.uniq
+    
+    -all_candidates = (Tweet.all - candidate.tweets).collect(&:text).join(" ").split(" ").select{|w| w.length >= 4 && !w.include?("http") }.join(" ")
+    -all_candidate_word_occurrences = WordsCounted.count(all_candidates).word_occurrences.select{|k,v| k.length >= 4 && v > 1}
+
+    -@candidate_unique_words = @candidate_word_occurrences_hash.keys - all_candidate_word_occurrences.keys
+    
+
+    .candidate
+
+      %h2
+        %a{:href => "https://twitter.com/#{candidate.twitter_name}", target: "_blank"}
+          =candidate.name
+
+      .cloud-container
+        %h4 All Words
+        .word-cloud{id: "#{candidate.twitter_name}"}
+        %br/
+        %br/
+        %br/
+        
+        %h4 Words Unique to #{candidate.name}
+        .word-cloud{id: "#{candidate.twitter_name}_unique"}
+
+        %br/
+        %br/
+        %br/
+
+        %h4 
+          Total number of different words:
+          =@candidate_word_occurrences_hash.keys.count
+
+        %h4
+          Number of words unique to #{candidate.name}:
+          =@candidate_unique_words.count
+
+      %div
+        %h4
+          Tweets from
+          =candidate.tweets.sort_by{|tweet| tweet.posted_time}.first.posted_time.to_formatted_s(:long_ordinal)
+          to
+          =candidate.tweets.sort_by{|tweet| tweet.posted_time}.last.posted_time.to_formatted_s(:long_ordinal)
+
+        %table.table.word-table
+          %thead
+            %tr
+              %th Words Used
+              %th Occurrences
+          %tbody
+            -@candidate_values.each do |occurrence|
+              %tr
+                %td
+                  =@candidate_word_occurrences_hash.find_all{|k,v|v == occurrence}.map(&:first).join(", ")
+                %td
+                  =occurrence
+
+    %script
+      var #{candidate.twitter_name}_array = [
+      -@candidate_word_occurrences.each do |word|
+        {text: "#{word.first}", weight: "#{word.last}"},
+      ];
+      var #{candidate.twitter_name}_unique_array = [
+      -@candidate_unique_words.each do |word|
+        {text: "#{word}", weight: "#{@candidate_word_occurrences_hash[word]}"},
+      ];
+
+      $(function() {
+      $("##{candidate.twitter_name}").jQCloud(#{candidate.twitter_name}_array);
+      });
+      $(function() {
+      $("##{candidate.twitter_name}_unique").jQCloud(#{candidate.twitter_name}_unique_array);
+      });

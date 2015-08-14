@@ -3,7 +3,8 @@ Rails.application.routes.draw do
 
   resources :block_lists
 
-  resources :words
+  resources :words do
+  end
 
   resources :stops
 
@@ -11,6 +12,8 @@ Rails.application.routes.draw do
   get 'contacts' => 'aspirations#contacts', as: :contacts
   
   get 'mandarin' => 'words#mandarin', as: :mandarin
+  get 'swahili' => 'words#swahili', as: :swahili
+  get 'twitter' => 'words#twitter', as: :twitter
 
   resources :aspirations
 
