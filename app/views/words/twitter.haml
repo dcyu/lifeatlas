@@ -1,10 +1,13 @@
 .container.show
-  
-  %h1 GOP Candidate Twitter
 
-  %p Below is an analysis of the word usage of the current top 10 GOP candidates according to each of their last 200 tweets (not including retweets). Words included must contain four or more letters and have appeared two or more times in the candidates tweets. Each candidate also has a word cloud featuring words that are unique to them and have not been used in the past 200 tweets of any other candidate. This system is set to update itself automatically every hour to ensure that the most recent 200 tweets of each candidate are used for analysis.
+  .row
+    .col-md-12
+      %h1 GOP Candidate Twitter
+
+      %p Below is an analysis of the word usage of the current top 10 GOP candidates according to each of their last 200 tweets (not including retweets). Words included must contain four or more letters and have appeared two or more times in the candidates tweets. Each candidate also has a word cloud featuring words that are unique to them and have not been used in the past 200 tweets of any other candidate. This system is set to update itself automatically every hour to ensure that the most recent 200 tweets of each candidate are used for analysis.
 
   -@candidates.each do |candidate|
+
     -@candidate_words = candidate.tweets.collect(&:text).join(" ").split(" ").select{|w| w.length >= 4 && !w.include?("http") }.join(" ")
     -@candidate_word_occurrences = WordsCounted.count(@candidate_words).sorted_word_occurrences.select{|word| word.first.length >= 4 && word.last > 1}
     -@candidate_word_occurrences_hash = Hash[@candidate_word_occurrences]
@@ -15,14 +18,12 @@
 
     -@candidate_unique_words = @candidate_word_occurrences_hash.keys - all_candidate_word_occurrences.keys
     
-
-    .candidate
-
+    .row.candidate
       %h2
         %a{:href => "https://twitter.com/#{candidate.twitter_name}", target: "_blank"}
           =candidate.name
 
-      .cloud-container
+      .cloud-container.col-md-6
         %h4 All Words
         .word-cloud{id: "#{candidate.twitter_name}"}
         %br/
@@ -43,8 +44,9 @@
         %h4
           Number of words unique to #{candidate.name}:
           =@candidate_unique_words.count
-
-      %div
+      
+      .col-md-1
+      .col-md-5
         %h4
           Tweets from
           =candidate.tweets.sort_by{|tweet| tweet.posted_time}.first.posted_time.to_formatted_s(:long_ordinal)
