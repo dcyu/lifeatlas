@@ -1,0 +1,49 @@
+%script{src: 'https://www.google.com/jsapi'}
+
+.container.show
+  .row
+    .col-md-12
+      %h1 GOP Candidates Tweet About Various Topics
+
+      %p Below is a listing of tweets featuring keywords corresponding to particular topics within the last year of tweets from each candidate.
+
+      %p
+        %a{:href => "#{gop_twitter_path}"}
+          Back to word analysis of each candidate.
+  
+
+
+  -@topics.each do |topic|
+    -@topic = topic
+    -@topic_name = @topic.first
+
+    .row.candidate
+      .col-md-12
+
+        %h2=@topic_name
+        
+        %div{id: "chart-#{topic.first}"}
+
+        -@candidate_tweet_count = {}
+
+        %p See individual tweets about #{@topic_name} by:
+
+        -@candidates.each do |candidate|   
+
+          -topic_tweets = []
+          -topic.each do |word|
+            -topic_tweets << candidate.tweets.where(posted_time: 365.days.ago..Time.now).where('lower(text) LIKE ?', "% #{word.downcase} %")
+          -topic_tweets.flatten!
+
+          -if topic_tweets.count > 0
+            =link_to candidate.name, gop_twitter_women_path(topic: topic, anchor: candidate.twitter_name)
+            \|
+
+          -@candidate_tweet_count["#{candidate.name}"] = topic_tweets.count
+
+        =render 'column_chart'
+
+        -if @column_chart
+          = render_chart(@column_chart, "chart-#{topic.first}")
+
+

@@ -1,0 +1,23 @@
+:ruby
+  data_table = GoogleVisualr::DataTable.new
+
+  data_table.new_column('string', 'Candidate' )
+  data_table.new_column('number', 'Number of Tweets')
+
+  tweet_rows = []
+
+  @candidate_tweet_count.sort_by{|k,v| v}.each do |candidate, tweet_count|
+    row = [candidate, tweet_count]
+    tweet_rows << row
+  end
+  
+  data_table.add_rows(tweet_rows)
+
+  option = { 
+    title: "Candidate Tweet Counts About #{@topic_name.capitalize}",
+    :width => "100%", 
+    :height => 500,
+    :hAxis => { :title => "Includes keywords #{@topic.to_sentence}", :titleTextStyle => {italic: 'true', bold: 'true'} } 
+  }
+
+  @column_chart = GoogleVisualr::Interactive::ColumnChart.new(data_table, option)

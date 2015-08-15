@@ -73,6 +73,8 @@ gem 'google_contacts_api'
 gem 'twitter'
 gem 'words_counted'
 
+gem 'httparty'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

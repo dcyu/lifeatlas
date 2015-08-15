@@ -316,6 +316,7 @@ DEPENDENCIES
   guard-livereload
   haml
   haml-rails
+  httparty
   jbuilder (~> 2.0)
   jquery-rails
   launchy (~> 2.4.0)

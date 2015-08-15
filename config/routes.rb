@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'swahili' => 'words#swahili', as: :swahili
   get 'gop_twitter' => 'words#twitter', as: :gop_twitter
   get 'gop_twitter_women' => 'words#gop_twitter_women', as: :gop_twitter_women
+  get 'twitter_topics' => 'words#twitter_topics', as: :twitter_topics
 
   resources :aspirations
 

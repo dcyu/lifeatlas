@@ -1,26 +1,58 @@
 .container.show
   .row
     .col-md-12
-      %h1 GOP Candidates Tweet About Women
+      %h1 GOP Candidates Tweet About #{@words.first.capitalize}
 
-      %p Below is a listing of tweets featuring the word "women" or "woman" in their past 3000 tweets.
+      %p Below is a listing of tweets featuring the words #{@words.to_sentence} within the last year of tweets from each candidate.
 
       %p
-        %a{:href => "#{gop_twitter_path}"}
-          Back to word analysis of each candidate.
+        %a{:href => "#{twitter_topics_path}"}
+          Back to tweet topic frequency of each candidate.
 
 
   -@candidates.each do |candidate|
-    .row.candidate
-      .col-md-12     
-        %h3 #{candidate.name} Tweets About Women
+    -topic_tweets = []
+    -@words.each do |word|
+      -topic_tweets << candidate.tweets.where(posted_time: 365.days.ago..Time.now).where('lower(text) LIKE ?', "% #{word.downcase} %")
+    -topic_tweets.flatten!
 
-        -women_tweets = []
-        -women_tweets << candidate.tweets.where('text LIKE ?', "%women%")
-        -women_tweets << candidate.tweets.where('text LIKE ?', "%woman%")
-        -women_tweets.flatten!
+    -if topic_tweets.count > 0
+      .row.candidate{id: "#{candidate.twitter_name}"}
+        .col-md-12     
+          %h3 #{candidate.name} Tweets About #{@words.first.capitalize}
 
-        -women_tweets.each do |tweet|
-          %p
-            %a{:href => "https://twitter.com/#{candidate.twitter_name}/status/#{tweet.tweet_id}", target: "_blank"}
-              =tweet.text.html_safe
+          -topic_tweets.each do |tweet|
+
+            / -tweet_oembed_response = HTTParty.get "https://api.twitter.com/1/statuses/oembed.json?id=#{tweet.tweet_id}"
+            .tweet-embed{id: "#{tweet.tweet_id}"}
+              %a{:href => "https://twitter.com/#{candidate.twitter_name}/status/#{tweet.tweet_id}", class: "tweet", candidate: "#{candidate.twitter_name}"}
+                =tweet.text
+              / # =raw(tweet_oembed_response.parsed_response["html"])
+
+            :javascript
+              $.getJSON( "https://api.twitter.com/1/statuses/oembed.json?url=https://twitter.com/#{candidate.twitter_name}/status/#{tweet.tweet_id}&format=json&callback=?", function( data ) {
+                $("##{tweet.tweet_id} a").hide();
+                $("##{tweet.tweet_id}").append(data.html);
+              });
+
+
+
+
+/ for twitter oembed
+%script
+  window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+  t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+  t._e.push(f);
+  };
+
+  return t;
+  }(document, "script", "twitter-wjs"));
