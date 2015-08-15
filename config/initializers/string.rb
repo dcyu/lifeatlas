@@ -23,8 +23,6 @@ class String
   end
 
   #
-  alias_method :underscore, :snakecase
-
   # TODO: Add *separators to #snakecase, like camelcase.
 
 end
