@@ -37,6 +37,8 @@ class WordsController < ApplicationController
 
       ["tax", "taxes"],
       ["trade"],
+      ["student loans", "student loan", "tuition"],
+      ["planned parenthood"],
 
       ["women", "woman"],
       ["African Americans", "african american", "african-american", "black", "african"],
@@ -49,6 +51,7 @@ class WordsController < ApplicationController
       ["Mexico", "mexican", "mexicans"],
       ["China", "chinese"],
       ["Russia"],
+      ["Cuba"],
       ["Iran"],
       ["Iraq"],
       ["Israel"],
