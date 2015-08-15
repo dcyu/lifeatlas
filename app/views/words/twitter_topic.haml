@@ -23,16 +23,15 @@
 
           -topic_tweets.each do |tweet|
 
-            / -tweet_oembed_response = HTTParty.get "https://api.twitter.com/1/statuses/oembed.json?id=#{tweet.tweet_id}"
             .tweet-embed{id: "#{tweet.tweet_id}"}
               %a{:href => "https://twitter.com/#{candidate.twitter_name}/status/#{tweet.tweet_id}", class: "tweet", candidate: "#{candidate.twitter_name}"}
                 =tweet.text
-              / # =raw(tweet_oembed_response.parsed_response["html"])
 
             :javascript
               $.getJSON( "https://api.twitter.com/1/statuses/oembed.json?url=https://twitter.com/#{candidate.twitter_name}/status/#{tweet.tweet_id}&format=json&callback=?", function( data ) {
-                $("##{tweet.tweet_id} a").hide();
                 $("##{tweet.tweet_id}").append(data.html);
+                $(".tweet").hide();
+
               });
 
 

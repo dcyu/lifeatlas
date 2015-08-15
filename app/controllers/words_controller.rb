@@ -1,7 +1,7 @@
 class WordsController < ApplicationController
   before_action :set_word, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!, except: [:index, :mandarin, :swahili, :twitter, :gop_twitter_women, :twitter_topics]
-  skip_before_filter :verify_authenticity_token, :only => [:gop_twitter_women]
+  before_filter :authenticate_user!, except: [:index, :mandarin, :swahili, :twitter, :twitter_topic, :twitter_topics]
+  skip_before_filter :verify_authenticity_token, :only => [:twitter_topic]
 
   respond_to :html
 
@@ -16,16 +16,52 @@ class WordsController < ApplicationController
     @candidates = Candidate.all
 
     @topics = [
-      ["abortion", "pro-life"],
-      ["border"],
+      ["guns", "gun"],
+
       ["drugs", "drug"],
-      ["Mexico"],
-      ["China"]
+      
+      ["healthcare", "obamacare"],
+
+      ["immigration", "immigrants", "immigrant"],
+      
+      ["abortion", "pro-life"],
+      
+      ["gay marriage", "traditional marriage"],
+
+      ["climate change", "global warming"],
+
+      ["military", "troops"],
+      ["border"],
+      ["terrorism", "terrorists", "terrorist", "isis", "isil", "al qaeda"],
+
+
+      ["tax", "taxes"],
+      ["trade"],
+
+      ["women", "woman"],
+      ["African Americans", "african american", "african-american", "black", "african"],
+      ["Latinos", "latino", "hispanic", "hispanics"],
+      
+      ["Christianity", "christians", "christian", "jesus", "christ"],
+      ["Islam", "muslim", "muslims"],
+
+
+      ["Mexico", "mexican", "mexicans"],
+      ["China", "chinese"],
+      ["Russia"],
+      ["Iran"],
+      ["Iraq"],
+      ["Israel"],
+      ["Palestine", "West Bank"],
+
+      ["Obama"],
+      ["Clinton"],
+      ["Sanders"],
     ]
 
   end
 
-  def gop_twitter_women
+  def twitter_topic
     @candidates = Candidate.all
     @words = params[:topic]
   end

@@ -5,7 +5,7 @@
     .col-md-12
       %h1 GOP Candidates Tweet About Various Topics
 
-      %p Below is a listing of tweets featuring keywords corresponding to particular topics within the last year of tweets from each candidate.
+      %p Below is a summary of tweets featuring keywords corresponding to particular topics within the last year of Twitter activity from each candidate. You can also click through the links below the charts to see the specific tweets featured in each category.
 
       %p
         %a{:href => "#{gop_twitter_path}"}
@@ -20,30 +20,39 @@
     .row.candidate
       .col-md-12
 
-        %h2=@topic_name
-        
-        %div{id: "chart-#{topic.first}"}
-
+        -candidate_links = []
         -@candidate_tweet_count = {}
-
-        %p See individual tweets about #{@topic_name} by:
-
+        
         -@candidates.each do |candidate|   
-
           -topic_tweets = []
           -topic.each do |word|
             -topic_tweets << candidate.tweets.where(posted_time: 365.days.ago..Time.now).where('lower(text) LIKE ?', "% #{word.downcase} %")
           -topic_tweets.flatten!
 
           -if topic_tweets.count > 0
-            =link_to candidate.name, gop_twitter_women_path(topic: topic, anchor: candidate.twitter_name)
-            \|
-
+            -candidate_links << candidate
+          
           -@candidate_tweet_count["#{candidate.name}"] = topic_tweets.count
 
-        =render 'column_chart'
 
+        %h2=@topic_name
+
+        %h4
+          =@candidate_tweet_count.values.inject(&:+)
+          tweets total
+      
+        %div{id: "chart-#{topic.first.snakecase}"}
+        =render 'column_chart'
         -if @column_chart
-          = render_chart(@column_chart, "chart-#{topic.first}")
+          = render_chart(@column_chart, "chart-#{topic.first.snakecase}")
+
+        -if candidate_links.count > 0
+          %p 
+            See individual tweets about #{@topic_name} by
+          
+            -candidate_links.each do |candidate|
+              =link_to candidate.name, twitter_topic_path(topic: topic, anchor: candidate.twitter_name)
+              -unless candidate == candidate_links.last
+                \|
 
 

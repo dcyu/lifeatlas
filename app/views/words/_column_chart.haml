@@ -14,10 +14,10 @@
   data_table.add_rows(tweet_rows)
 
   option = { 
-    title: "Candidate Tweet Counts About #{@topic_name.capitalize}",
+    title: "Candidate Tweet Counts About #{@topic_name.titleize}",
     :width => "100%", 
     :height => 500,
-    :hAxis => { :title => "Includes keywords #{@topic.to_sentence}", :titleTextStyle => {italic: 'true', bold: 'true'} } 
+    :hAxis => { :title => "keywords: #{@topic.to_sentence.downcase}", :titleTextStyle => {bold: 'true', italic: 'false'} } 
   }
 
   @column_chart = GoogleVisualr::Interactive::ColumnChart.new(data_table, option)
