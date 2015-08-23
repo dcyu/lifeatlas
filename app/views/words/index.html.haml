@@ -16,7 +16,6 @@
   %h3 Introductions
 
   .row
-    .col-md-1
     .col-md-2
       %h4
         %a{:href => "/mandarin"}
@@ -25,12 +24,12 @@
             Mandarin
     
     -if user_signed_in?
-
-      %h4 
-        %a{:href => "/levantine_arabic"}
-          عربي شامي
-          .small-note
-            Levantine Arabic 
+      .col-md-2
+        %h4 
+          %a{:href => "/levantine_arabic"}
+            عربي شامي
+            .small-note
+              Levantine Arabic 
 
     -if user_signed_in?  
       .col-md-2
@@ -39,6 +38,7 @@
             Español
             .small-note
               Spanish
+      .col-md-2
         %h4
           %a{:href => "/cantonese"}
             廣東話
@@ -53,12 +53,12 @@
             Swahili
 
     -if user_signed_in?
-
-      %h4
-        %a{:href => "/french"}
-          Français
-          .small-note
-            French
+      .col-md-2
+        %h4
+          %a{:href => "/french"}
+            Français
+            .small-note
+              French
     
     -if user_signed_in?  
       .col-md-2
@@ -69,9 +69,17 @@
               Russian
 
 
+  %h4
+    Sections:
+    - @block_lists.each do |block_list|
+      %a.scroll-link{:href => "##{block_list.title.snakecase}"}
+        =block_list.title
+      -unless block_list == @block_lists.last
+        \|
+
 
   - @block_lists.each do |block_list|
-    .language-block-list
+    .language-block-list{id: "#{block_list.title.snakecase}"}
       %h3
         =block_list.title
         \|
