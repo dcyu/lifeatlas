@@ -68,14 +68,23 @@
             .small-note
               Russian
 
+      .col-md-2
+        %h4
+          %a{:href => "/italian"}
+            Italiano
+            .small-note
+              Italian
 
+  %br/
   %h4
-    Sections:
+    Sections
+    %br/
+  .row
     - @block_lists.each do |block_list|
-      %a.scroll-link{:href => "##{block_list.title.snakecase}"}
-        =block_list.title
-      -unless block_list == @block_lists.last
-        \|
+      .col-md-3
+        %h5
+          %a.scroll-link{:href => "##{block_list.title.snakecase}"}
+            =block_list.title
 
 
   - @block_lists.each do |block_list|
@@ -100,6 +109,7 @@
               %th Kiswahili
               %th Français
               %th Pусский
+              %th Italiano
               %th
               %th
 
@@ -151,6 +161,12 @@
                     %br/
                     %em
                       =word.russian_notes
+                %td
+                  = word.italian
+                  -if word.italian_notes?
+                    %br/
+                    %em
+                      =word.italian_notes
                 -if user_signed_in?
                   %td= link_to 'Edit', edit_word_path(word)
                   %td= link_to 'Destroy', word, :method => :delete, :data => { :confirm => 'Are you sure?' }
@@ -223,6 +239,12 @@
                     %br/
                     %em
                       =word.russian_notes
+                %td
+                  = word.italian
+                  -if word.italian_notes?
+                    %br/
+                    %em
+                      =word.italian_notes
                 -if user_signed_in?
                   %td= link_to 'Edit', edit_word_path(word)
                   %td= link_to 'Destroy', word, :method => :delete, :data => { :confirm => 'Are you sure?' }

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150814213931) do
+ActiveRecord::Schema.define(version: 20150829203342) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20150814213931) do
     t.text     "french_notes"
     t.text     "russian_notes"
     t.integer  "rank"
+    t.text     "italian_notes"
   end
 
   create_table "candidates", force: true do |t|
@@ -159,6 +160,8 @@ ActiveRecord::Schema.define(version: 20150814213931) do
     t.text     "french_notes"
     t.text     "russian_notes"
     t.integer  "block_list_id"
+    t.string   "italian"
+    t.text     "italian_notes"
   end
 
 end

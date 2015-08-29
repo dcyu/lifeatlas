@@ -44,6 +44,6 @@ class BlockListsController < ApplicationController
     end
 
     def block_list_params
-      params.require(:block_list).permit(:title, :description, :mandarin_notes, :arabic_notes, :spanish_notes, :cantonese_notes, :swahili_notes, :french_notes, :russian_notes, :rank)
+      params.require(:block_list).permit(:title, :description, :mandarin_notes, :arabic_notes, :spanish_notes, :cantonese_notes, :swahili_notes, :french_notes, :russian_notes, :italian_notes, :rank)
     end
 end
