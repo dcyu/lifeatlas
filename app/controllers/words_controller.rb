@@ -90,12 +90,12 @@ class WordsController < ApplicationController
   def create
     @word = Word.new(word_params)
     @word.save
-    redirect_to words_path
+    redirect_to words_path(anchor: @word.block_list.title.snakecase), notice: 'Block was successfully created.'
   end
 
   def update
     @word.update(word_params)
-    redirect_to words_path    
+    redirect_to words_path(anchor: @word.block_list.title.snakecase), notice: 'Block was successfully updated.'    
   end
 
   def destroy
