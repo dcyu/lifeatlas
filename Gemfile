@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.6'
+gem 'rails'
 # Use sqlite3 as the database for Active Record
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
@@ -25,9 +25,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 group :development, :test do
   gem 'spring'
   gem 'quiet_assets'
-  gem 'byebug'
   gem 'guard-livereload', :require => false
-  gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'
   gem 'rspec-rails', '~> 3.0.0'

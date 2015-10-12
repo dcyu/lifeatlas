@@ -109,6 +109,6 @@ class WordsController < ApplicationController
     end
 
     def word_params
-      params.require(:word).permit(:english, :mandarin, :arabic, :spanish, :cantonese, :swahili, :french, :russian, :mandarin_notes, :arabic_notes, :spanish_notes, :cantonese_notes, :swahili_notes, :french_notes, :russian_notes, :italian, :italian_notes, :block_list_id, :topic)
+      params.require(:word).permit(:english, :mandarin, :arabic, :spanish, :cantonese, :swahili, :french, :russian, :mandarin_notes, :arabic_notes, :spanish_notes, :cantonese_notes, :swahili_notes, :french_notes, :russian_notes, :italian, :italian_notes, :block_list_id, :topic, :persian, :persian_notes)
     end
 end

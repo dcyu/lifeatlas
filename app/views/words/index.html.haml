@@ -75,6 +75,13 @@
             .small-note
               Italian
 
+      .col-md-2
+        %h4
+          %a{:href => "/persian"}
+            فارسی
+            .small-note
+              Persian
+
   %br/
   %h4
     Sections
@@ -102,6 +109,7 @@
           %thead
             %tr
               %th
+              %th
               %th 普通话
               %th عربي شامي
               %th Español
@@ -110,6 +118,7 @@
               %th Français
               %th Pусский
               %th Italiano
+              %th فارسی
               %th
               %th
 
@@ -120,6 +129,9 @@
                 %td
                   %strong
                     = word.english
+                %td
+                  -if user_signed_in?
+                    = link_to 'Edit', edit_word_path(word), class: "not-bold"
                 %td
                   = word.mandarin
                   -if word.mandarin_notes?
@@ -167,8 +179,22 @@
                     %br/
                     %em
                       =word.italian_notes
+
+                %td
+                  = word.persian
+                  -if word.persian_notes?
+                    %br/
+                    %em
+                      =word.persian_notes
+
+                %td
+                  %strong
+                    = word.english
+                    -if user_signed_in?
+                      %br/
+                      = link_to 'Edit', edit_word_path(word), class: "not-bold"
+                
                 -if user_signed_in?
-                  %td= link_to 'Edit', edit_word_path(word)
                   %td= link_to 'Destroy', word, :method => :delete, :data => { :confirm => 'Are you sure?' }
   
   - if @other_words.present?
@@ -188,7 +214,8 @@
               %th Kiswahili
               %th Français
               %th Pусский
-              %th
+              %th Italiano
+              %th فارسی
               %th
 
           %tbody
@@ -245,6 +272,13 @@
                     %br/
                     %em
                       =word.italian_notes
+                %td
+                  = word.persian
+                  -if word.persian_notes?
+                    %br/
+                    %em
+                      =word.persian_notes
+
                 -if user_signed_in?
                   %td= link_to 'Edit', edit_word_path(word)
                   %td= link_to 'Destroy', word, :method => :delete, :data => { :confirm => 'Are you sure?' }

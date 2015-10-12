@@ -33,6 +33,9 @@
     = f.text_field :italian, placeholder: "Italian"
     = f.text_field :italian_notes, placeholder: "Notes"
   .form-group
+    = f.text_field :persian, placeholder: "Persian"
+    = f.text_field :persian_notes, placeholder: "Notes"
+  .form-group
     =f.collection_select :block_list_id, BlockList.order(:title), :id, :title, include_blank: true
   .row
     .col-md-4

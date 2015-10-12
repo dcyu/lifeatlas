@@ -19,6 +19,7 @@
             %th Français
             %th Pусский
             %th Italian
+            %th فارسی
             %th
             %th
 
@@ -76,6 +77,12 @@
                   %br/
                   %em
                     =word.italian_notes
+              %td
+                = word.persian
+                -if word.persian_notes?
+                  %br/
+                  %em
+                    =word.persian_notes
               -if user_signed_in?
                 %td= link_to 'Edit', edit_word_path(word)
                 %td= link_to 'Destroy', word, :method => :delete, :data => { :confirm => 'Are you sure?' }
@@ -125,8 +132,14 @@
   -if @block_list.italian_notes.present?
     .row
       .col-md-12
-        %h3 Italian
+        %h3 Italiano
         %p= @block_list.italian_notes.html_safe
+
+  -if @block_list.persian_notes.present?
+    .row
+      .col-md-12
+        %h3 فارسی
+        %p= @block_list.persian_notes.html_safe
 
   -if current_user
     = link_to 'Edit', edit_block_list_path(@block_list)

@@ -23,7 +23,11 @@ class TripsController < ApplicationController
 
   def create  
     @trip = Trip.new(trip_params)
-    @trip.save
+    if @trip.save
+      destination = @trip.destination
+      destination.visited = true
+      destination.save
+    end 
     respond_with(@trip.destination)
   end
 
