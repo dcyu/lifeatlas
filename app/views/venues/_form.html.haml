@@ -11,11 +11,11 @@
   .form-group
     =f.collection_select :destination_id, Destination.order(:name), :id, :name
   .form-group
-    = f.label :lng
-    = f.text_field :lng, class: "form-control"
-  .form-group
-    = f.label :lat
+    = f.label :lat, "Latitude"
     = f.text_field :lat, class: "form-control"
+  .form-group
+    = f.label :lng, "Longitude"
+    = f.text_field :lng, class: "form-control"
   .row
     .col-md-4
       = f.submit 'Save', class: "btn btn-default"

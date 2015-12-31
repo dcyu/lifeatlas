@@ -13,55 +13,6 @@ class WordsController < ApplicationController
   end
 
   def twitter_topics
-    @candidates = Candidate.all
-
-    @topics = [
-      ["guns", "gun"],
-
-      ["drugs", "drug"],
-      
-      ["healthcare", "obamacare"],
-
-      ["immigration", "immigrants", "immigrant"],
-      
-      ["abortion", "pro-life"],
-      
-      ["gay marriage", "traditional marriage"],
-
-      ["climate change", "global warming"],
-
-      ["military", "troops"],
-      ["border"],
-      ["terrorism", "terrorists", "terrorist", "isis", "isil", "al qaeda"],
-
-
-      ["tax", "taxes"],
-      ["trade"],
-      ["student loans", "student loan", "tuition"],
-      ["planned parenthood"],
-
-      ["women", "woman"],
-      ["African Americans", "african american", "african-american", "black", "african"],
-      ["Latinos", "latino", "hispanic", "hispanics"],
-      
-      ["Christianity", "christians", "christian", "jesus", "christ"],
-      ["Islam", "muslim", "muslims"],
-
-
-      ["Mexico", "mexican", "mexicans"],
-      ["China", "chinese"],
-      ["Russia"],
-      ["Cuba"],
-      ["Iran"],
-      ["Iraq"],
-      ["Israel"],
-      ["Palestine", "West Bank"],
-
-      ["Obama"],
-      ["Clinton"],
-      ["Sanders"],
-    ]
-
   end
 
   def twitter_topic
@@ -70,7 +21,6 @@ class WordsController < ApplicationController
   end
 
   def index
-    @other_words = Word.where(block_list_id: nil)
     @block_lists = BlockList.order(:rank)
     respond_with(@words)
   end
@@ -109,6 +59,6 @@ class WordsController < ApplicationController
     end
 
     def word_params
-      params.require(:word).permit(:english, :mandarin, :arabic, :spanish, :cantonese, :swahili, :french, :russian, :mandarin_notes, :arabic_notes, :spanish_notes, :cantonese_notes, :swahili_notes, :french_notes, :russian_notes, :italian, :italian_notes, :block_list_id, :topic, :persian, :persian_notes)
+      params.require(:word).permit(:english, :mandarin, :arabic, :spanish, :cantonese, :swahili, :french, :russian, :mandarin_notes, :arabic_notes, :spanish_notes, :cantonese_notes, :swahili_notes, :french_notes, :russian_notes, :italian, :italian_notes, :block_list_id, :topic, :persian, :persian_notes, :esperanto, :esperanto_notes)
     end
 end

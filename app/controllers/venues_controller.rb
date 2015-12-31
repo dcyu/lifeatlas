@@ -27,9 +27,11 @@ class VenuesController < ApplicationController
   def create
     @venue = Venue.new(venue_params)
     @client = GooglePlaces::Client.new("#{ENV["google_key"]}")
-    spot = @client.spots_by_query("#{@venue.name}, #{@venue.destination.name.split(',').first}").first
-    @venue.lat = spot.lat
-    @venue.lng = spot.lng
+    if @venue.lat.blank?
+      spot = @client.spots_by_query("#{@venue.name}, #{@venue.destination.name.split(',').first}").first
+      @venue.lat = spot.lat
+      @venue.lng = spot.lng
+    end
     @venue.save
     respond_with(@venue.destination)
   end

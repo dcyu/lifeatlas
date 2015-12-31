@@ -25,7 +25,6 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 group :development, :test do
   gem 'spring'
   gem 'quiet_assets'
-  gem 'guard-livereload', :require => false
   gem 'binding_of_caller'
   gem 'meta_request'
   gem 'rspec-rails', '~> 3.0.0'

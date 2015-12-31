@@ -82,6 +82,13 @@
             .small-note
               Persian
 
+      .col-md-2
+        %h4
+          %a{:href => "/esperanto"}
+            Esperanto
+            .small-note
+              Esperanto
+
   %br/
   %h4
     Sections
@@ -119,6 +126,7 @@
               %th Pусский
               %th Italiano
               %th فارسی
+              %th Esperanto
               %th
               %th
 
@@ -186,6 +194,12 @@
                     %br/
                     %em
                       =word.persian_notes
+                %td
+                  = word.esperanto
+                  -if word.esperanto_notes?
+                    %br/
+                    %em
+                      =word.esperanto_notes
 
                 %td
                   %strong
@@ -195,91 +209,5 @@
                       = link_to 'Edit', edit_word_path(word), class: "not-bold"
                 
                 -if user_signed_in?
-                  %td= link_to 'Destroy', word, :method => :delete, :data => { :confirm => 'Are you sure?' }
-  
-  - if @other_words.present?
-    .language-block-list
-
-      %h3 Other Blocks
-
-      .table-responsive.language-table
-        %table.table
-          %thead
-            %tr
-              %th
-              %th 普通话
-              %th عربي شامي
-              %th Español
-              %th 廣東話
-              %th Kiswahili
-              %th Français
-              %th Pусский
-              %th Italiano
-              %th فارسی
-              %th
-
-          %tbody
-
-            - @other_words.each do |word|
-              %tr
-                %td
-                  %strong
-                    = word.english
-                %td
-                  = word.mandarin
-                  -if word.mandarin_notes?
-                    %em
-                      =word.mandarin_notes
-                %td
-                  = word.arabic
-                  -if word.arabic_notes?
-                    %br/
-                    %em
-                      =word.arabic_notes
-                %td
-                  = word.spanish
-                  -if word.spanish_notes?
-                    %br/
-                    %em
-                      =word.spanish_notes
-                %td
-                  = word.cantonese
-                  -if word.cantonese_notes?
-                    %br/
-                    %em
-                      =word.cantonese_notes
-                %td
-                  = word.swahili
-                  -if word.swahili_notes?
-                    %br/
-                    %em
-                      =word.swahili_notes
-                %td
-                  = word.french
-                  -if word.french_notes?
-                    %br/
-                    %em
-                      =word.french_notes
-                %td
-                  = word.russian
-                  -if word.russian_notes?
-                    %br/
-                    %em
-                      =word.russian_notes
-                %td
-                  = word.italian
-                  -if word.italian_notes?
-                    %br/
-                    %em
-                      =word.italian_notes
-                %td
-                  = word.persian
-                  -if word.persian_notes?
-                    %br/
-                    %em
-                      =word.persian_notes
-
-                -if user_signed_in?
-                  %td= link_to 'Edit', edit_word_path(word)
                   %td= link_to 'Destroy', word, :method => :delete, :data => { :confirm => 'Are you sure?' }
 

@@ -1,0 +1,30 @@
+:ruby
+  data_table = GoogleVisualr::DataTable.new
+
+  data_table.new_column('string', 'Year' )
+  data_table.new_column('number', 'Word Count')
+
+  rows = []
+
+  @posts.each do |year, posts|
+    row = [year.to_s, posts.map{|post| post.body.split.size}.inject(0, :+)]
+    rows << row
+  end
+  
+  data_table.add_rows(rows)
+
+  option = {
+    backgroundColor: {strokeWidth: 0}, 
+    backgroundColor: 'white', 
+    timeline: { 
+      stroke: 0,
+      groupByRowLabel: true, 
+      tooltip: {fontName: 'Helvetica'},
+      barLabelStyle: 
+        { color: 'red', 
+          fontName: 'Helvetica' 
+        },
+      showRowLabels: false
+      }
+    }
+  @column = GoogleVisualr::Interactive::ColumnChart.new(data_table, option)

@@ -15,6 +15,7 @@ class DestinationsController < ApplicationController
     @years = [*2007..Time.now.year].reverse
     @all_trips = Trip.order(:arrived_on)
     @favorites = Favorite.order(:title)
+    @posts = Post.where.not(body: nil).group_by{|p| p.created_at.year}
   end
 
   def index

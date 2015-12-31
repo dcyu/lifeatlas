@@ -51,6 +51,15 @@
         %div{id: "pie-#{year}", class: "pie-chart"}
         -if @pie
           = render_chart(@pie, "pie-#{year}")
+
+  .row
+    %h2 Writing Stats
+    .col-md-11.col-md-offset-1
+      =render 'column'
+      #column
+      -if @column
+        = render_chart(@column, "column")
+
   .row
     %h2 Favorites
     .col-md-11.col-md-offset-1
