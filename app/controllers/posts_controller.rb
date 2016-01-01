@@ -8,7 +8,7 @@ class PostsController < ApplicationController
     date2 = "31/12/2016".to_date
     @word_count = Post.where.not(body: nil).where("created_at >= ? AND created_at <= ?", date1, date2).pluck(:body).map{|post| post.split.size}.inject(0, :+)
 
-    @posts = Post.order(:created_at)
+    @posts = Post.order(:created_at).reverse
     
   end
 
