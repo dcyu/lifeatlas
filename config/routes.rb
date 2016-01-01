@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   resources :block_lists
 
   resources :words do
@@ -8,6 +7,7 @@ Rails.application.routes.draw do
 
   resources :stops
 
+  get 'writing' => 'posts#writing', as: :writing
   get 'auth' => 'aspirations#auth', as: :auth
   get 'contacts' => 'aspirations#contacts', as: :contacts
   

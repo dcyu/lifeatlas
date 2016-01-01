@@ -1,0 +1,59 @@
+.container.show
+  .row
+    %h1.big-title.text-center
+      =number_with_delimiter(100000-@word_count)
+      words
+    %h2.text-center out of 100,000 left to write in 2016
+  
+  -if current_user
+    .row
+      .text-center
+        =link_to 'New Post', new_destination_post_path(Destination.last), class: "btn btn-default"
+
+    
+  .row
+    %h3 Recent Posts
+  -@posts.each do |post|
+    -unless post.private && !current_user
+      .post
+        .row
+          .col-md-12
+            %h4
+              =post.title
+              \|
+              -if post.venue
+                =link_to post.venue.name, venue_path(post.venue)
+                \|
+              -if post.rating
+                %span.hint--bottom{"data-hint" => post.rating_hint}
+                  -post.rating.times do
+                    %span.glyphicon.glyphicon-star{"aria-hidden" => "true"}
+                \|
+              -if post.private
+                %span.red PRIVATE
+                \|
+              =post.created_at.to_formatted_s(:long)
+        
+          -if post.photos.present?
+            -post.photos.each do |photo|
+              .col-md-12
+                = image_tag photo.picture.url
+                %br/
+                %em
+                  =photo.description
+
+        .row
+          .col-md-12
+            %p
+              =simple_format post.body
+              -if current_user
+                %br/
+                %br/
+                =link_to 'Edit', edit_destination_post_path(post.destination, post)
+                \|
+                =link_to "Add Photo", new_destination_post_photo_path(post.destination, post)
+
+            -if post.song.present?
+              %h6
+                Listening to #{post.song}
+

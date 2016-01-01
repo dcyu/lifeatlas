@@ -1,7 +1,16 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy, :write, :update_writing]
-  before_action :set_destination
+  before_action :set_destination, except: :writing
   before_filter :authenticate_user!, except: [:show, :index]
+
+  def writing
+    date1 = "1/1/2016".to_date
+    date2 = "31/12/2016".to_date
+    @word_count = Post.where.not(body: nil).where("created_at >= ? AND created_at <= ?", date1, date2).pluck(:body).map{|post| post.split.size}.inject(0, :+)
+
+    @posts = Post.order(:created_at)
+    
+  end
 
   # GET /posts
   # GET /posts.json
