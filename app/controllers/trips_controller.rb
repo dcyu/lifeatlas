@@ -5,7 +5,7 @@ class TripsController < ApplicationController
   respond_to :html
 
   def index
-    @trips = Trip.order(:arrived_on)
+    @trips = Trip.order(:arrived_on).reverse
     respond_with(@trips)
   end
 

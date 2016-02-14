@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Person:
+  = @meeting.person_id
+%p
+  %b Day:
+  = @meeting.day
+%p
+  %b Location:
+  = @meeting.location
+
+= link_to 'Edit', edit_meeting_path(@meeting)
+\|
+= link_to 'Back', meetings_path

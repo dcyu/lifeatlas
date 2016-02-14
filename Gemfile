@@ -1,3 +1,5 @@
+ruby "2.2.4"
+
 source 'https://rubygems.org'
 
 
@@ -71,6 +73,8 @@ gem 'twitter'
 gem 'words_counted'
 
 gem 'httparty'
+
+gem 'asana'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

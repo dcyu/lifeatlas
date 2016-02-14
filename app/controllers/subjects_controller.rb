@@ -2,6 +2,22 @@ class SubjectsController < ApplicationController
   before_action :set_subject, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, except: [:show, :index]
 
+  require "JSON"
+  require "net/https"
+
+  def work
+    client = Asana::Client.new do |c|
+      c.authentication :access_token, ENV['ASANA_ACCESS_TOKEN']
+    end
+    
+    workspaces = client.workspaces.find_all.to_a
+    work_workspace = workspaces.first
+    personal_workspace = workspaces.last
+    @work_tasks = client.tasks.find_all(assignee: "me", workspace: work_workspace.id, completed_since: "now")
+    @personal_tasks = client.tasks.find_all(assignee: "me", workspace: personal_workspace.id, completed_since: "now")
+
+  end
+
   # GET /subjects
   # GET /subjects.json
   def index

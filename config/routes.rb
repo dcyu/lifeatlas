@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :meetings
+  resources :people
   resources :block_lists
 
   resources :words do
@@ -10,6 +12,7 @@ Rails.application.routes.draw do
   get 'writing' => 'posts#writing', as: :writing
   get 'auth' => 'aspirations#auth', as: :auth
   get 'contacts' => 'aspirations#contacts', as: :contacts
+  get 'work' => 'subjects#work', as: :work
   
   get 'mandarin' => 'words#mandarin', as: :mandarin
   get 'swahili' => 'words#swahili', as: :swahili
