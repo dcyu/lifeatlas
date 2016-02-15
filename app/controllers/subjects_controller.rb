@@ -2,9 +2,6 @@ class SubjectsController < ApplicationController
   before_action :set_subject, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, except: [:show, :index]
 
-  require "JSON"
-  require "net/https"
-
   def work
     client = Asana::Client.new do |c|
       c.authentication :access_token, ENV['ASANA_ACCESS_TOKEN']
