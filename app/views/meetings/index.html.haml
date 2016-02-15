@@ -2,22 +2,30 @@
   .row
     %h1 Meetings
 
-  - @meetings.each do |meeting|
+  .row
+    = link_to 'Add Meeting', new_meeting_path, class: "btn btn-primary"
+    = link_to 'Add Person', new_person_path, class: "btn btn-primary"
+  %br/
+  %br/
+  %br/
+
+  - @meetings.each do |meeting_day|
     .row
-      .col-md-1
-      .col-md-11
+      .col-md-11.col-md-offset-1
         %h3
-          =link_to meeting.person.full_name, meeting.person
-          \|
-          = meeting.day.to_formatted_s(:long) 
-          \|
-          = meeting.location
-
-        = link_to 'Edit', edit_meeting_path(meeting)
-        = link_to 'Destroy', meeting, :method => :delete, :data => { :confirm => 'Are you sure?' }
+          =meeting_day.first.to_formatted_s(:long) 
+      -meeting_day.last.each do |meeting|
+        .col-md-10.col-md-offset-2
+          %h4
+            =link_to meeting.person.full_name, meeting.person
+            \|
+            = meeting.location
+          
+          .pull-right
+            = link_to 'Edit', edit_meeting_path(meeting)
+            = link_to 'Destroy', meeting, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 
     %br
     %br
 
-  = link_to 'New Meeting', new_meeting_path

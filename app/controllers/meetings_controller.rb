@@ -6,7 +6,7 @@ class MeetingsController < ApplicationController
   # GET /meetings
   # GET /meetings.json
   def index
-    @meetings = Meeting.order(:day).reverse
+    @meetings = Meeting.order(:day).reverse.group_by{|m| m.day}
   end
 
   # GET /meetings/1
