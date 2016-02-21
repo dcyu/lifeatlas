@@ -14,7 +14,7 @@
     = f.date_select :left_on
   .form-group
     = f.label :destination_id
-    =f.collection_select :destination_id, Destination.order(:name), :id, :name
+    =f.collection_select :destination_id, Destination.order(:name), :id, :name, {selected: params[:selected_destination]}, {class: "form-control"}
   .row
     .col-md-4
       = f.submit 'Save', class: "btn btn-default"

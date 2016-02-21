@@ -72,6 +72,10 @@
               -if current_user
                 \|
                 =link_to "Edit", edit_trip_path(trip)
+          
+          -if current_user
+            =link_to "Add New Trip", new_trip_path(selected_destination: @destination.id), class: "btn btn-primary"
+
         .col-md-10.col-md-offset-2.top-buffer
           %h4 
             All Venues
