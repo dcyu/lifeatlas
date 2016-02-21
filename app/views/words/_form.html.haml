@@ -7,36 +7,39 @@
           %li= msg
 
   .form-group
-    = f.text_field :english, placeholder: "English"
+    = f.text_field :english, placeholder: "English", class: "form-control"
   .form-group
-    = f.text_field :mandarin, placeholder: "Mandarin"
-    = f.text_field :mandarin_notes, placeholder: "Notes"
+    = f.text_field :mandarin, placeholder: "Mandarin", class: "form-control"
+    = f.text_field :mandarin_notes, placeholder: "Notes", class: "form-control"
   .form-group
-    = f.text_field :arabic, placeholder: "Levantine Arabic"
-    = f.text_field :arabic_notes, placeholder: "Notes"
+    = f.text_field :arabic, placeholder: "Levantine Arabic", class: "form-control"
+    = f.text_field :arabic_notes, placeholder: "Notes", class: "form-control"
   .form-group
-    = f.text_field :spanish, placeholder: "Spanish"
-    = f.text_field :spanish_notes, placeholder: "Notes"
+    = f.text_field :spanish, placeholder: "Spanish", class: "form-control"
+    = f.text_field :spanish_notes, placeholder: "Notes", class: "form-control"
   .form-group
-    = f.text_field :cantonese, placeholder: "Cantonese"
-    = f.text_field :cantonese_notes, placeholder: "Notes"
+    = f.text_field :cantonese, placeholder: "Cantonese", class: "form-control"
+    = f.text_field :cantonese_notes, placeholder: "Notes", class: "form-control"
   .form-group
-    = f.text_field :swahili, placeholder: "Swahili"
-    = f.text_field :swahili_notes, placeholder: "Notes"
+    = f.text_field :swahili, placeholder: "Swahili", class: "form-control"
+    = f.text_field :swahili_notes, placeholder: "Notes", class: "form-control"
   .form-group
-    = f.text_field :french, placeholder: "French"
-    = f.text_field :french_notes, placeholder: "Notes"
+    = f.text_field :french, placeholder: "French", class: "form-control"
+    = f.text_field :french_notes, placeholder: "Notes", class: "form-control"
   .form-group
-    = f.text_field :russian, placeholder: "Russian"
-    = f.text_field :russian_notes, placeholder: "Notes"
+    = f.text_field :russian, placeholder: "Russian", class: "form-control"
+    = f.text_field :russian_notes, placeholder: "Notes", class: "form-control"
   .form-group
-    = f.text_field :italian, placeholder: "Italian"
-    = f.text_field :italian_notes, placeholder: "Notes"
+    = f.text_field :italian, placeholder: "Italian", class: "form-control"
+    = f.text_field :italian_notes, placeholder: "Notes", class: "form-control"
   .form-group
-    = f.text_field :persian, placeholder: "Persian"
-    = f.text_field :persian_notes, placeholder: "Notes"
+    = f.text_field :persian, placeholder: "Persian", class: "form-control"
+    = f.text_field :persian_notes, placeholder: "Notes", class: "form-control"
   .form-group
-    =f.collection_select :block_list_id, BlockList.order(:title), :id, :title, include_blank: true
+    = f.label "Category"
+    = f.collection_select :block_list_id, BlockList.order(:title), :id, :title, {}, {class: "form-control"}
+    /= f.collection_select :company_id, Company.order(:name), :id, :name, {}, {class: "form-control"}
+
   .row
     .col-md-4
-      = f.submit 'Save'
+      = f.submit 'Save', class: "btn btn-primary"
