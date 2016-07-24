@@ -83,20 +83,6 @@
             .small-note
               Italian
 
-      .col-md-2
-        %h4
-          %a{:href => "/persian"}
-            فارسی
-            .small-note
-              Persian
-
-      .col-md-2
-        %h4
-          %a{:href => "/esperanto"}
-            Esperanto
-            .small-note
-              Esperanto
-
   %br/
   %h4
     Sections
@@ -133,8 +119,6 @@
               %th Français
               %th Pусский
               %th Italiano
-              %th فارسی
-              %th Esperanto
               %th
               %th
 
@@ -195,19 +179,6 @@
                     %br/
                     %em
                       =word.italian_notes
-
-                %td
-                  = word.persian
-                  -if word.persian_notes?
-                    %br/
-                    %em
-                      =word.persian_notes
-                %td
-                  = word.esperanto
-                  -if word.esperanto_notes?
-                    %br/
-                    %em
-                      =word.esperanto_notes
 
                 %td
                   %strong
