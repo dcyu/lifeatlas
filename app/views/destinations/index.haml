@@ -1,29 +1,31 @@
 .container.content-section
   %h1 All Destinations
-  
-  .row
-    .col-md-3.col-md-offset-1
-      %h4
-        %u
-          Name
-    .col-md-7.col-md-offset-1
-      %h4
-        %u
-          Last Visited
 
-  .row
-    .col-md-8
-      - @destinations.each do |destination|
-        .row
-          .col-md-5.col-md-offset-1
-            %h4
+
+  -if user_signed_in?
+    =link_to "Add Destination", new_destination_path, class: "btn btn-primary"
+    %br
+    %br
+
+  .table-responsive
+    %table.table
+      %thead
+        %tr
+          %th.col-md-4
+            Name
+          %th.col-md-3
+            Last Visited
+          %th.col-md-2
+            Number of Visits
+      %tbody
+        - @destinations.each do |destination|
+          %tr
+            %td
               =link_to destination.name, destination
-          .col-md-5.col-md-offset-1
-            %h4
+            %td
               -if destination.trips.count > 0
                 =destination.trips.order(:left_on).last.left_on.to_formatted_s(:long)
               -else
                 Not Yet Visited
-
-    -if user_signed_in?
-      =link_to "Add Destination", new_destination_path, class: "btn btn-primary"
+            %td
+              =destination.trips.count

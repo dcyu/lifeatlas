@@ -1,5 +1,5 @@
 %h1 Contacts
 %p
   -@contacts.each do |contact|
-    ="#{contact.family_name},#{contact.given_name},#{contact.primary_email}"
+    ="#{contact.family_name},#{contact.given_name},#{contact.primary_email}, #{contact.updated}"
     %br/
