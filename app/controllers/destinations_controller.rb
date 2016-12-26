@@ -25,13 +25,6 @@ class DestinationsController < ApplicationController
   # GET /destinations/1
   # GET /destinations/1.json
   def show
-    oauth_access_token = ENV['FACEBOOK_GRAPH_TOKEN']
-    @graph = Koala::Facebook::API.new(oauth_access_token)
-    @friends = @graph.get_connections("me", "friends")
-
-
-
-
     @destinations = [@destination]
     @trips = @destination.trips.order(:arrived_on).reverse
     @venues = @destination.venues.order(:name)
