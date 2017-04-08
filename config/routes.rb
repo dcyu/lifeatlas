@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'writing' => 'posts#writing', as: :writing
   get 'auth' => 'aspirations#auth', as: :auth
   get 'contacts' => 'aspirations#contacts', as: :contacts
+  get 'flight_template' => 'aspirations#flight_template', as: :flight_template
   get 'work' => 'subjects#work', as: :work
   
   get 'mandarin' => 'words#mandarin', as: :mandarin

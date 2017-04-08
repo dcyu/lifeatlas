@@ -124,7 +124,7 @@
 
           %tbody
 
-            - block_list.words.each do |word|
+            - block_list.words.sort_by(&:english).each do |word|
               %tr
                 %td
                   %strong
