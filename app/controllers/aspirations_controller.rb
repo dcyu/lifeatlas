@@ -8,20 +8,37 @@ class AspirationsController < ApplicationController
   require 'openssl'
   OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
-  def auth
-    client_id = '740792707106-isg69chglnkodi0hinm1cv1qpalbaqir.apps.googleusercontent.com'
-    client_secret = 'la-ZENpjFQi6q32jc0bARgL3'
-    redirect_uri = 'http://localhost:3000/contacts'
-    client = OAuth2::Client.new(client_id, client_secret, 
-               site: 'https://accounts.google.com',
-               token_url: '/o/oauth2/token',
-               authorize_url: '/o/oauth2/auth')
-    url = client.auth_code.authorize_url(scope: "https://www.google.com/m8/feeds",
-               redirect_uri: redirect_uri)
+  # def auth
+  #   client_id = '740792707106-isg69chglnkodi0hinm1cv1qpalbaqir.apps.googleusercontent.com'
+  #   client_secret = 'la-ZENpjFQi6q32jc0bARgL3'
+  #   redirect_uri = 'http://localhost:3000/contacts'
+  #   client = OAuth2::Client.new(client_id, client_secret, 
+  #              site: 'https://accounts.google.com',
+  #              token_url: '/o/oauth2/token',
+  #              authorize_url: '/o/oauth2/auth')
+  #   url = client.auth_code.authorize_url(scope: "https://www.google.com/m8/feeds",
+  #              redirect_uri: redirect_uri)
 
-    redirect_to url
+  #   redirect_to url
 
-  end
+  # end
+
+  
+  # def contacts
+  #   client_id = '740792707106-isg69chglnkodi0hinm1cv1qpalbaqir.apps.googleusercontent.com'
+  #   client_secret = 'la-ZENpjFQi6q32jc0bARgL3'
+  #   redirect_uri = 'http://localhost:3000/contacts'
+  #   client = OAuth2::Client.new(client_id, client_secret, 
+  #              site: 'https://accounts.google.com',
+  #              token_url: '/o/oauth2/token',
+  #              authorize_url: '/o/oauth2/auth')
+
+  #   code = params[:code]
+  #   token = client.auth_code.get_token(code, :redirect_uri => redirect_uri)
+  #   user = GoogleContactsApi::User.new(token)
+  #   @contacts = user.contacts.sort_by{|contact| contact.updated}.reverse
+
+  # end
 
   def flight_template
     @origin_city = "Nairobi"
@@ -64,21 +81,6 @@ class AspirationsController < ApplicationController
     render layout: false
   end
 
-  def contacts
-    client_id = '740792707106-isg69chglnkodi0hinm1cv1qpalbaqir.apps.googleusercontent.com'
-    client_secret = 'la-ZENpjFQi6q32jc0bARgL3'
-    redirect_uri = 'http://localhost:3000/contacts'
-    client = OAuth2::Client.new(client_id, client_secret, 
-               site: 'https://accounts.google.com',
-               token_url: '/o/oauth2/token',
-               authorize_url: '/o/oauth2/auth')
-
-    code = params[:code]
-    token = client.auth_code.get_token(code, :redirect_uri => redirect_uri)
-    user = GoogleContactsApi::User.new(token)
-    @contacts = user.contacts.sort_by{|contact| contact.updated}.reverse
-
-  end
 
 
   def index
