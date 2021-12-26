@@ -50,7 +50,7 @@ gem 'pg'
 gem 'haml'
 gem 'haml-rails'
 
-gem 'figaro'
+gem 'figaro', '~> 1.2.0'
 
 gem "geocoder"
 
@@ -60,7 +60,6 @@ gem 'bootstrap-glyphicons'
 
 gem 'google_places'
 
-gem 'paperclip'
 gem 'aws-sdk'
 
 gem "google_visualr"
@@ -73,8 +72,6 @@ gem 'twitter'
 gem 'words_counted'
 
 gem 'httparty'
-
-gem 'asana'
 
 gem "koala"
 
