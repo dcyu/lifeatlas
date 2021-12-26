@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.1'
+gem 'rails', '4.2.11.3'
 # Use sqlite3 as the database for Active Record
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
@@ -22,23 +22,7 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
-# gem 'did_you_mean', '~> 1.6.1'
-# gem 'pathname'
-# gem 'etc', '~> 1.3.0'
-# gem 'fileutils', '~> 1.6.0'
-# gem 'timeout', '~> 0.2.0'
-# gem 'io-wait', '~> 0.2.1'
-# gem 'net-http', '~> 0.2.0'
-# gem 'zlib', '~> 2.1.1'
-# gem 'ipaddr', '~> 1.2.2'
-# gem 'openssl', '~> 2.2.1'
-# gem 'digest', '~> 3.0.0'
-# gem 'stringio', '~> 3.0.1'
-# gem 'io-nonblock', '~> 0.1.0'
-# gem 'strscan', '~> 3.0.1'
-# gem 'set', '~> 1.0.1'
-# gem 'tsort', '~> 0.1.0'
-# gem 'forwardable', '~> 1.3.2'
+
 
 gem 'bigdecimal', '1.3.5'
 
@@ -50,7 +34,7 @@ group :development, :test do
   gem 'quiet_assets'
   gem 'binding_of_caller'
   gem 'meta_request'
-  gem 'rspec-rails', '~> 3.0.0'
+  gem 'rspec-rails', '~> 3.6'
   gem 'factory_girl_rails', '~> 4.2.1'
 end
 
@@ -66,7 +50,7 @@ group :production do
   gem 'rails_12factor'
 end
 
-gem 'pg'
+gem 'pg', '~> 0.20'
 
 gem 'haml'
 gem 'haml-rails'
@@ -95,6 +79,8 @@ gem 'words_counted'
 gem 'httparty'
 
 gem "koala"
+
+gem "paperclip"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

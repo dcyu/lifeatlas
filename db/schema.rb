@@ -20,11 +20,11 @@ ActiveRecord::Schema.define(version: 20160214015308) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "title",       limit: 255
+    t.string   "title"
   end
 
   create_table "block_lists", force: :cascade do |t|
-    t.string   "title",           limit: 255
+    t.string   "title"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -41,24 +41,24 @@ ActiveRecord::Schema.define(version: 20160214015308) do
   end
 
   create_table "candidates", force: :cascade do |t|
-    t.string   "name",         limit: 255
-    t.string   "twitter_name", limit: 255
+    t.string   "name"
+    t.string   "twitter_name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "destinations", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.string   "lng",        limit: 255
-    t.string   "lat",        limit: 255
+    t.string   "name"
+    t.string   "lng"
+    t.string   "lat"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "visited"
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.string   "title",      limit: 255
-    t.string   "answer",     limit: 255
+    t.string   "title"
+    t.string   "answer"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -81,9 +81,9 @@ ActiveRecord::Schema.define(version: 20160214015308) do
   end
 
   create_table "photos", force: :cascade do |t|
-    t.string   "picture_file_name",    limit: 255
-    t.string   "picture_content_type", limit: 255
-    t.integer  "picture_file_size"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size",    limit: 8
     t.datetime "picture_updated_at"
     t.integer  "post_id"
     t.text     "description"
@@ -92,14 +92,14 @@ ActiveRecord::Schema.define(version: 20160214015308) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.string   "title",          limit: 255
+    t.string   "title"
     t.text     "body"
     t.integer  "destination_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "venue_id"
     t.integer  "rating"
-    t.string   "song",           limit: 255
+    t.string   "song"
     t.boolean  "private"
     t.integer  "subject_id"
   end
@@ -112,7 +112,7 @@ ActiveRecord::Schema.define(version: 20160214015308) do
   end
 
   create_table "subjects", force: :cascade do |t|
-    t.string "title", limit: 255
+    t.string "title"
   end
 
   create_table "trips", force: :cascade do |t|
@@ -129,20 +129,20 @@ ActiveRecord::Schema.define(version: 20160214015308) do
     t.datetime "updated_at"
     t.integer  "candidate_id"
     t.datetime "posted_time"
-    t.string   "tweet_id",     limit: 255
+    t.string   "tweet_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  limit: 255, default: "", null: false
-    t.string   "encrypted_password",     limit: 255, default: "", null: false
-    t.string   "reset_password_token",   limit: 255
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                      default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip",     limit: 255
-    t.string   "last_sign_in_ip",        limit: 255
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -151,23 +151,23 @@ ActiveRecord::Schema.define(version: 20160214015308) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "venues", force: :cascade do |t|
-    t.string   "name",           limit: 255
+    t.string   "name"
     t.integer  "destination_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "lat",            limit: 255
-    t.string   "lng",            limit: 255
+    t.string   "lat"
+    t.string   "lng"
   end
 
   create_table "words", force: :cascade do |t|
-    t.string   "english",         limit: 255
-    t.string   "mandarin",        limit: 255
-    t.string   "arabic",          limit: 255
-    t.string   "spanish",         limit: 255
-    t.string   "cantonese",       limit: 255
-    t.string   "swahili",         limit: 255
-    t.string   "french",          limit: 255
-    t.string   "russian",         limit: 255
+    t.string   "english"
+    t.string   "mandarin"
+    t.string   "arabic"
+    t.string   "spanish"
+    t.string   "cantonese"
+    t.string   "swahili"
+    t.string   "french"
+    t.string   "russian"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "mandarin_notes"
@@ -178,7 +178,7 @@ ActiveRecord::Schema.define(version: 20160214015308) do
     t.text     "french_notes"
     t.text     "russian_notes"
     t.integer  "block_list_id"
-    t.string   "italian",         limit: 255
+    t.string   "italian"
     t.text     "italian_notes"
     t.string   "persian"
     t.text     "persian_notes"
