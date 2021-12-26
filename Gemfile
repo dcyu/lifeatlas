@@ -1,4 +1,4 @@
-ruby "3.0.3"
+ruby "2.6.6"
 
 source 'https://rubygems.org'
 
@@ -21,6 +21,27 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
+
+# gem 'did_you_mean', '~> 1.6.1'
+# gem 'pathname'
+# gem 'etc', '~> 1.3.0'
+# gem 'fileutils', '~> 1.6.0'
+# gem 'timeout', '~> 0.2.0'
+# gem 'io-wait', '~> 0.2.1'
+# gem 'net-http', '~> 0.2.0'
+# gem 'zlib', '~> 2.1.1'
+# gem 'ipaddr', '~> 1.2.2'
+# gem 'openssl', '~> 2.2.1'
+# gem 'digest', '~> 3.0.0'
+# gem 'stringio', '~> 3.0.1'
+# gem 'io-nonblock', '~> 0.1.0'
+# gem 'strscan', '~> 3.0.1'
+# gem 'set', '~> 1.0.1'
+# gem 'tsort', '~> 0.1.0'
+# gem 'forwardable', '~> 1.3.2'
+
+gem 'bigdecimal', '1.3.5'
+
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 
@@ -66,7 +87,7 @@ gem "google_visualr"
 
 
 gem 'oauth2'
-gem 'google_contacts_api'
+# gem 'google_contacts_api'
 
 gem 'twitter'
 gem 'words_counted'
