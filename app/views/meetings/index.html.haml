@@ -13,7 +13,10 @@
     .row
       .col-md-11.col-md-offset-1
         %h3
-          =meeting_day.first.to_formatted_s(:long) 
+          - if meeting_day.first
+            = meeting_day.first.to_formatted_s(:long)
+          - else
+            No Date
       -meeting_day.last.each do |meeting|
         .col-md-10.col-md-offset-2
           %h4
