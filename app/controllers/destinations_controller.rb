@@ -61,7 +61,7 @@ class DestinationsController < ApplicationController
 
     respond_to do |format|
       if @destination.save
-        format.html { redirect_to destinations_path, notice: 'Destination was successfully created.' }
+        format.html { redirect_to @destination, notice: 'Destination was successfully created.' }
         format.json { render :show, status: :created, location: @destination }
       else
         format.html { render :new }
