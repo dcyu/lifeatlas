@@ -1,11 +1,8 @@
 development:
-  adapter: postgresql
-  encoding: unicode
-  database: lifeatlas_development
-  host: localhost
-  username: ubuntu
+  adapter: sqlite3
+  database: db/development.sqlite3
   pool: 5
-  port: 5432
+  timeout: 5000
 
 test:
   adapter: sqlite3
