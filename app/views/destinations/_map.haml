@@ -16,7 +16,9 @@
     zoom: 3,
 
   // The latitude and longitude to center the map (always required)
-  center: new google.maps.LatLng(#{@destinations.last.lat}, #{@destinations.last.lng}),
+  - lat_center = @destinations.last&.lat || 0
+  - lng_center = @destinations.last&.lng || 0
+  center: new google.maps.LatLng(#{lat_center}, #{lng_center}),
 
   // Disables the default Google Maps UI components
   disableDefaultUI: true,

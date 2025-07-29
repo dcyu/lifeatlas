@@ -59,12 +59,15 @@
       
       .col-md-1
       .col-md-5
+        - ordered_tweets = candidate.tweets.order("posted_time desc").limit(200).sort_by{|tweet| tweet.posted_time}
         %h4
-          -ordered_tweets = candidate.tweets.order("posted_time desc").limit(200).sort_by{|tweet| tweet.posted_time}
-          Tweets from
-          =ordered_tweets.first.posted_time.to_formatted_s(:long_ordinal)
-          to
-          =ordered_tweets.last.posted_time.to_formatted_s(:long_ordinal)
+          - if ordered_tweets.present?
+            Tweets from
+            = ordered_tweets.first.posted_time.to_formatted_s(:long_ordinal)
+            to
+            = ordered_tweets.last.posted_time.to_formatted_s(:long_ordinal)
+          - else
+            No tweets yet
 
         %table.table.word-table
           %thead
