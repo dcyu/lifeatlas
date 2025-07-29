@@ -11,7 +11,7 @@ class AspirationsController < ApplicationController
   # def auth
   #   client_id = '740792707106-isg69chglnkodi0hinm1cv1qpalbaqir.apps.googleusercontent.com'
   #   client_secret = 'la-ZENpjFQi6q32jc0bARgL3'
-  #   redirect_uri = 'http://localhost:3000/contacts'
+  #   redirect_uri = 'https://localhost:3000/contacts'
   #   client = OAuth2::Client.new(client_id, client_secret, 
   #              site: 'https://accounts.google.com',
   #              token_url: '/o/oauth2/token',
@@ -27,7 +27,7 @@ class AspirationsController < ApplicationController
   # def contacts
   #   client_id = '740792707106-isg69chglnkodi0hinm1cv1qpalbaqir.apps.googleusercontent.com'
   #   client_secret = 'la-ZENpjFQi6q32jc0bARgL3'
-  #   redirect_uri = 'http://localhost:3000/contacts'
+  #   redirect_uri = 'https://localhost:3000/contacts'
   #   client = OAuth2::Client.new(client_id, client_secret, 
   #              site: 'https://accounts.google.com',
   #              token_url: '/o/oauth2/token',
