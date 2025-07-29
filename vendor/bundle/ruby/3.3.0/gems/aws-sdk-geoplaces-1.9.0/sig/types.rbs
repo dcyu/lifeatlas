@@ -1,0 +1,725 @@
+# WARNING ABOUT GENERATED CODE
+#
+# This file is generated. See the contributing guide for more information:
+# https://github.com/aws/aws-sdk-ruby/blob/version-3/CONTRIBUTING.md
+#
+# WARNING ABOUT GENERATED CODE
+
+module Aws::GeoPlaces
+  module Types
+
+    class AccessDeniedException
+      attr_accessor message: ::String
+      SENSITIVE: []
+    end
+
+    class AccessPoint
+      attr_accessor position: ::Array[::Float]
+      SENSITIVE: [:position]
+    end
+
+    class AccessRestriction
+      attr_accessor restricted: bool
+      attr_accessor categories: ::Array[Types::Category]
+      SENSITIVE: [:restricted]
+    end
+
+    class Address
+      attr_accessor label: ::String
+      attr_accessor country: Types::Country
+      attr_accessor region: Types::Region
+      attr_accessor sub_region: Types::SubRegion
+      attr_accessor locality: ::String
+      attr_accessor district: ::String
+      attr_accessor sub_district: ::String
+      attr_accessor postal_code: ::String
+      attr_accessor block: ::String
+      attr_accessor sub_block: ::String
+      attr_accessor intersection: ::Array[::String]
+      attr_accessor street: ::String
+      attr_accessor street_components: ::Array[Types::StreetComponents]
+      attr_accessor address_number: ::String
+      attr_accessor building: ::String
+      attr_accessor secondary_address_components: ::Array[Types::SecondaryAddressComponent]
+      SENSITIVE: [:label, :locality, :district, :sub_district, :postal_code, :block, :sub_block, :street, :address_number, :building]
+    end
+
+    class AddressComponentMatchScores
+      attr_accessor country: ::Float
+      attr_accessor region: ::Float
+      attr_accessor sub_region: ::Float
+      attr_accessor locality: ::Float
+      attr_accessor district: ::Float
+      attr_accessor sub_district: ::Float
+      attr_accessor postal_code: ::Float
+      attr_accessor block: ::Float
+      attr_accessor sub_block: ::Float
+      attr_accessor intersection: ::Array[::Float]
+      attr_accessor address_number: ::Float
+      attr_accessor building: ::Float
+      attr_accessor secondary_address_components: ::Array[Types::SecondaryAddressComponentMatchScore]
+      SENSITIVE: []
+    end
+
+    class AddressComponentPhonemes
+      attr_accessor country: ::Array[Types::PhonemeTranscription]
+      attr_accessor region: ::Array[Types::PhonemeTranscription]
+      attr_accessor sub_region: ::Array[Types::PhonemeTranscription]
+      attr_accessor locality: ::Array[Types::PhonemeTranscription]
+      attr_accessor district: ::Array[Types::PhonemeTranscription]
+      attr_accessor sub_district: ::Array[Types::PhonemeTranscription]
+      attr_accessor block: ::Array[Types::PhonemeTranscription]
+      attr_accessor sub_block: ::Array[Types::PhonemeTranscription]
+      attr_accessor street: ::Array[Types::PhonemeTranscription]
+      SENSITIVE: []
+    end
+
+    class AutocompleteAddressHighlights
+      attr_accessor label: ::Array[Types::Highlight]
+      attr_accessor country: Types::CountryHighlights
+      attr_accessor region: Types::RegionHighlights
+      attr_accessor sub_region: Types::SubRegionHighlights
+      attr_accessor locality: ::Array[Types::Highlight]
+      attr_accessor district: ::Array[Types::Highlight]
+      attr_accessor sub_district: ::Array[Types::Highlight]
+      attr_accessor street: ::Array[Types::Highlight]
+      attr_accessor block: ::Array[Types::Highlight]
+      attr_accessor sub_block: ::Array[Types::Highlight]
+      attr_accessor intersection: ::Array[::Array[Types::Highlight]]
+      attr_accessor postal_code: ::Array[Types::Highlight]
+      attr_accessor address_number: ::Array[Types::Highlight]
+      attr_accessor building: ::Array[Types::Highlight]
+      SENSITIVE: []
+    end
+
+    class AutocompleteFilter
+      attr_accessor bounding_box: ::Array[::Float]
+      attr_accessor circle: Types::FilterCircle
+      attr_accessor include_countries: ::Array[::String]
+      attr_accessor include_place_types: ::Array[("Locality" | "PostalCode")]
+      SENSITIVE: [:bounding_box, :circle]
+    end
+
+    class AutocompleteHighlights
+      attr_accessor title: ::Array[Types::Highlight]
+      attr_accessor address: Types::AutocompleteAddressHighlights
+      SENSITIVE: []
+    end
+
+    class AutocompleteRequest
+      attr_accessor query_text: ::String
+      attr_accessor max_results: ::Integer
+      attr_accessor bias_position: ::Array[::Float]
+      attr_accessor filter: Types::AutocompleteFilter
+      attr_accessor postal_code_mode: ("MergeAllSpannedLocalities" | "EnumerateSpannedLocalities")
+      attr_accessor additional_features: ::Array[("Core")]
+      attr_accessor language: ::String
+      attr_accessor political_view: ::String
+      attr_accessor intended_use: ("SingleUse")
+      attr_accessor key: ::String
+      SENSITIVE: [:query_text, :bias_position, :political_view, :key]
+    end
+
+    class AutocompleteResponse
+      attr_accessor pricing_bucket: ::String
+      attr_accessor result_items: ::Array[Types::AutocompleteResultItem]
+      SENSITIVE: []
+    end
+
+    class AutocompleteResultItem
+      attr_accessor place_id: ::String
+      attr_accessor place_type: ("Country" | "Region" | "SubRegion" | "Locality" | "District" | "SubDistrict" | "PostalCode" | "Block" | "SubBlock" | "Intersection" | "Street" | "PointOfInterest" | "PointAddress" | "InterpolatedAddress" | "SecondaryAddress")
+      attr_accessor title: ::String
+      attr_accessor address: Types::Address
+      attr_accessor distance: ::Integer
+      attr_accessor language: ::String
+      attr_accessor political_view: ::String
+      attr_accessor highlights: Types::AutocompleteHighlights
+      SENSITIVE: [:place_id, :place_type, :title, :distance, :political_view]
+    end
+
+    class BusinessChain
+      attr_accessor name: ::String
+      attr_accessor id: ::String
+      SENSITIVE: [:name, :id]
+    end
+
+    class Category
+      attr_accessor id: ::String
+      attr_accessor name: ::String
+      attr_accessor localized_name: ::String
+      attr_accessor primary: bool
+      SENSITIVE: [:id, :name, :localized_name, :primary]
+    end
+
+    class ComponentMatchScores
+      attr_accessor title: ::Float
+      attr_accessor address: Types::AddressComponentMatchScores
+      SENSITIVE: []
+    end
+
+    class ContactDetails
+      attr_accessor label: ::String
+      attr_accessor value: ::String
+      attr_accessor categories: ::Array[Types::Category]
+      SENSITIVE: [:label, :value]
+    end
+
+    class Contacts
+      attr_accessor phones: ::Array[Types::ContactDetails]
+      attr_accessor faxes: ::Array[Types::ContactDetails]
+      attr_accessor websites: ::Array[Types::ContactDetails]
+      attr_accessor emails: ::Array[Types::ContactDetails]
+      SENSITIVE: []
+    end
+
+    class Country
+      attr_accessor code_2: ::String
+      attr_accessor code_3: ::String
+      attr_accessor name: ::String
+      SENSITIVE: [:code_2, :code_3, :name]
+    end
+
+    class CountryHighlights
+      attr_accessor code: ::Array[Types::Highlight]
+      attr_accessor name: ::Array[Types::Highlight]
+      SENSITIVE: []
+    end
+
+    class FilterCircle
+      attr_accessor center: ::Array[::Float]
+      attr_accessor radius: ::Integer
+      SENSITIVE: [:center, :radius]
+    end
+
+    class FoodType
+      attr_accessor localized_name: ::String
+      attr_accessor id: ::String
+      attr_accessor primary: bool
+      SENSITIVE: [:localized_name, :id, :primary]
+    end
+
+    class GeocodeFilter
+      attr_accessor include_countries: ::Array[::String]
+      attr_accessor include_place_types: ::Array[("Locality" | "PostalCode" | "Intersection" | "Street" | "PointAddress" | "InterpolatedAddress")]
+      SENSITIVE: []
+    end
+
+    class GeocodeParsedQuery
+      attr_accessor title: ::Array[Types::ParsedQueryComponent]
+      attr_accessor address: Types::GeocodeParsedQueryAddressComponents
+      SENSITIVE: []
+    end
+
+    class GeocodeParsedQueryAddressComponents
+      attr_accessor country: ::Array[Types::ParsedQueryComponent]
+      attr_accessor region: ::Array[Types::ParsedQueryComponent]
+      attr_accessor sub_region: ::Array[Types::ParsedQueryComponent]
+      attr_accessor locality: ::Array[Types::ParsedQueryComponent]
+      attr_accessor district: ::Array[Types::ParsedQueryComponent]
+      attr_accessor sub_district: ::Array[Types::ParsedQueryComponent]
+      attr_accessor postal_code: ::Array[Types::ParsedQueryComponent]
+      attr_accessor block: ::Array[Types::ParsedQueryComponent]
+      attr_accessor sub_block: ::Array[Types::ParsedQueryComponent]
+      attr_accessor street: ::Array[Types::ParsedQueryComponent]
+      attr_accessor address_number: ::Array[Types::ParsedQueryComponent]
+      attr_accessor building: ::Array[Types::ParsedQueryComponent]
+      attr_accessor secondary_address_components: ::Array[Types::ParsedQuerySecondaryAddressComponent]
+      SENSITIVE: []
+    end
+
+    class GeocodeQueryComponents
+      attr_accessor country: ::String
+      attr_accessor region: ::String
+      attr_accessor sub_region: ::String
+      attr_accessor locality: ::String
+      attr_accessor district: ::String
+      attr_accessor street: ::String
+      attr_accessor address_number: ::String
+      attr_accessor postal_code: ::String
+      SENSITIVE: [:country, :region, :sub_region, :locality, :district, :street, :address_number, :postal_code]
+    end
+
+    class GeocodeRequest
+      attr_accessor query_text: ::String
+      attr_accessor query_components: Types::GeocodeQueryComponents
+      attr_accessor max_results: ::Integer
+      attr_accessor bias_position: ::Array[::Float]
+      attr_accessor filter: Types::GeocodeFilter
+      attr_accessor additional_features: ::Array[("TimeZone" | "Access" | "SecondaryAddresses" | "Intersections")]
+      attr_accessor language: ::String
+      attr_accessor political_view: ::String
+      attr_accessor intended_use: ("SingleUse" | "Storage")
+      attr_accessor key: ::String
+      SENSITIVE: [:query_text, :bias_position, :political_view, :key]
+    end
+
+    class GeocodeResponse
+      attr_accessor pricing_bucket: ::String
+      attr_accessor result_items: ::Array[Types::GeocodeResultItem]
+      SENSITIVE: []
+    end
+
+    class GeocodeResultItem
+      attr_accessor place_id: ::String
+      attr_accessor place_type: ("Country" | "Region" | "SubRegion" | "Locality" | "District" | "SubDistrict" | "PostalCode" | "Block" | "SubBlock" | "Intersection" | "Street" | "PointOfInterest" | "PointAddress" | "InterpolatedAddress" | "SecondaryAddress")
+      attr_accessor title: ::String
+      attr_accessor address: Types::Address
+      attr_accessor address_number_corrected: bool
+      attr_accessor postal_code_details: ::Array[Types::PostalCodeDetails]
+      attr_accessor position: ::Array[::Float]
+      attr_accessor distance: ::Integer
+      attr_accessor map_view: ::Array[::Float]
+      attr_accessor categories: ::Array[Types::Category]
+      attr_accessor food_types: ::Array[Types::FoodType]
+      attr_accessor access_points: ::Array[Types::AccessPoint]
+      attr_accessor time_zone: Types::TimeZone
+      attr_accessor political_view: ::String
+      attr_accessor match_scores: Types::MatchScoreDetails
+      attr_accessor parsed_query: Types::GeocodeParsedQuery
+      attr_accessor intersections: ::Array[Types::Intersection]
+      attr_accessor main_address: Types::RelatedPlace
+      attr_accessor secondary_addresses: ::Array[Types::RelatedPlace]
+      SENSITIVE: [:place_id, :place_type, :title, :address_number_corrected, :position, :distance, :map_view, :political_view]
+    end
+
+    class GetPlaceRequest
+      attr_accessor place_id: ::String
+      attr_accessor additional_features: ::Array[("TimeZone" | "Phonemes" | "Access" | "Contact" | "SecondaryAddresses")]
+      attr_accessor language: ::String
+      attr_accessor political_view: ::String
+      attr_accessor intended_use: ("SingleUse" | "Storage")
+      attr_accessor key: ::String
+      SENSITIVE: [:place_id, :political_view, :key]
+    end
+
+    class GetPlaceResponse
+      attr_accessor place_id: ::String
+      attr_accessor place_type: ("Country" | "Region" | "SubRegion" | "Locality" | "District" | "SubDistrict" | "PostalCode" | "Block" | "SubBlock" | "Intersection" | "Street" | "PointOfInterest" | "PointAddress" | "InterpolatedAddress" | "SecondaryAddress")
+      attr_accessor title: ::String
+      attr_accessor pricing_bucket: ::String
+      attr_accessor address: Types::Address
+      attr_accessor address_number_corrected: bool
+      attr_accessor postal_code_details: ::Array[Types::PostalCodeDetails]
+      attr_accessor position: ::Array[::Float]
+      attr_accessor map_view: ::Array[::Float]
+      attr_accessor categories: ::Array[Types::Category]
+      attr_accessor food_types: ::Array[Types::FoodType]
+      attr_accessor business_chains: ::Array[Types::BusinessChain]
+      attr_accessor contacts: Types::Contacts
+      attr_accessor opening_hours: ::Array[Types::OpeningHours]
+      attr_accessor access_points: ::Array[Types::AccessPoint]
+      attr_accessor access_restrictions: ::Array[Types::AccessRestriction]
+      attr_accessor time_zone: Types::TimeZone
+      attr_accessor political_view: ::String
+      attr_accessor phonemes: Types::PhonemeDetails
+      attr_accessor main_address: Types::RelatedPlace
+      attr_accessor secondary_addresses: ::Array[Types::RelatedPlace]
+      SENSITIVE: [:place_id, :place_type, :title, :address_number_corrected, :position, :map_view, :political_view]
+    end
+
+    class Highlight
+      attr_accessor start_index: ::Integer
+      attr_accessor end_index: ::Integer
+      attr_accessor value: ::String
+      SENSITIVE: [:value]
+    end
+
+    class InternalServerException
+      attr_accessor message: ::String
+      SENSITIVE: []
+    end
+
+    class Intersection
+      attr_accessor place_id: ::String
+      attr_accessor title: ::String
+      attr_accessor address: Types::Address
+      attr_accessor position: ::Array[::Float]
+      attr_accessor distance: ::Integer
+      attr_accessor route_distance: ::Integer
+      attr_accessor map_view: ::Array[::Float]
+      attr_accessor access_points: ::Array[Types::AccessPoint]
+      SENSITIVE: [:place_id, :title, :position, :distance, :route_distance, :map_view]
+    end
+
+    class MatchScoreDetails
+      attr_accessor overall: ::Float
+      attr_accessor components: Types::ComponentMatchScores
+      SENSITIVE: []
+    end
+
+    class OpeningHours
+      attr_accessor display: ::Array[::String]
+      attr_accessor open_now: bool
+      attr_accessor components: ::Array[Types::OpeningHoursComponents]
+      attr_accessor categories: ::Array[Types::Category]
+      SENSITIVE: [:open_now]
+    end
+
+    class OpeningHoursComponents
+      attr_accessor open_time: ::String
+      attr_accessor open_duration: ::String
+      attr_accessor recurrence: ::String
+      SENSITIVE: [:open_time, :open_duration, :recurrence]
+    end
+
+    class ParsedQueryComponent
+      attr_accessor start_index: ::Integer
+      attr_accessor end_index: ::Integer
+      attr_accessor value: ::String
+      attr_accessor query_component: ::String
+      SENSITIVE: [:value, :query_component]
+    end
+
+    class ParsedQuerySecondaryAddressComponent
+      attr_accessor start_index: ::Integer
+      attr_accessor end_index: ::Integer
+      attr_accessor value: ::String
+      attr_accessor number: ::String
+      attr_accessor designator: ::String
+      SENSITIVE: [:value, :number, :designator]
+    end
+
+    class PhonemeDetails
+      attr_accessor title: ::Array[Types::PhonemeTranscription]
+      attr_accessor address: Types::AddressComponentPhonemes
+      SENSITIVE: []
+    end
+
+    class PhonemeTranscription
+      attr_accessor value: ::String
+      attr_accessor language: ::String
+      attr_accessor preferred: bool
+      SENSITIVE: [:value, :preferred]
+    end
+
+    class PostalCodeDetails
+      attr_accessor postal_code: ::String
+      attr_accessor postal_authority: ("Usps")
+      attr_accessor postal_code_type: ("UspsZip" | "UspsZipPlus4")
+      attr_accessor usps_zip: Types::UspsZip
+      attr_accessor usps_zip_plus_4: Types::UspsZipPlus4
+      SENSITIVE: [:postal_code, :postal_authority, :postal_code_type]
+    end
+
+    class QueryRefinement
+      attr_accessor refined_term: ::String
+      attr_accessor original_term: ::String
+      attr_accessor start_index: ::Integer
+      attr_accessor end_index: ::Integer
+      SENSITIVE: [:refined_term, :original_term]
+    end
+
+    class Region
+      attr_accessor code: ::String
+      attr_accessor name: ::String
+      SENSITIVE: [:code, :name]
+    end
+
+    class RegionHighlights
+      attr_accessor code: ::Array[Types::Highlight]
+      attr_accessor name: ::Array[Types::Highlight]
+      SENSITIVE: []
+    end
+
+    class RelatedPlace
+      attr_accessor place_id: ::String
+      attr_accessor place_type: ("Country" | "Region" | "SubRegion" | "Locality" | "District" | "SubDistrict" | "PostalCode" | "Block" | "SubBlock" | "Intersection" | "Street" | "PointOfInterest" | "PointAddress" | "InterpolatedAddress" | "SecondaryAddress")
+      attr_accessor title: ::String
+      attr_accessor address: Types::Address
+      attr_accessor position: ::Array[::Float]
+      attr_accessor access_points: ::Array[Types::AccessPoint]
+      SENSITIVE: [:place_id, :place_type, :title, :position]
+    end
+
+    class ReverseGeocodeFilter
+      attr_accessor include_place_types: ::Array[("Locality" | "Intersection" | "Street" | "PointAddress" | "InterpolatedAddress")]
+      SENSITIVE: []
+    end
+
+    class ReverseGeocodeRequest
+      attr_accessor query_position: ::Array[::Float]
+      attr_accessor query_radius: ::Integer
+      attr_accessor max_results: ::Integer
+      attr_accessor filter: Types::ReverseGeocodeFilter
+      attr_accessor additional_features: ::Array[("TimeZone" | "Access" | "Intersections")]
+      attr_accessor language: ::String
+      attr_accessor political_view: ::String
+      attr_accessor intended_use: ("SingleUse" | "Storage")
+      attr_accessor key: ::String
+      SENSITIVE: [:query_position, :query_radius, :political_view, :key]
+    end
+
+    class ReverseGeocodeResponse
+      attr_accessor pricing_bucket: ::String
+      attr_accessor result_items: ::Array[Types::ReverseGeocodeResultItem]
+      SENSITIVE: []
+    end
+
+    class ReverseGeocodeResultItem
+      attr_accessor place_id: ::String
+      attr_accessor place_type: ("Country" | "Region" | "SubRegion" | "Locality" | "District" | "SubDistrict" | "PostalCode" | "Block" | "SubBlock" | "Intersection" | "Street" | "PointOfInterest" | "PointAddress" | "InterpolatedAddress" | "SecondaryAddress")
+      attr_accessor title: ::String
+      attr_accessor address: Types::Address
+      attr_accessor address_number_corrected: bool
+      attr_accessor postal_code_details: ::Array[Types::PostalCodeDetails]
+      attr_accessor position: ::Array[::Float]
+      attr_accessor distance: ::Integer
+      attr_accessor map_view: ::Array[::Float]
+      attr_accessor categories: ::Array[Types::Category]
+      attr_accessor food_types: ::Array[Types::FoodType]
+      attr_accessor access_points: ::Array[Types::AccessPoint]
+      attr_accessor time_zone: Types::TimeZone
+      attr_accessor political_view: ::String
+      attr_accessor intersections: ::Array[Types::Intersection]
+      SENSITIVE: [:place_id, :place_type, :title, :address_number_corrected, :position, :distance, :map_view, :political_view]
+    end
+
+    class SearchNearbyFilter
+      attr_accessor bounding_box: ::Array[::Float]
+      attr_accessor include_countries: ::Array[::String]
+      attr_accessor include_categories: ::Array[::String]
+      attr_accessor exclude_categories: ::Array[::String]
+      attr_accessor include_business_chains: ::Array[::String]
+      attr_accessor exclude_business_chains: ::Array[::String]
+      attr_accessor include_food_types: ::Array[::String]
+      attr_accessor exclude_food_types: ::Array[::String]
+      SENSITIVE: [:bounding_box]
+    end
+
+    class SearchNearbyRequest
+      attr_accessor query_position: ::Array[::Float]
+      attr_accessor query_radius: ::Integer
+      attr_accessor max_results: ::Integer
+      attr_accessor filter: Types::SearchNearbyFilter
+      attr_accessor additional_features: ::Array[("TimeZone" | "Phonemes" | "Access" | "Contact")]
+      attr_accessor language: ::String
+      attr_accessor political_view: ::String
+      attr_accessor intended_use: ("SingleUse" | "Storage")
+      attr_accessor next_token: ::String
+      attr_accessor key: ::String
+      SENSITIVE: [:query_position, :query_radius, :political_view, :key]
+    end
+
+    class SearchNearbyResponse
+      attr_accessor pricing_bucket: ::String
+      attr_accessor result_items: ::Array[Types::SearchNearbyResultItem]
+      attr_accessor next_token: ::String
+      SENSITIVE: []
+    end
+
+    class SearchNearbyResultItem
+      attr_accessor place_id: ::String
+      attr_accessor place_type: ("Country" | "Region" | "SubRegion" | "Locality" | "District" | "SubDistrict" | "PostalCode" | "Block" | "SubBlock" | "Intersection" | "Street" | "PointOfInterest" | "PointAddress" | "InterpolatedAddress" | "SecondaryAddress")
+      attr_accessor title: ::String
+      attr_accessor address: Types::Address
+      attr_accessor address_number_corrected: bool
+      attr_accessor position: ::Array[::Float]
+      attr_accessor distance: ::Integer
+      attr_accessor map_view: ::Array[::Float]
+      attr_accessor categories: ::Array[Types::Category]
+      attr_accessor food_types: ::Array[Types::FoodType]
+      attr_accessor business_chains: ::Array[Types::BusinessChain]
+      attr_accessor contacts: Types::Contacts
+      attr_accessor opening_hours: ::Array[Types::OpeningHours]
+      attr_accessor access_points: ::Array[Types::AccessPoint]
+      attr_accessor access_restrictions: ::Array[Types::AccessRestriction]
+      attr_accessor time_zone: Types::TimeZone
+      attr_accessor political_view: ::String
+      attr_accessor phonemes: Types::PhonemeDetails
+      SENSITIVE: [:place_id, :place_type, :title, :address_number_corrected, :position, :distance, :map_view, :political_view]
+    end
+
+    class SearchTextFilter
+      attr_accessor bounding_box: ::Array[::Float]
+      attr_accessor circle: Types::FilterCircle
+      attr_accessor include_countries: ::Array[::String]
+      SENSITIVE: [:bounding_box, :circle]
+    end
+
+    class SearchTextRequest
+      attr_accessor query_text: ::String
+      attr_accessor query_id: ::String
+      attr_accessor max_results: ::Integer
+      attr_accessor bias_position: ::Array[::Float]
+      attr_accessor filter: Types::SearchTextFilter
+      attr_accessor additional_features: ::Array[("TimeZone" | "Phonemes" | "Access" | "Contact")]
+      attr_accessor language: ::String
+      attr_accessor political_view: ::String
+      attr_accessor intended_use: ("SingleUse" | "Storage")
+      attr_accessor next_token: ::String
+      attr_accessor key: ::String
+      SENSITIVE: [:query_text, :query_id, :bias_position, :political_view, :key]
+    end
+
+    class SearchTextResponse
+      attr_accessor pricing_bucket: ::String
+      attr_accessor result_items: ::Array[Types::SearchTextResultItem]
+      attr_accessor next_token: ::String
+      SENSITIVE: []
+    end
+
+    class SearchTextResultItem
+      attr_accessor place_id: ::String
+      attr_accessor place_type: ("Country" | "Region" | "SubRegion" | "Locality" | "District" | "SubDistrict" | "PostalCode" | "Block" | "SubBlock" | "Intersection" | "Street" | "PointOfInterest" | "PointAddress" | "InterpolatedAddress" | "SecondaryAddress")
+      attr_accessor title: ::String
+      attr_accessor address: Types::Address
+      attr_accessor address_number_corrected: bool
+      attr_accessor position: ::Array[::Float]
+      attr_accessor distance: ::Integer
+      attr_accessor map_view: ::Array[::Float]
+      attr_accessor categories: ::Array[Types::Category]
+      attr_accessor food_types: ::Array[Types::FoodType]
+      attr_accessor business_chains: ::Array[Types::BusinessChain]
+      attr_accessor contacts: Types::Contacts
+      attr_accessor opening_hours: ::Array[Types::OpeningHours]
+      attr_accessor access_points: ::Array[Types::AccessPoint]
+      attr_accessor access_restrictions: ::Array[Types::AccessRestriction]
+      attr_accessor time_zone: Types::TimeZone
+      attr_accessor political_view: ::String
+      attr_accessor phonemes: Types::PhonemeDetails
+      SENSITIVE: [:place_id, :place_type, :title, :address_number_corrected, :position, :distance, :map_view, :political_view]
+    end
+
+    class SecondaryAddressComponent
+      attr_accessor number: ::String
+      SENSITIVE: [:number]
+    end
+
+    class SecondaryAddressComponentMatchScore
+      attr_accessor number: ::Float
+      SENSITIVE: []
+    end
+
+    class StreetComponents
+      attr_accessor base_name: ::String
+      attr_accessor type: ::String
+      attr_accessor type_placement: ("BeforeBaseName" | "AfterBaseName")
+      attr_accessor type_separator: ::String
+      attr_accessor prefix: ::String
+      attr_accessor suffix: ::String
+      attr_accessor direction: ::String
+      attr_accessor language: ::String
+      SENSITIVE: [:base_name, :type, :prefix, :suffix, :direction]
+    end
+
+    class SubRegion
+      attr_accessor code: ::String
+      attr_accessor name: ::String
+      SENSITIVE: [:code, :name]
+    end
+
+    class SubRegionHighlights
+      attr_accessor code: ::Array[Types::Highlight]
+      attr_accessor name: ::Array[Types::Highlight]
+      SENSITIVE: []
+    end
+
+    class SuggestAddressHighlights
+      attr_accessor label: ::Array[Types::Highlight]
+      SENSITIVE: []
+    end
+
+    class SuggestFilter
+      attr_accessor bounding_box: ::Array[::Float]
+      attr_accessor circle: Types::FilterCircle
+      attr_accessor include_countries: ::Array[::String]
+      SENSITIVE: [:bounding_box, :circle]
+    end
+
+    class SuggestHighlights
+      attr_accessor title: ::Array[Types::Highlight]
+      attr_accessor address: Types::SuggestAddressHighlights
+      SENSITIVE: []
+    end
+
+    class SuggestPlaceResult
+      attr_accessor place_id: ::String
+      attr_accessor place_type: ("Country" | "Region" | "SubRegion" | "Locality" | "District" | "SubDistrict" | "PostalCode" | "Block" | "SubBlock" | "Intersection" | "Street" | "PointOfInterest" | "PointAddress" | "InterpolatedAddress" | "SecondaryAddress")
+      attr_accessor address: Types::Address
+      attr_accessor position: ::Array[::Float]
+      attr_accessor distance: ::Integer
+      attr_accessor map_view: ::Array[::Float]
+      attr_accessor categories: ::Array[Types::Category]
+      attr_accessor food_types: ::Array[Types::FoodType]
+      attr_accessor business_chains: ::Array[Types::BusinessChain]
+      attr_accessor access_points: ::Array[Types::AccessPoint]
+      attr_accessor access_restrictions: ::Array[Types::AccessRestriction]
+      attr_accessor time_zone: Types::TimeZone
+      attr_accessor political_view: ::String
+      attr_accessor phonemes: Types::PhonemeDetails
+      SENSITIVE: [:place_id, :place_type, :position, :distance, :map_view, :political_view]
+    end
+
+    class SuggestQueryResult
+      attr_accessor query_id: ::String
+      attr_accessor query_type: ("Category" | "BusinessChain")
+      SENSITIVE: [:query_id]
+    end
+
+    class SuggestRequest
+      attr_accessor query_text: ::String
+      attr_accessor max_results: ::Integer
+      attr_accessor max_query_refinements: ::Integer
+      attr_accessor bias_position: ::Array[::Float]
+      attr_accessor filter: Types::SuggestFilter
+      attr_accessor additional_features: ::Array[("Core" | "TimeZone" | "Phonemes" | "Access")]
+      attr_accessor language: ::String
+      attr_accessor political_view: ::String
+      attr_accessor intended_use: ("SingleUse")
+      attr_accessor key: ::String
+      SENSITIVE: [:query_text, :bias_position, :political_view, :key]
+    end
+
+    class SuggestResponse
+      attr_accessor pricing_bucket: ::String
+      attr_accessor result_items: ::Array[Types::SuggestResultItem]
+      attr_accessor query_refinements: ::Array[Types::QueryRefinement]
+      SENSITIVE: []
+    end
+
+    class SuggestResultItem
+      attr_accessor title: ::String
+      attr_accessor suggest_result_item_type: ("Place" | "Query")
+      attr_accessor place: Types::SuggestPlaceResult
+      attr_accessor query: Types::SuggestQueryResult
+      attr_accessor highlights: Types::SuggestHighlights
+      SENSITIVE: [:title]
+    end
+
+    class ThrottlingException
+      attr_accessor message: ::String
+      SENSITIVE: []
+    end
+
+    class TimeZone
+      attr_accessor name: ::String
+      attr_accessor offset: ::String
+      attr_accessor offset_seconds: ::Integer
+      SENSITIVE: [:name, :offset, :offset_seconds]
+    end
+
+    class UspsZip
+      attr_accessor zip_classification_code: ("Military" | "PostOfficeBoxes" | "Unique")
+      SENSITIVE: [:zip_classification_code]
+    end
+
+    class UspsZipPlus4
+      attr_accessor record_type_code: ("Firm" | "General" | "HighRise" | "PostOfficeBox" | "Rural" | "Street")
+      SENSITIVE: [:record_type_code]
+    end
+
+    class ValidationException
+      attr_accessor message: ::String
+      attr_accessor reason: ("UnknownOperation" | "Missing" | "CannotParse" | "FieldValidationFailed" | "Other" | "UnknownField")
+      attr_accessor field_list: ::Array[Types::ValidationExceptionField]
+      SENSITIVE: []
+    end
+
+    class ValidationExceptionField
+      attr_accessor name: ::String
+      attr_accessor message: ::String
+      SENSITIVE: []
+    end
+  end
+end

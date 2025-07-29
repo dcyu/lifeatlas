@@ -1,0 +1,307 @@
+# WARNING ABOUT GENERATED CODE
+#
+# This file is generated. See the contributing guide for more information:
+# https://github.com/aws/aws-sdk-ruby/blob/version-3/CONTRIBUTING.md
+#
+# WARNING ABOUT GENERATED CODE
+
+module Aws::ARCZonalShift
+  module Types
+
+    class AccessDeniedException
+      attr_accessor message: ::String
+      SENSITIVE: []
+    end
+
+    class AutoshiftInResource
+      attr_accessor applied_status: ("APPLIED" | "NOT_APPLIED")
+      attr_accessor away_from: ::String
+      attr_accessor start_time: ::Time
+      SENSITIVE: []
+    end
+
+    class AutoshiftSummary
+      attr_accessor away_from: ::String
+      attr_accessor end_time: ::Time
+      attr_accessor start_time: ::Time
+      attr_accessor status: ("ACTIVE" | "COMPLETED")
+      SENSITIVE: []
+    end
+
+    class CancelPracticeRunRequest
+      attr_accessor zonal_shift_id: ::String
+      SENSITIVE: []
+    end
+
+    class CancelPracticeRunResponse
+      attr_accessor zonal_shift_id: ::String
+      attr_accessor resource_identifier: ::String
+      attr_accessor away_from: ::String
+      attr_accessor expiry_time: ::Time
+      attr_accessor start_time: ::Time
+      attr_accessor status: ("ACTIVE" | "EXPIRED" | "CANCELED")
+      attr_accessor comment: ::String
+      SENSITIVE: []
+    end
+
+    class CancelZonalShiftRequest
+      attr_accessor zonal_shift_id: ::String
+      SENSITIVE: []
+    end
+
+    class ConflictException
+      attr_accessor message: ::String
+      attr_accessor reason: ("ZonalShiftAlreadyExists" | "ZonalShiftStatusNotActive" | "SimultaneousZonalShiftsConflict" | "PracticeConfigurationAlreadyExists" | "AutoShiftEnabled" | "PracticeConfigurationDoesNotExist" | "ZonalAutoshiftActive" | "PracticeOutcomeAlarmsRed" | "PracticeBlockingAlarmsRed" | "PracticeInBlockedDates" | "PracticeInBlockedWindows")
+      attr_accessor zonal_shift_id: ::String
+      SENSITIVE: []
+    end
+
+    class ControlCondition
+      attr_accessor type: ("CLOUDWATCH")
+      attr_accessor alarm_identifier: ::String
+      SENSITIVE: []
+    end
+
+    class CreatePracticeRunConfigurationRequest
+      attr_accessor resource_identifier: ::String
+      attr_accessor blocked_windows: ::Array[::String]
+      attr_accessor blocked_dates: ::Array[::String]
+      attr_accessor blocking_alarms: ::Array[Types::ControlCondition]
+      attr_accessor outcome_alarms: ::Array[Types::ControlCondition]
+      SENSITIVE: []
+    end
+
+    class CreatePracticeRunConfigurationResponse
+      attr_accessor arn: ::String
+      attr_accessor name: ::String
+      attr_accessor zonal_autoshift_status: ("ENABLED" | "DISABLED")
+      attr_accessor practice_run_configuration: Types::PracticeRunConfiguration
+      SENSITIVE: []
+    end
+
+    class DeletePracticeRunConfigurationRequest
+      attr_accessor resource_identifier: ::String
+      SENSITIVE: []
+    end
+
+    class DeletePracticeRunConfigurationResponse
+      attr_accessor arn: ::String
+      attr_accessor name: ::String
+      attr_accessor zonal_autoshift_status: ("ENABLED" | "DISABLED")
+      SENSITIVE: []
+    end
+
+    class GetAutoshiftObserverNotificationStatusRequest < Aws::EmptyStructure
+    end
+
+    class GetAutoshiftObserverNotificationStatusResponse
+      attr_accessor status: ("ENABLED" | "DISABLED")
+      SENSITIVE: []
+    end
+
+    class GetManagedResourceRequest
+      attr_accessor resource_identifier: ::String
+      SENSITIVE: []
+    end
+
+    class GetManagedResourceResponse
+      attr_accessor arn: ::String
+      attr_accessor name: ::String
+      attr_accessor applied_weights: ::Hash[::String, ::Float]
+      attr_accessor zonal_shifts: ::Array[Types::ZonalShiftInResource]
+      attr_accessor autoshifts: ::Array[Types::AutoshiftInResource]
+      attr_accessor practice_run_configuration: Types::PracticeRunConfiguration
+      attr_accessor zonal_autoshift_status: ("ENABLED" | "DISABLED")
+      SENSITIVE: []
+    end
+
+    class InternalServerException
+      attr_accessor message: ::String
+      SENSITIVE: []
+    end
+
+    class ListAutoshiftsRequest
+      attr_accessor next_token: ::String
+      attr_accessor status: ("ACTIVE" | "COMPLETED")
+      attr_accessor max_results: ::Integer
+      SENSITIVE: []
+    end
+
+    class ListAutoshiftsResponse
+      attr_accessor items: ::Array[Types::AutoshiftSummary]
+      attr_accessor next_token: ::String
+      SENSITIVE: []
+    end
+
+    class ListManagedResourcesRequest
+      attr_accessor next_token: ::String
+      attr_accessor max_results: ::Integer
+      SENSITIVE: []
+    end
+
+    class ListManagedResourcesResponse
+      attr_accessor items: ::Array[Types::ManagedResourceSummary]
+      attr_accessor next_token: ::String
+      SENSITIVE: []
+    end
+
+    class ListZonalShiftsRequest
+      attr_accessor next_token: ::String
+      attr_accessor status: ("ACTIVE" | "EXPIRED" | "CANCELED")
+      attr_accessor max_results: ::Integer
+      attr_accessor resource_identifier: ::String
+      SENSITIVE: []
+    end
+
+    class ListZonalShiftsResponse
+      attr_accessor items: ::Array[Types::ZonalShiftSummary]
+      attr_accessor next_token: ::String
+      SENSITIVE: []
+    end
+
+    class ManagedResourceSummary
+      attr_accessor arn: ::String
+      attr_accessor name: ::String
+      attr_accessor availability_zones: ::Array[::String]
+      attr_accessor applied_weights: ::Hash[::String, ::Float]
+      attr_accessor zonal_shifts: ::Array[Types::ZonalShiftInResource]
+      attr_accessor autoshifts: ::Array[Types::AutoshiftInResource]
+      attr_accessor zonal_autoshift_status: ("ENABLED" | "DISABLED")
+      attr_accessor practice_run_status: ("ENABLED" | "DISABLED")
+      SENSITIVE: []
+    end
+
+    class PracticeRunConfiguration
+      attr_accessor blocking_alarms: ::Array[Types::ControlCondition]
+      attr_accessor outcome_alarms: ::Array[Types::ControlCondition]
+      attr_accessor blocked_windows: ::Array[::String]
+      attr_accessor blocked_dates: ::Array[::String]
+      SENSITIVE: []
+    end
+
+    class ResourceNotFoundException
+      attr_accessor message: ::String
+      SENSITIVE: []
+    end
+
+    class StartPracticeRunRequest
+      attr_accessor resource_identifier: ::String
+      attr_accessor away_from: ::String
+      attr_accessor comment: ::String
+      SENSITIVE: []
+    end
+
+    class StartPracticeRunResponse
+      attr_accessor zonal_shift_id: ::String
+      attr_accessor resource_identifier: ::String
+      attr_accessor away_from: ::String
+      attr_accessor expiry_time: ::Time
+      attr_accessor start_time: ::Time
+      attr_accessor status: ("ACTIVE" | "EXPIRED" | "CANCELED")
+      attr_accessor comment: ::String
+      SENSITIVE: []
+    end
+
+    class StartZonalShiftRequest
+      attr_accessor resource_identifier: ::String
+      attr_accessor away_from: ::String
+      attr_accessor expires_in: ::String
+      attr_accessor comment: ::String
+      SENSITIVE: []
+    end
+
+    class ThrottlingException
+      attr_accessor message: ::String
+      SENSITIVE: []
+    end
+
+    class UpdateAutoshiftObserverNotificationStatusRequest
+      attr_accessor status: ("ENABLED" | "DISABLED")
+      SENSITIVE: []
+    end
+
+    class UpdateAutoshiftObserverNotificationStatusResponse
+      attr_accessor status: ("ENABLED" | "DISABLED")
+      SENSITIVE: []
+    end
+
+    class UpdatePracticeRunConfigurationRequest
+      attr_accessor resource_identifier: ::String
+      attr_accessor blocked_windows: ::Array[::String]
+      attr_accessor blocked_dates: ::Array[::String]
+      attr_accessor blocking_alarms: ::Array[Types::ControlCondition]
+      attr_accessor outcome_alarms: ::Array[Types::ControlCondition]
+      SENSITIVE: []
+    end
+
+    class UpdatePracticeRunConfigurationResponse
+      attr_accessor arn: ::String
+      attr_accessor name: ::String
+      attr_accessor zonal_autoshift_status: ("ENABLED" | "DISABLED")
+      attr_accessor practice_run_configuration: Types::PracticeRunConfiguration
+      SENSITIVE: []
+    end
+
+    class UpdateZonalAutoshiftConfigurationRequest
+      attr_accessor resource_identifier: ::String
+      attr_accessor zonal_autoshift_status: ("ENABLED" | "DISABLED")
+      SENSITIVE: []
+    end
+
+    class UpdateZonalAutoshiftConfigurationResponse
+      attr_accessor resource_identifier: ::String
+      attr_accessor zonal_autoshift_status: ("ENABLED" | "DISABLED")
+      SENSITIVE: []
+    end
+
+    class UpdateZonalShiftRequest
+      attr_accessor zonal_shift_id: ::String
+      attr_accessor comment: ::String
+      attr_accessor expires_in: ::String
+      SENSITIVE: []
+    end
+
+    class ValidationException
+      attr_accessor message: ::String
+      attr_accessor reason: ("InvalidExpiresIn" | "InvalidStatus" | "MissingValue" | "InvalidToken" | "InvalidResourceIdentifier" | "InvalidAz" | "UnsupportedAz" | "InvalidAlarmCondition" | "InvalidConditionType" | "InvalidPracticeBlocker" | "FISExperimentUpdateNotAllowed" | "AutoshiftUpdateNotAllowed" | "UnsupportedPracticeCancelShiftType")
+      SENSITIVE: []
+    end
+
+    class ZonalShift
+      attr_accessor zonal_shift_id: ::String
+      attr_accessor resource_identifier: ::String
+      attr_accessor away_from: ::String
+      attr_accessor expiry_time: ::Time
+      attr_accessor start_time: ::Time
+      attr_accessor status: ("ACTIVE" | "EXPIRED" | "CANCELED")
+      attr_accessor comment: ::String
+      SENSITIVE: []
+    end
+
+    class ZonalShiftInResource
+      attr_accessor applied_status: ("APPLIED" | "NOT_APPLIED")
+      attr_accessor zonal_shift_id: ::String
+      attr_accessor resource_identifier: ::String
+      attr_accessor away_from: ::String
+      attr_accessor expiry_time: ::Time
+      attr_accessor start_time: ::Time
+      attr_accessor comment: ::String
+      attr_accessor shift_type: ("ZONAL_SHIFT" | "PRACTICE_RUN" | "FIS_EXPERIMENT" | "ZONAL_AUTOSHIFT")
+      attr_accessor practice_run_outcome: ("FAILED" | "INTERRUPTED" | "PENDING" | "SUCCEEDED" | "CAPACITY_CHECK_FAILED")
+      SENSITIVE: []
+    end
+
+    class ZonalShiftSummary
+      attr_accessor zonal_shift_id: ::String
+      attr_accessor resource_identifier: ::String
+      attr_accessor away_from: ::String
+      attr_accessor expiry_time: ::Time
+      attr_accessor start_time: ::Time
+      attr_accessor status: ("ACTIVE" | "EXPIRED" | "CANCELED")
+      attr_accessor comment: ::String
+      attr_accessor shift_type: ("ZONAL_SHIFT" | "PRACTICE_RUN" | "FIS_EXPERIMENT" | "ZONAL_AUTOSHIFT")
+      attr_accessor practice_run_outcome: ("FAILED" | "INTERRUPTED" | "PENDING" | "SUCCEEDED" | "CAPACITY_CHECK_FAILED")
+      SENSITIVE: []
+    end
+  end
+end
