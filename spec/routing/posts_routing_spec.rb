@@ -4,31 +4,31 @@ RSpec.describe PostsController, :type => :routing do
   describe "routing" do
 
     it "routes to #index" do
-      expect(:get => "/posts").to route_to("posts#index")
+      expect(:get => "/destinations/1/posts").to route_to("posts#index", :destination_id => "1")
     end
 
     it "routes to #new" do
-      expect(:get => "/posts/new").to route_to("posts#new")
+      expect(:get => "/destinations/1/posts/new").to route_to("posts#new", :destination_id => "1")
     end
 
     it "routes to #show" do
-      expect(:get => "/posts/1").to route_to("posts#show", :id => "1")
+      expect(:get => "/destinations/1/posts/1").to route_to("posts#show", :destination_id => "1", :id => "1")
     end
 
     it "routes to #edit" do
-      expect(:get => "/posts/1/edit").to route_to("posts#edit", :id => "1")
+      expect(:get => "/destinations/1/posts/1/edit").to route_to("posts#edit", :destination_id => "1", :id => "1")
     end
 
     it "routes to #create" do
-      expect(:post => "/posts").to route_to("posts#create")
+      expect(:post => "/destinations/1/posts").to route_to("posts#create", :destination_id => "1")
     end
 
     it "routes to #update" do
-      expect(:put => "/posts/1").to route_to("posts#update", :id => "1")
+      expect(:put => "/destinations/1/posts/1").to route_to("posts#update", :destination_id => "1", :id => "1")
     end
 
     it "routes to #destroy" do
-      expect(:delete => "/posts/1").to route_to("posts#destroy", :id => "1")
+      expect(:delete => "/destinations/1/posts/1").to route_to("posts#destroy", :destination_id => "1", :id => "1")
     end
 
   end

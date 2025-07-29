@@ -1,4 +1,4 @@
-ruby "3.2.2"
+ruby "3.3.7"
 
 source 'https://rubygems.org'
 
@@ -93,4 +93,6 @@ gem "koala", '~> 3.0'
 # gem 'debugger', group: [:development, :test]
 
 gem 'puma', '~> 6.4'
+
+gem 'coffee-script'
 
