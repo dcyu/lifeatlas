@@ -1,4 +1,4 @@
-class CreateDestinations < ActiveRecord::Migration
+class CreateDestinations < ActiveRecord::Migration[7.1]
   def change
     create_table :destinations do |t|
       t.string :name

@@ -2,6 +2,7 @@ development:
   adapter: postgresql
   encoding: unicode
   database: lifeatlas_development
+  host: localhost
   pool: 5
   port: 5432
 
@@ -9,9 +10,15 @@ test:
   adapter: postgresql
   encoding: unicode
   database: lifeatlas_test
+  host: localhost
   pool: 5
   port: 5432
 
 production:
   adapter: postgresql
   encoding: unicode
+  host: <%= ENV['DATABASE_HOST'] %>
+  database: <%= ENV['DATABASE_NAME'] %>
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>

@@ -1,4 +1,4 @@
-class CreateTrips < ActiveRecord::Migration
+class CreateTrips < ActiveRecord::Migration[7.1]
   def change
     create_table :trips do |t|
       t.date :arrived_on

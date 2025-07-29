@@ -1,4 +1,4 @@
-class CreateStops < ActiveRecord::Migration
+class CreateStops < ActiveRecord::Migration[7.1]
   def change
     create_table :stops do |t|
       t.integer :aspiration_id

@@ -1,4 +1,4 @@
-class AddPersianToWords < ActiveRecord::Migration
+class AddPersianToWords < ActiveRecord::Migration[7.1]
   def change
     add_column :words, :persian, :string
     add_column :words, :persian_notes, :text

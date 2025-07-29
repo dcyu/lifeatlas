@@ -1,6 +1,6 @@
 class VenuesController < ApplicationController
   before_action :set_venue, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!, except: [:show, :index]
+  before_action :authenticate_user!, except: [:show, :index]
 
 
   respond_to :html

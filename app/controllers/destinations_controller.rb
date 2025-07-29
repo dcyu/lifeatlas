@@ -1,6 +1,6 @@
 class DestinationsController < ApplicationController
   before_action :set_destination, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!, except: [:show, :index, :landing, :about, :stats]
+  before_action :authenticate_user!, except: [:show, :index, :landing, :about, :stats]
 
 
   def landing
@@ -44,10 +44,19 @@ class DestinationsController < ApplicationController
   # POST /destinations.json
   def create
     @destination = Destination.new(destination_params)
-    geo = Geocoder.coordinates(@destination.name)
-    unless geo.nil?
-      @destination.lat = geo.first
-      @destination.lng = geo.last
+    
+    # Geocode the destination using Google API
+    begin
+      geo = Geocoder.coordinates(@destination.name)
+      if geo && geo.length >= 2
+        @destination.lat = geo.first
+        @destination.lng = geo.last
+        Rails.logger.info "Geocoded #{@destination.name} to lat: #{@destination.lat}, lng: #{@destination.lng}"
+      else
+        Rails.logger.warn "Could not geocode destination: #{@destination.name}"
+      end
+    rescue => e
+      Rails.logger.error "Geocoding error for #{@destination.name}: #{e.message}"
     end
 
     respond_to do |format|
@@ -64,9 +73,19 @@ class DestinationsController < ApplicationController
   # PATCH/PUT /destinations/1
   # PATCH/PUT /destinations/1.json
   def update
-    geo = Geocoder.coordinates(@destination.name)
-    @destination.lat = geo.first
-    @destination.lng = geo.last
+    # Geocode the destination using Google API
+    begin
+      geo = Geocoder.coordinates(@destination.name)
+      if geo && geo.length >= 2
+        @destination.lat = geo.first
+        @destination.lng = geo.last
+        Rails.logger.info "Updated geocoding for #{@destination.name} to lat: #{@destination.lat}, lng: #{@destination.lng}"
+      else
+        Rails.logger.warn "Could not geocode destination: #{@destination.name}"
+      end
+    rescue => e
+      Rails.logger.error "Geocoding error for #{@destination.name}: #{e.message}"
+    end
     
     respond_to do |format|
       if @destination.update(destination_params)

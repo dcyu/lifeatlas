@@ -1,4 +1,4 @@
-class AddNotesToWords < ActiveRecord::Migration
+class AddNotesToWords < ActiveRecord::Migration[7.1]
   def change
     add_column :words, :mandarin_notes, :text
     add_column :words, :arabic_notes, :text

@@ -1,7 +1,7 @@
 class WordsController < ApplicationController
   before_action :set_word, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!, except: [:index, :mandarin, :swahili, :twitter, :twitter_topic, :twitter_topics]
-  skip_before_filter :verify_authenticity_token, :only => [:twitter_topic]
+  before_action :authenticate_user!, except: [:index, :mandarin, :swahili, :twitter, :twitter_topic, :twitter_topics]
+  skip_before_action :verify_authenticity_token, :only => [:twitter_topic]
 
   respond_to :html
 

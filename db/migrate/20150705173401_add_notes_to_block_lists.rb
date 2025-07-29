@@ -1,4 +1,4 @@
-class AddNotesToBlockLists < ActiveRecord::Migration
+class AddNotesToBlockLists < ActiveRecord::Migration[7.1]
   def change
     add_column :block_lists, :mandarin_notes, :text
     add_column :block_lists, :arabic_notes, :text

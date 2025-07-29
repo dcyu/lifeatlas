@@ -1,6 +1,6 @@
 class SubjectsController < ApplicationController
   before_action :set_subject, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!, except: [:show, :index]
+  before_action :authenticate_user!, except: [:show, :index]
 
   def work
     client = Asana::Client.new do |c|

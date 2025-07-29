@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy, :write, :update_writing]
   before_action :set_destination, except: :writing
-  before_filter :authenticate_user!, except: [:show, :index]
+  before_action :authenticate_user!, except: [:show, :index]
 
   def writing
     date1 = "1/1/2016".to_date

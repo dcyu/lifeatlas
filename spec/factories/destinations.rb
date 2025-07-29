@@ -1,11 +1,11 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :destination do
-    name "MyString"
-    arrived_on "2014-12-07"
-    left_on "2014-12-07"
-    lng "MyString"
-    lat "MyString"
+    sequence(:name) { |n| "Destination #{n}" }
+    lat { "40.7128" }
+    lng { "-74.0060" }
+    visited { false }
+    association :user
   end
 end

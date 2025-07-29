@@ -1,6 +1,6 @@
 class BlockListsController < ApplicationController
   before_action :set_block_list, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!, except: [:show]
+  before_action :authenticate_user!, except: [:show]
 
 
   respond_to :html
